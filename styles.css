@@ -46,6 +46,14 @@ body.scroll {
     cursor: none;
 }
 
+.text-container {
+    padding: 5vh 15vh 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 3s;
+}
+
 a {
     text-decoration: none;
 }
@@ -277,14 +285,6 @@ background: #bb7900;
     color: orange;
 }
 
-.description {
-    padding: 5vh 15vh 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 3s;
-}
-
 /* Github repos */
 
 .project-container{
@@ -365,9 +365,17 @@ background: #bb7900;
 
 /* Photography work  */
 
+.image-gallery-header {
+    margin-top: 15vh;
+}
+
+.image-gallery-description {
+
+}
+
 .image-gallery {
     padding: 0px 10px;
-    margin-top: 5vh;
+    margin-top: 2vh;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -375,7 +383,7 @@ background: #bb7900;
   
 .image-gallery > li {
     flex: 1 1 auto;
-    height: 300px;
+    height: 35vh;
     cursor: pointer;
     position: relative;
 }

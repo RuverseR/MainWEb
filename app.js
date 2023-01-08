@@ -49,7 +49,9 @@ async function startPage() {
     projects.classList.add('active');
     bodyElement.classList.add('scroll');
     await sleep(500);
-    remove();
+    try {
+        remove();
+    } catch(err) {console.log(err)}
     typewrite(headerDescription);
     homePage.classList.add('fade');
     projects.classList.add('fade');
@@ -83,14 +85,16 @@ if (!isMobile && isDesktop) {
 }
 
 function setup() {
-    console.log(numStars);
-    createCanvas(window.innerWidth, window.innerHeight);
-    stroke(255);
-    strokeWeight(2);
-    
-    for(let i = 0; i < numStars; i++) {
-        stars.push(new Star(random(width), random(height)));
-    }
+    try {
+        console.log(numStars);
+        createCanvas(window.innerWidth, window.innerHeight);
+        stroke(255);
+        strokeWeight(2);
+        
+        for(let i = 0; i < numStars; i++) {
+            stars.push(new Star(random(width), random(height)));
+        }
+    } catch (err) {console.log(err)}
 }
 
 function draw() {
