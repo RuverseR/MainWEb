@@ -503,6 +503,21 @@ background: #bb7900;
 }
 
 /* Responsive Media */
+@media (max-width: 3000px) {
+    .header span {
+        font-size: 7rem;
+    }
+
+    .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .socials-container img {
+        width: 5vh;
+        height: 5vh;
+    }
+}
+
 @media (max-width: 1500px) {
     .header span {
         font-size: 7rem;
