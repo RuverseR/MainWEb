@@ -1,5 +1,4 @@
 console.clear();
-credits();
 
 const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -195,6 +194,12 @@ window.addEventListener('mousemove', (e) => {
 })
 
 window.addEventListener('scroll', (e) => {
+    let p5canvas = document.querySelector('.p5Canvas');
+
+    if (!(p5canvas === null)) {
+        p5canvas.remove();
+    }
+
     cursorInner.style.left = e.pageX + 'px';
     cursorInner.style.top = e.pageY - window.scrollY + 'px';
 
@@ -207,8 +212,10 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('resize', (e) => {
-    setup();
-    stars = [];
+    if (animationActive) {
+        setup();
+        stars = [];
+    }
 })
 
 function credits() {
