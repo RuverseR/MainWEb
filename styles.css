@@ -1,0 +1,460 @@
+/* Fonts */
+@font-face {
+    font-family: 'Mark Pro';
+    src: url('Mark_Pro.woff') format('woff');
+}
+
+:root {
+    --lightest: #E79E4F;
+    --lighter: #A05344;
+    --dark: #734046;
+    --darkest: #321F28;
+    --light-orange: #f9d423;
+    --dark-orange: #f83600;
+    --color-white: #fff;
+    --color-gray: #c4c4c4;
+    --color-black: #000;
+    --color-purple: #8000ff;
+    --color-light-purple: #cf59e6;
+    --color-light-blue: #6bc5f8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body.scroll {
+    overflow-y: auto;
+}
+
+::selection {
+    background-color: rgba(255, 207, 103, 0.781);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;;
+    color: white;
+    cursor: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    0% {opacity: 0; visibility: hidden;}
+    100% {opacity: 1; visibility: visible;}
+}
+
+@keyframes fadeScroll {
+    0% {background: rgb(13,12,18);}
+    100% {}
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
+
+/* Custom cursor */
+.custom-cursor {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000000 !important;
+    pointer-events: none;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.custom-cursor .outer {
+    margin-left: -15px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid orange;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 10000000 !important;
+    opacity: .5;
+    -webkit-transition: all .08s ease-out;
+    -o-transition: all .08s ease-out;
+    transition: all .08s ease-out;
+}
+
+.custom-cursor .inner {
+    background-color: orange;
+    transition: linear height 0.2s, linear width 0.2s;
+    margin-left: -3px;
+    margin-top: -3px;
+    width: 6px;
+    height: 6px;
+    z-index: 10000001 !important;
+}
+
+.hoveredCursor {
+    margin-left: -15px !important;
+    margin-top: -15px !important;
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+/* Custom scroll */
+::-webkit-scrollbar {
+    width: 15px;
+    transition: ease-in-out 1s;
+}
+
+::-webkit-scrollbar.active {
+    display: block;
+}
+
+::-webkit-scrollbar-track {
+background: rgb(13,12,18);
+}
+
+::-webkit-scrollbar-thumb {
+border-radius: 100px;
+background: orange;
+animation: fadeScroll 3s;
+background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #bb7900;
+}
+
+/* Splash screen */
+.loading-animation {
+    width: 100%;
+    height: 100%;
+}
+
+/* Main view */
+.body-container {
+    display: none;
+    height: auto;
+    background-color: rgba(0, 0, 0, 1);
+    transition: ease-in-out 1s;
+}
+
+.body-container.active {
+    display: block;
+}
+
+.body-container.fade {
+    background-color: rgb(13,12,18);
+}
+
+.navbar {
+    font-size: 1.2rem;
+    animation: fadeIn 3s;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3vh 5vh;
+    height: auto;
+    display: flex;
+}
+
+.navbar-items {
+    display: flex;
+}
+
+.navbar-items li {
+    padding-right: 5vh;
+}
+
+.navbar-items li a {
+    transition: ease-in-out 0.3s;
+}
+
+.navbar-items li a:hover {
+    color: orange;
+}
+
+.navbar-items li:last-child {
+    padding-right: 0;
+}
+
+.logo {
+    display: flex;
+    font-size: larger;
+}
+
+.logo-circle {
+    color: orange;
+}
+
+.header {
+    padding: 5vh 10vh 8vh;
+}
+
+.header span {
+    font-family: 'Mark Pro', sans-serif;
+    font-size: 7rem;
+    line-height: 100%;
+    letter-spacing: -.03em;
+}
+
+.header-text, 
+.header h2 {
+    animation: fadeIn 3s;
+}
+
+.gradient-header {
+    background: -webkit-linear-gradient(135deg,var(--light-orange),var(---dark-orange),var(--light-orange),var(--dark-orange));
+    background: linear-gradient(-45deg,var(--light-orange),var(--dark-orange),var(--light-orange),var(--dark-orange));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400% 400%;
+    -webkit-animation: gradient 3s ease infinite, fadeIn 3s;
+    animation: gradient 3s ease infinite, fadeIn 3s;
+}
+
+.header h2 {
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+    width: max-content;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.typewriter {
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    visibility: hidden;
+    animation: blink-caret .75s step-end infinite;
+}
+
+.sub-header {
+    font-size: larger;
+    animation: fadeIn 3s;
+    padding: 5vh 5vh 0vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orange-text {
+    color: orange;
+}
+
+.description {
+    padding: 5vh 15vh 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 3s;
+}
+
+/* Github repos */
+
+.project-container{
+    margin-top: 5vh;
+    padding-bottom: 10vh;
+    display: none;
+    background-color: rgba(0, 0, 0, 1);
+    transition: ease-in-out 1s;
+}
+
+.project-container.active {
+    display: block;
+}
+
+.project-container.fade {
+    background-color: rgb(13,12,18);
+}
+
+.horizontalscroller {
+    position: relative;
+    padding-bottom: 3vh;
+    padding-left: 130px;
+    display: flex;
+    overflow-x: scroll; 
+}
+
+.contentbox {
+    flex: 0 0 auto;
+    position: relative;
+    margin-left: -60px;
+    display: inline-block;
+    padding: 30px;
+    width: 253px;
+    height: 353px;
+    background-color: rgb(21, 19, 27);
+    box-shadow: rgba(0, 0, 0, 0.646) -30px 10px 50px,
+      rgba(0, 0, 0, 0.468) 30px 10px 50px;
+    border-radius: 10px;
+    z-index: 5;
+    transition: all 0.5s ease-out;
+}
+
+.contentbox:hover {
+    margin-right: 20px;
+    z-index: 6;
+}
+
+.contentbox img {
+    margin-bottom: 1vh;
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+}
+
+.contentbox p {
+    text-align: left;
+    height: 190px;
+    color: rgba(255, 255, 255, 0.529);
+    overflow: hidden;
+}
+
+.contentbox h2 {
+    margin-bottom: 1vh;
+    font-size: 20px;
+    line-height: 23px;
+    color: white;
+}
+
+.contentbox h6 {
+    position: absolute;
+    bottom: 2vh;
+    color: rgb(222, 220, 220);
+    font-size: 11px;
+    border: solid 2px rgba(255, 255, 255, 0.201);
+    border-radius: 30px;
+    padding: 10px;
+}
+
+/* Photography work  */
+
+.image-gallery {
+    padding: 0px 10px;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+  
+.image-gallery > li {
+    flex: 1 1 auto;
+    height: 300px;
+    cursor: pointer;
+    position: relative;
+}
+  
+.image-gallery li img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.image-gallery::after {
+    content: "";
+    flex-grow: 999;
+}
+
+/* Contact section */
+
+#contact {
+    padding-top: 18vh;
+}
+
+.contact-section {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.contact-description {
+    padding: 0vh 15vh 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 3s;
+}
+
+.contact-description a {
+    color: orange;
+}
+
+.contact-description a:hover {
+    color: #bb7900;
+}
+
+.socials-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials-container a img {
+    width: 3vh;
+    height: 3vh;
+}
+
+.socials-container a {
+    margin: 0vh 2vh;
+}
+
+.spacer {
+    aspect-ratio: 3/2;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.footer-svg {
+    background-image: url('footer.svg')
+}
+
+/* Footer  */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 3vh;
+    height: 5vh;
+    background-color: #f83600;
+}
