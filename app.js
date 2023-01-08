@@ -1,11 +1,7 @@
-console.clear();
-
-const sleep = ms => {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-// DOM Elements 
+// DOM ELEMENTS 
 const homePage = document.querySelector('.body-container');
+const toggleButton = document.querySelector('.toggle-button');
+const navbarItems = document.querySelector('.navbar-items');
 const projects = document.querySelector('.project-container');
 const bodyElement = document.querySelector('body');
 const headerDescription = document.querySelector('.header-description');
@@ -14,8 +10,15 @@ const cursorJquery = $('#cursor');
 const cursorInner = document.querySelector('.custom-cursor.inner');
 const cursorOuter = document.querySelector('.custom-cursor.outer');
 
-let speed = 100;
+console.clear();
 
+const sleep = ms => {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+
+// TYPEWRITER 
+let speed = 100;
 async function typewrite(element) {
     let text = element.innerHTML;
     element.innerHTML = '';
@@ -29,10 +32,14 @@ async function typewrite(element) {
     element.style['border-right'] = '0px';
 }
 
+
+// WEBSITE VIEWS
 function liveViews(response) {
     document.getElementById('visits').innerText = response.value + " 👀";
 }
 
+
+// LOAD PAGE AFTER ANIMATION
 async function startPage() {
     homePage.classList.add('active');
     bodyElement.classList.add('scroll');
@@ -68,8 +75,8 @@ async function startPage() {
     })
 }
 
-// Star field loading animation
 
+// LOADING ANIMATION
 let numStars = 500;
 let stars = [];
 let acceleration = 0.01;
@@ -80,7 +87,6 @@ let isDesktop = true;
 if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)) {
     isDesktop = false;
 }
-
 let isMobile = window.matchMedia("(any-pointer:coarse)").matches;
 if (!isMobile && isDesktop) {
     console.log("Desktop");
@@ -89,9 +95,11 @@ if (!isMobile && isDesktop) {
     cursorOuter.style.display = 'block';
 } else {
     console.log("Mobile");
-    numStars = 200;
+    numStars = 200;  // If mobile, reduce number of stars
 }
 
+
+// P5.js SETUP
 function setup() {
     try {
         console.log(numStars);
@@ -182,6 +190,8 @@ async function slowDown() {
     startPage();
 }
 
+
+// CUSTOM CURSOR AND HOVER
 window.addEventListener('mousemove', (e) => {
     const target = $(event.target);
     
@@ -227,11 +237,15 @@ window.addEventListener('resize', (e) => {
     }
 })
 
+
+// LOG CREDITS IN CONSOLE
 function credits() {
     console.log.apply(console, ["%c Thanks for stopping by! I\u2019m currently looking to expand my programming knowledge and work with other like-minded devs. ","color: #fff; background: #8000ff; padding:5px 0;"])
     console.log.apply(console, ["%c Designed and Developed by Alex lo Storto %c\ud83d\ude80 ","color: #fff; background: #8000ff; padding:5px 0;","color: #fff; background: #242424; padding:5px 0 5px 5px;"])
 }
 
+
+// GET GITHUB REPO DATA
 function loadDoc() {   
     var pageToVisit = "https://api.github.com/users/alexlostorto/repos";
     var xhttp = new XMLHttpRequest();
@@ -268,3 +282,10 @@ function loadDoc() {
   xhttp.open("GET", pageToVisit, true);
   xhttp.send();
 }
+
+
+// HAMBURGER FUNCTIONALITY
+toggleButton.addEventListener('click', () => {
+    console.log("Clicked");
+    navbarItems.classList.toggle('active');
+})
