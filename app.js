@@ -4,26 +4,16 @@ const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+// DOM Elements 
 const homePage = document.querySelector('.body-container');
 const projects = document.querySelector('.project-container');
 const bodyElement = document.querySelector('body');
-const headerDescription = document.querySelector('.header-description')
+const headerDescription = document.querySelector('.header-description');
 const cursor = document.querySelector('.custom-cursor');
 const cursorJquery = $('#cursor');
 const cursorInner = document.querySelector('.custom-cursor.inner');
 const cursorOuter = document.querySelector('.custom-cursor.outer');
 
-const quotes = [
-    'Enjoy the little things',
-    'Sm;)e',
-    'Hello there!',
-    'Nice to meet you!',
-    'I hope we meet again :)',
-    '/ᐠ ̥  ̮  ̥ ᐟ\\ฅ'
-]
-
-let quote = quotes[Math.floor(Math.random() * quotes.length)];
-let i = 0;
 let speed = 100;
 
 async function typewrite(element) {
@@ -45,7 +35,6 @@ function liveViews(response) {
 
 async function startPage() {
     homePage.classList.add('active');
-    projects.classList.add('active');
     bodyElement.classList.add('scroll');
     await sleep(500);
     try {
@@ -53,10 +42,30 @@ async function startPage() {
     } catch(err) {console.log(err)}
     typewrite(headerDescription);
     homePage.classList.add('fade');
-    projects.classList.add('fade');
     console.clear();
     credits();
     loadDoc();
+
+    // Fade in on scroll 
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+        threshold: 1,
+        rootMargin: "0px 0px -100px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return
+            } else {
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            }
+        })
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    })
 }
 
 // Star field loading animation
