@@ -45,22 +45,6 @@ function liveViews(response) {
 }
 
 async function startPage() {
-    // Check if mobile or desktop 
-    let isDesktop = true;
-    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)) {
-        isDesktop = false;
-    }
-
-    let isMobile = window.matchMedia("(any-pointer:coarse)").matches;
-    if (!isMobile && isDesktop) {
-        console.log("Desktop");
-        cursor.style.display = 'block';
-        cursorInner.style.display = 'block';
-        cursorOuter.style.display = 'block';
-    } else {
-        console.log("Mobile");
-    }
-
     homePage.classList.add('active');
     projects.classList.add('active');
     bodyElement.classList.add('scroll');
@@ -76,12 +60,30 @@ async function startPage() {
 
 // Star field loading animation
 
-const numStars = 1000;
+let numStars = 500;
 let stars = [];
 let acceleration = 0.01;
 let animationActive = true
 
+// Check if mobile or desktop 
+let isDesktop = true;
+if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)) {
+    isDesktop = false;
+}
+
+let isMobile = window.matchMedia("(any-pointer:coarse)").matches;
+if (!isMobile && isDesktop) {
+    console.log("Desktop");
+    cursor.style.display = 'block';
+    cursorInner.style.display = 'block';
+    cursorOuter.style.display = 'block';
+} else {
+    console.log("Mobile");
+    numStars = 200;
+}
+
 function setup() {
+    console.log(numStars);
     createCanvas(window.innerWidth, window.innerHeight);
     stroke(255);
     strokeWeight(2);
