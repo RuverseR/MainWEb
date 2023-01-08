@@ -184,6 +184,96 @@ background-clip: content-box;
 background: #bb7900;
 }
 
+/* Responsive Media */
+@media (max-width: 1500px) {
+    .header span {
+        font-size: 7rem;
+    }
+
+    .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .socials-container img {
+        width: 5vh !important;
+        height: 5vh !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .header span {
+        font-size: 5rem;
+    }
+
+    .header h2 {
+        font-size: 1rem;
+    }
+
+    .socials-container img {
+        width: 5vh !important;
+        height: 5vh !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .header span {
+        font-size: 4rem;
+    }
+
+    .header h2 {
+        font-size: 1rem;
+    }
+
+    .socials-container img {
+        width: 5vh !important;
+        height: 5vh !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        padding: 3vh 5vh !important;
+    }
+
+    .header span {
+        font-size: 3rem;
+    }
+
+    .header h2 {
+        font-size: 1rem;
+    }
+
+    .text-container {
+        padding: 5vh 7vh !important;
+    }
+
+    .sub-header {
+        font-size: small !important;
+    }
+
+    .socials-container img {
+        width: 5vh !important;
+        height: 5vh !important;
+    }
+
+    .socials-container {
+        padding-top: 2vh !important;
+        padding-bottom: 7vh !important;
+    }
+
+    .spacer {
+        bottom: 9vh !important;
+    }
+
+    .footer {
+        padding-top: 5vh !important;
+    }
+
+    .footer p {
+        font-size: smaller;
+    }
+}
+
 /* Splash screen */
 .loading-animation {
     width: 100%;
@@ -251,7 +341,6 @@ background: #bb7900;
 
 .header span {
     font-family: 'Mark Pro', sans-serif;
-    font-size: 7rem;
     line-height: 100%;
     letter-spacing: -.03em;
 }
@@ -277,7 +366,6 @@ background: #bb7900;
     margin-left: 0.5vh;
     width: max-content;
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.5rem;
     letter-spacing: .15em;
     text-transform: uppercase;
 }
@@ -303,7 +391,6 @@ background: #bb7900;
 }
 
 /* Github repos */
-
 .project-container{
     margin-top: 5vh;
     padding-bottom: 10vh;
@@ -372,7 +459,6 @@ background: #bb7900;
 }
 
 /* Photography work  */
-
 .image-gallery-header {
     margin-top: 15vh;
 }
@@ -414,7 +500,6 @@ background: #bb7900;
 }
 
 /* Contact section */
-
 #contact {
     padding-top: 18vh;
 }
@@ -442,8 +527,8 @@ background: #bb7900;
 }
 
 .socials-container a img {
-    width: 3vh;
-    height: 3vh;
+    width: 4vh;
+    height: 4vh;
 }
 
 .socials-container a {
@@ -462,7 +547,6 @@ background: #bb7900;
 }
 
 /* Footer  */
-
 .footer-container {
     position: relative;
     height: 35vw;

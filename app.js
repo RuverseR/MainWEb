@@ -240,7 +240,7 @@ function loadDoc() {
 
         data=this.responseText;
         jsdata=JSON.parse(data);
-        console.log(jsdata);
+        // console.log(jsdata);
         htmlToAppend="";
 
         length=jsdata.length;
