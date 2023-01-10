@@ -10,7 +10,7 @@
     <script src="something.js"></script>
   </head>
   <body>
-    <p> I am still not mobile responsive </p>
+    <p> I am NOW mobile responsive!! </p>
   </body>
 </html>
 ```
