@@ -1,7 +1,7 @@
 /* Fonts */
 @font-face {
     font-family: 'Mark Pro';
-    src: url('Mark_Pro.woff') format('woff');
+    src: url('Assets/Fonts/Mark_Pro.woff') format('woff');
 }
 
 :root {
@@ -476,7 +476,7 @@ background: #bb7900;
     bottom: 5vh;
     position: absolute;
     aspect-ratio: 3/2;
-    background-image: url('footer.svg');
+    background-image: url('Assets/SVG/footer.svg');
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
