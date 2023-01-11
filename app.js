@@ -195,7 +195,7 @@ async function slowDown() {
 
 // CUSTOM CURSOR AND HOVER
 window.addEventListener('mousemove', (e) => {
-    const target = $(event.target);
+    const target = $(e.target);
     
     const isLinkTag = target.is('a') || target.is('.socials-container img') || target.is('.contextbox');
     const isHovered = cursorJquery.hasClass('hoveredCursor');

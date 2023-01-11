@@ -24,7 +24,7 @@ class Navbar extends HTMLElement {
                 </li>
                 <li>
                 <a class="navbar-item" href="Pages/Resources/Chemical_Formulas/index.html"
-                    >Projects</a
+                    >Resources</a
                 >
                 </li>
                 <li><a class="navbar-item" href="/index.html/#contact">Contact</a></li>
