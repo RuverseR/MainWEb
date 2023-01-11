@@ -1,0 +1,18 @@
+/* Main view */
+.body-container {
+    display: block;
+}
+
+/* Footer */
+.footer-container {
+    animation: fadeIn 3s;
+}
+
+/* Program section */
+.program-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}

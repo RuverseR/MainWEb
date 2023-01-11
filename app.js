@@ -10,6 +10,8 @@ const cursorJquery = $('#cursor');
 const cursorInner = document.querySelector('.custom-cursor.inner');
 const cursorOuter = document.querySelector('.custom-cursor.outer');
 
+const userReferrer = document.referrer;
+
 console.clear();
 
 const sleep = ms => {
@@ -50,6 +52,7 @@ async function startPage() {
     typewrite(headerDescription);
     homePage.classList.add('fade');
     console.clear();
+    console.log(userReferrer);
     credits();
     loadDoc();
 
@@ -97,7 +100,6 @@ if (!isMobile && isDesktop) {
     console.log("Mobile");
     numStars = 200;  // If mobile, reduce number of stars
 }
-
 
 // P5.js SETUP
 function setup() {
@@ -226,8 +228,16 @@ window.addEventListener('scroll', (e) => {
     cursorOuter.style.top = e.pageY - window.scrollY + 'px';
 })
 
-window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(speedUp, 500)
+window.addEventListener('DOMContentLoaded', async () => {
+    // Only trigger loading animation if new to website 
+    if (userReferrer.startsWith('http://127.0.0.1:5500/') || userReferrer.startsWith('https://alexlostorto.github.io/') || userReferrer.startsWith('http://alexlostorto.github.io/')) {
+        console.log("Start page")
+        await startPage();
+    } else {
+        console.log("Starting animation");
+        setTimeout(speedUp, 500)
+    }
+    console.log(userReferrer);
 })
 
 window.addEventListener('resize', (e) => {
