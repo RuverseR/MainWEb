@@ -125,4 +125,4 @@ toggleButton.addEventListener('click', () => {
 resourcesButton.addEventListener('click', () => {
     console.log("Clicked");
     recourcesLinks.classList.toggle('active')
-})
+  })

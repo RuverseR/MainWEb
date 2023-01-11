@@ -3,17 +3,6 @@
     display: block;
 }
 
-/* Navbar */
-.nav-container {
-    position: relative;
-    z-index: 100;
-}
-
-/* Footer */
-.footer-container {
-    animation: fadeIn 3s;
-}
-
 /* Program section */
 .program-container {
     display: flex;

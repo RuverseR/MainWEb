@@ -1,6 +1,8 @@
 // DOM ELEMENTS 
 const homePage = document.querySelector('.body-container');
 const toggleButton = document.querySelector('.toggle-button');
+const resourcesButton = document.querySelector('.resources-button');
+const recourcesLinks = document.querySelector('.nav-resources');
 const navbarItems = document.querySelector('.navbar-items');
 const projects = document.querySelector('.project-container');
 const bodyElement = document.querySelector('body');
@@ -298,4 +300,9 @@ function loadDoc() {
 toggleButton.addEventListener('click', () => {
     console.log("Clicked");
     navbarItems.classList.toggle('active');
+})
+
+resourcesButton.addEventListener('click', () => {
+    console.log("Clicked");
+    recourcesLinks.classList.toggle('active')
 })
