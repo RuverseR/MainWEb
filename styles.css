@@ -186,10 +186,8 @@ background: #bb7900;
 
 /* Hamburger Icon */
 .toggle-button {
-    position: absolute;
+    position: relative;
     margin-left: auto;
-    top: 25px;
-    right: 5vh;
     display: none;
     flex-direction: column;
     justify-content: space-between;
@@ -598,11 +596,11 @@ background: #bb7900;
 @media (max-width: 800px) {
     .toggle-button {
         display: flex;
+        margin-right: 5vh;
     }
 
     .logo {
-        position: absolute;
-        top: 20px;
+        padding: 4vh 0 4vh 5vh;
     }
 
     .nav-container {
@@ -610,8 +608,9 @@ background: #bb7900;
     }
 
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
     }
 
     .navbar-items {
