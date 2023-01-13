@@ -17,6 +17,28 @@ const sleep = ms => {
 }
 
 
+// PROGRAM
+function fibonacci(length) {
+    if (parseInt(length) <= 1) {
+        console.log(1);
+        return '1'
+    } 
+    if (parseInt(length) == 2) {
+        console.log('1, 1');
+        return '1, 1'
+    }
+
+    let fibonacciList = [1, 1];
+    for (let i = 0; i < parseInt(length)-2; i++) {
+        f = fibonacciList[fibonacciList.length - 1] + fibonacciList[fibonacciList.length - 2];
+        fibonacciList.push(f);
+    }
+    console.log(fibonacciList.join(', '));
+
+    return fibonacciList.join(', ')
+}
+
+
 // FADE IN ON SCROLL
 const faders = document.querySelectorAll('.fade-in');
 const appearOptions = {
@@ -63,6 +85,7 @@ function liveViews(response) {
 bodyElement.classList.add('scroll');
 homePage.classList.add('fade');
 console.clear();
+fibonacci(100);
 credits();
 
 // Check if mobile or desktop 
@@ -127,4 +150,4 @@ toggleButton.addEventListener('click', () => {
 resourcesButton.addEventListener('click', () => {
     console.log("Clicked");
     recourcesLinks.classList.toggle('active')
-  })
+})

@@ -496,6 +496,7 @@ background: #bb7900;
 .footer-container {
     position: relative;
     height: 35vw;
+    animation: fadeIn 3s;
 }
 
 .footer {
@@ -509,7 +510,6 @@ background: #bb7900;
     height: 5vh;
     width: 100%;
     background-color: #f83600;
-    animation: fadeIn 3s;
 }
 
 /* Responsive Media */
