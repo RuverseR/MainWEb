@@ -29,10 +29,16 @@ class Navbar extends HTMLElement {
                 <ul>
                   <li>
                     <a
-                      href="../../../Pages/Resources/Chemical_Formulas/index.html"
-                      >Chemical Formulas</a
+                      href="../../../Pages/Resources/Quadratic_Formula/index.html"
+                      >Quadratic Formula</a
                     >
                   </li>
+                  <li>
+                  <a
+                    href="../../../Pages/Resources/Chemical_Formulas/index.html"
+                    >Chemical Formulas</a
+                  >
+                  </li>   
                   <li>
                   <a
                     href="../../../Pages/Resources/Fibonacci/index.html"

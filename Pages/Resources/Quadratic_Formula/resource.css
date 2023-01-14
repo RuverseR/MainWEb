@@ -37,11 +37,11 @@ header span {
 }
 
 input {
-    width: 50vw;
+    width: 80px;
     border: 0;
     outline: 0;
     padding: 3px;
-    margin: 30px 0px 10px 0px;
+    margin: 30px 10px 10px 10px;
     font-family: "Roboto Mono", monospace;
     font-size: 15px;
     background: transparent;
@@ -57,23 +57,11 @@ input[type=number] {
     color: white;
 }
 
-button {
-    font-size: 100%;
-    margin-top: 8vh;
-    margin-bottom: 4vh;
-    width: 20vh;
-    height: 30px;
-    border: none;
-    background: var(--light);
-    border-radius: 5px;
+.inputs {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
-}
-
-button:hover {
-    background: var(--dark);
+    padding-bottom: 15px;
 }
 
 /* Responsive Media */
@@ -96,9 +84,5 @@ button:hover {
 @media (max-width: 700px) {
     header span {
         width: min-content;
-    }
-
-    input {
-        width: 70vw;
     }
 }
