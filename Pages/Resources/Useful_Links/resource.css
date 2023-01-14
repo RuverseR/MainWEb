@@ -57,7 +57,7 @@ header span {
 }
 
 .program-container ul li a.hidden {
-    color: rgb(13, 12, 18);
+    color: var(--darkest);
 }
 
 .program-container ul li a.hidden:hover {

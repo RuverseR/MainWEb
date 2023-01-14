@@ -60,7 +60,7 @@ button {
     width: 20vh;
     height: 30px;
     border: none;
-    background: rgb(54,49,74);
+    background: var(--light);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@ button {
 }
 
 button:hover {
-    background: rgb(22,20,30);
+    background: var(--dark);
 }
 
 /* Responsive Media */

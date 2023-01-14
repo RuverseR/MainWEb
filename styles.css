@@ -5,14 +5,12 @@
 }
 
 :root {
-    --lightest: #E79E4F;
-    --lighter: #A05344;
-    --dark: #734046;
-    --darkest: #321F28;
+    --light: rgb(54,49,74);
+    --dark: rgb(22,20,30);
+    --darkest: rgb(13,12,18);
     --light-orange: #f9d423;
     --dark-orange: #f83600;
     --color-white: #fff;
-    --color-gray: #c4c4c4;
     --color-black: #000;
     --color-purple: #8000ff;
     --color-light-purple: #cf59e6;
@@ -86,7 +84,7 @@ li {
 }
 
 @keyframes fadeScroll {
-    0% {background: rgb(13,12,18);}
+    0% {background: var(--darkest);}
     100% {}
 }
 
@@ -170,7 +168,7 @@ li {
 }
 
 ::-webkit-scrollbar-track {
-background: rgb(13,12,18);
+background: var(--darkest);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -221,7 +219,7 @@ background: #bb7900;
 }
 
 .body-container.fade {
-    background-color: rgb(13,12,18);
+    background-color: var(--darkest);
 }
 
 .nav-container {
@@ -615,7 +613,7 @@ background: #bb7900;
 
     .navbar-items {
         display: none;
-        background-color: rgb(22,20,30);
+        background-color: var(--dark);
         width: 100%;
         align-items: center;
         flex-direction: column;
@@ -627,7 +625,7 @@ background: #bb7900;
         width: 100%;
         flex-direction: column;
         margin-right: 0px;
-        background-color: rgb(54,49,74);
+        background-color: var(--light);
     }
 
     .navbar-items.active {
