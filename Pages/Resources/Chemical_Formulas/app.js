@@ -52,6 +52,22 @@ copyButton.addEventListener('click', () => {
     });
 })
 
+inputElement.addEventListener('keypress', (event)=> {
+    if (event.keyCode === 13) {
+        navigator.clipboard.writeText(inputElement.value).then(async function() {
+            console.log('Copying to clipboard was successful!');
+            copyButton.textContent = 'Copied!';
+            await sleep(1000);
+            copyButton.textContent = 'Copy';
+        }, async function(err) {
+            copyButton.textContent = 'Failed to copy';
+            await sleep(1000);
+            copyButton.textContent = 'Copy';
+            console.error('Could not copy text: ', err);
+        });
+    }
+})
+
 deltaSymbol.addEventListener('click', () => {
     inputElement.value += 'Δ';
 })

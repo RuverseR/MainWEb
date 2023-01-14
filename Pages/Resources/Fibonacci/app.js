@@ -18,6 +18,10 @@ const sleep = ms => {
 
 
 // PROGRAM
+const generateButton = document.querySelector('.generate-button');
+const inputElement = document.querySelector('#input');
+const outputElement = document.querySelector('#output');
+
 function fibonacci(length) {
     if (parseInt(length) <= 1) {
         console.log(1);
@@ -37,6 +41,27 @@ function fibonacci(length) {
 
     return fibonacciList.join(', ')
 }
+
+generateButton.addEventListener('click', () => {
+    if (inputElement.value == '') {
+        outputElement.innerHTML = "Don't leave it <span class='orange-text'>empty</span>!";
+        return
+    }
+    sequence = fibonacci(inputElement.value);
+    outputElement.textContent = sequence;
+})
+
+inputElement.addEventListener('keypress', (event)=> {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+        if (inputElement.value == '') {
+            outputElement.innerHTML = "Don't leave it <span class='orange-text'>empty</span>!";
+            return
+        }
+        sequence = fibonacci(inputElement.value);
+        outputElement.textContent = sequence;
+    }
+})
 
 
 // FADE IN ON SCROLL

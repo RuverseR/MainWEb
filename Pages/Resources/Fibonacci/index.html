@@ -60,10 +60,32 @@
       <!-- Navbar  -->
       <app-navbar></app-navbar>
 
-      <header><span class="gradient-header">Fibonnaci</span></header>
+      <!-- Header -->
+      <header><span class="gradient-header">Fibonacci</span></header>
+
+      <!-- Description -->
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> was created to list the
+          <span class="orange-text">fibonacci sequence</span> up to an
+          <span class="orange-text">infinite length</span> (depending on
+          computing power of course).
+        </p>
+      </div>
 
       <!-- Program -->
-      <div class="program-container"></div>
+      <div class="program-container">
+        <input placeholder=" Length of the sequence" id="input" type="number" />
+        <button class="generate-button">Generate</button>
+        <div class="sub-header">
+          <h2>Output</h2>
+        </div>
+        <div class="text-container">
+          <p class="output-text" id="output">
+            This is where the <span class="orange-text">output</span> will be...
+          </p>
+        </div>
+      </div>
 
       <!-- Footer  -->
       <app-footer></app-footer>

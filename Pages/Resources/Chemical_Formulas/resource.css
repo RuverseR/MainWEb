@@ -33,6 +33,7 @@ header span {
     color: white;
     padding-bottom: 20vh;
     z-index: 100;
+    animation: fadeIn 3s;
 }
 
 input {
