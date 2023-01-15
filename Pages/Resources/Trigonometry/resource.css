@@ -8,7 +8,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 5vh;
+    padding-top: 1vh;
+    padding-bottom: 3vh;
 }
 
 header span {
@@ -18,11 +19,23 @@ header span {
 .gradient-header {
     font-size: 5rem;
     font-family: 'Mark Pro', sans-serif;
-    line-height: 100%;
+    line-height: 130%;
     letter-spacing: -.03em;
 }
 
 /* Program section */
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+.trigonometry-image {
+    width: 30vh;
+    animation: fadeIn 3s;
+}
+
 .program-container {
     position: relative;
     display: flex;
@@ -37,7 +50,7 @@ header span {
 }
 
 input {
-    width: 80px;
+    width: 100px;
     border: 0;
     outline: 0;
     padding: 3px;
@@ -64,8 +77,8 @@ input[type=number] {
     padding-bottom: 15px;
 }
 
-.quadratic-formula {
-    animation: fadeIn 3s;
+.angle-inputs input {
+    width: 100px;
 }
 
 /* Responsive Media */

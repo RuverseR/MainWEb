@@ -38,7 +38,13 @@ class Navbar extends HTMLElement {
                     href="../../../Pages/Resources/Chemical_Formulas/index.html"
                     >Chemical Formulas</a
                   >
-                  </li>   
+                  </li>
+                  <li>
+                  <a
+                    href="../../../Pages/Resources/Trigonometry/index.html"
+                    >Trigonometry</a
+                  >
+                  </li>  
                   <li>
                   <a
                     href="../../../Pages/Resources/Fibonacci/index.html"

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- HEAD -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="keywords"
+      content="alexlostorto, Alex, Alex lo Storto, Alex Lo Storto, Photography Portfolio, portfolio, portfolio website, Portfolio Website, Photography, photographer, programmer, coder, web developer, open source, space-themed, space"
+    />
+    <meta
+      name="description"
+      content="Personal portfolio displaying my photography/web development skills."
+    />
+    <meta name="author" content="Alex lo Storto" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../../Icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../../Icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../../Icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://api.countapi.xyz/hit/alexlostorto.github.io/visits?callback=liveViews"
+      async
+    ></script>
+    <link rel="stylesheet" href="../../../styles.css" />
+    <link rel="stylesheet" href="resource.css" />
+    <script src="../../../Assets/PHP/jquery.js" defer></script>
+    <script src="../../../Assets/PHP/component.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>Alex lo Storto</title>
+  </head>
+
+  <!-- BODY -->
+  <body>
+    <div class="body-container">
+      <!-- Navbar  -->
+      <app-navbar></app-navbar>
+
+      <!-- Header -->
+      <header><span class="gradient-header">Trigonometry</span></header>
+
+      <!-- Description -->
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> is used to easily find
+          the missing <span class="orange-text">angles</span> or
+          <span class="orange-text">sides</span> in a
+          <span class="orange-text">right-angled</span> triangle.
+        </p>
+      </div>
+      <div class="text-container">
+        <p class="about">
+          Trigonometry has plenty of
+          <span class="orange-text">applications</span>: from everyday life
+          problems such as calculating the
+          <span class="orange-text">height</span> or
+          <span class="orange-text">distance</span> between objects to satellite
+          navigation systems, <span class="orange-text">astronomy</span>, and
+          <span class="orange-text">geography</span>.
+        </p>
+      </div>
+      <div class="image-container">
+        <img
+          class="trigonometry-image"
+          src="Trigonometry Triangle V2.png"
+          alt=""
+        />
+      </div>
+
+      <!-- Program -->
+      <div class="program-container">
+        <div class="inputs">
+          <input placeholder="a" id="a" type="number" />
+          <input placeholder="b" id="b" type="number" />
+          <input placeholder="c" id="c" type="number" />
+        </div>
+        <div class="inputs angle-inputs">
+          <input placeholder="Angle α" id="alpha" type="number" />
+          <input placeholder="Angle β" id="beta" type="number" />
+        </div>
+        <div class="text-container">
+          <p id="output">
+            <span class="orange-text">Hint</span>: Angles are calculated in
+            <span class="orange-text">degrees</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer  -->
+      <app-footer></app-footer>
+    </div>
+
+    <!-- Custom cursor  -->
+    <div class="custom-cursor">
+      <div id="cursor" class="custom-cursor inner"></div>
+      <div class="custom-cursor outer"></div>
+    </div>
+  </body>
+</html>
