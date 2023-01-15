@@ -1,0 +1,197 @@
+/* Main view */
+.body-container {
+    display: block;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+header span {
+    width: max-content;
+}
+
+.gradient-header {
+    font-size: 5rem;
+    font-family: 'Mark Pro', sans-serif;
+    line-height: 100%;
+    letter-spacing: -.03em;
+}
+
+/* Program section */
+.program-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    padding-bottom: 20vh;
+    z-index: 100;
+    animation: fadeIn 3s;
+}
+
+button {
+    padding: 0;
+}
+
+.media-controls {
+    align-items: center;
+    background: var(--dark);
+    border: 1px solid #fff8eb;
+    border-radius: 5vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5vh;
+    max-width: calc(100% - spacer * 2);
+    padding: 5vh;
+    position: relative;
+}
+
+.media-controls:after {
+    border-radius: 5vh;
+    box-shadow: 0 2px 2px rgba(255, 165, 0, 0.25), 0 4px 4px rgba(255, 165, 0, 0.2), 0 8px 8px rgba(255, 165, 0, 0.15), 0 16px 16px rgba(255, 165, 0, 0.1), 0 24px 24px rgba(255, 165, 0, 0.05);
+    content: '';
+    height: 100%;
+    left: 0;
+    mix-blend-mode: multiply;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.media-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.media-button {
+    padding: 1vh;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.button-icons {
+    font-size: 1.5rem;
+    background-color: orange;
+    border-radius: 100%;
+    margin-bottom: 0.5vh;
+    margin-top: auto;
+    padding: 2vh;
+}
+
+.back-button .button-icons,
+.skip-button .button-icons {
+    background-color: transparent;
+    color: orange;
+}
+
+.back-button .button-icons:hover,
+.skip-button .button-icons:hover {
+    background-color: transparent;
+    color: #bb7900;
+}
+
+.rewind-button .button-icons,
+.fast-forward-button .button-icons {
+    background: linear-gradient(to bottom left, #ffffd9, orange);
+    color: var(--dark);
+}
+
+.rewind-button .button-icons:hover,
+.fast-forward-button .button-icons:hover {
+    color: #bb7900;
+}
+
+.play-button .button-icons {
+    background: linear-gradient(to bottom left, white, #ffffd9);
+    border: 1px solid #fff8eb;
+    box-shadow: -1px 1px 1px rgba(255, 165, 0, 0.25), 1px -1px 1px rgba(255, 255, 255, 0.25), -2px 2px 2px rgba(255, 165, 0, 0.2), 2px -2px 2px rgba(255, 255, 255, 0.2), -4px 4px 4px rgba(255, 165, 0, 0.15), 4px -4px 4px rgba(255, 255, 255, 0.15), -8px 8px 8px rgba(255, 165, 0, 0.1), 8px -8px 8px rgba(255, 255, 255, 0.1), -16px 16px 16px rgba(255, 165, 0, 0.05), 16px -16px 16px rgba(255, 255, 255, 0.05);
+    color: orange;
+    margin-bottom: 1vh;
+    padding: 3vh;
+}
+
+.play-button .button-icons:hover {
+    color: #bb7900;
+}
+
+.button-text {
+    margin-top: auto;
+}
+
+.media-progress {
+    align-self: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.progress-bar-wrapper {
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: inset -1px 1px 1px rgba(255, 165, 0, 0.25), inset 1px -1px 1px rgba(255, 255, 255, 0.25), inset -2px 2px 2px rgba(255, 165, 0, 0.2), inset 2px -2px 2px rgba(255, 255, 255, 0.2), inset -4px 4px 4px rgba(255, 165, 0, 0.15), inset 4px -4px 4px rgba(255, 255, 255, 0.15), inset -8px 8px 8px rgba(255, 165, 0, 0.1), inset 8px -8px 8px rgba(255, 255, 255, 0.1), inset -16px 16px 16px rgba(255, 165, 0, 0.05), inset 16px -16px 16px rgba(255, 255, 255, 0.05);
+    height: auto;
+    margin-bottom: 1vh;
+    margin-top: 5vh;
+    position: relative;
+    width: 100%;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, yellow, orange);
+    border-radius: 10px;
+    box-shadow: none;
+    height: 10px;
+    width: 0%;
+}
+  
+
+/* Responsive Media */
+@media (max-width: 1500px) {
+    header {
+        padding-top: 1vh;
+    }
+}
+
+@media (max-width: 1000px) {
+    header {
+        padding-top: 2vh;
+    }
+
+    .gradient-header {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 700px) {
+    header span {
+        width: min-content;
+    }
+
+    input {
+        width: 70vw;
+    }
+
+    .media-controls {
+        padding: 4vh;
+    }
+
+    .skip-button,
+    .back-button {
+        display: none;
+    }
+}

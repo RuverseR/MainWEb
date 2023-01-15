@@ -52,6 +52,12 @@ class Navbar extends HTMLElement {
                   >
                   </li>
                   <li>
+                  <a
+                    href="../../../Pages/Resources/Music/index.html"
+                    >Music</a
+                  >
+                  </li>
+                  <li>
                     <a href="../../../Pages/Resources/Useful_Links/index.html"
                       >Useful Links</a
                     >
