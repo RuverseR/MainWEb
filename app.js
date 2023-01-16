@@ -89,10 +89,12 @@ let animationActive = true
 
 // Check if mobile or desktop 
 let isDesktop = true;
+let isMobile = window.matchMedia("(any-pointer:coarse)").matches;
+
 if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)) {
     isDesktop = false;
 }
-let isMobile = window.matchMedia("(any-pointer:coarse)").matches;
+
 if (!isMobile && isDesktop) {
     console.log("Desktop");
     cursor.style.display = 'block';
@@ -205,9 +207,7 @@ function detectMouse() {
     cursorOuter.style.display = 'block';
 }
 
-window.addEventListener('mousemove', (e) => {
-    if (!isDesktop) { detectMouse(); }
-
+function customMouse(e) {  // Whenever a mouse movement is detected, update the custom cursor position
     const target = $(e.target);
     
     const isLinkTag = target.is('a') || target.is('.socials-container img') || target.is('.contextbox');
@@ -225,7 +225,22 @@ window.addEventListener('mousemove', (e) => {
 
     cursorOuter.style.left = e.pageX + 'px';
     cursorOuter.style.top = e.pageY - window.scrollY + 'px';
+}
+
+window.addEventListener('mousemove', (e) => { 
+    if (isMobile) {return}
+    if (!isDesktop) { detectMouse(); }
+
+    customMouse(e);
 })
+
+function detectTouch() {  // If a touch is detected, make sure the custom cursor is disabled 
+    isMobile = true;
+    console.log("isMobile");
+    window.removeEventListener("touchstart", detectTouch);
+}
+
+window.addEventListener("touchstart", detectTouch);
 
 window.addEventListener('scroll', (e) => {
     let p5canvas = document.querySelector('.p5Canvas');

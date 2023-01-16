@@ -91,12 +91,10 @@ function detectMouse() {
 
 
 // CUSTOM CURSOR AND HOVER
-window.addEventListener('mousemove', (e) => {
-    if (!isDesktop) { detectMouse(); }
-
+function customMouse(e) {  // Whenever a mouse movement is detected, update the custom cursor position
     const target = $(e.target);
     
-    const isLinkTag = target.is('a');
+    const isLinkTag = target.is('a') || target.is('.socials-container img') || target.is('.contextbox');
     const isHovered = cursorJquery.hasClass('hoveredCursor');
     
     // Toggle the cursor class if necessary 
@@ -111,15 +109,22 @@ window.addEventListener('mousemove', (e) => {
 
     cursorOuter.style.left = e.pageX + 'px';
     cursorOuter.style.top = e.pageY - window.scrollY + 'px';
+}
+
+window.addEventListener('mousemove', (e) => { 
+    if (isMobile) {return}
+    if (!isDesktop) { detectMouse(); }
+
+    customMouse(e);
 })
 
-window.addEventListener('scroll', (e) => {
-    cursorInner.style.left = e.pageX + 'px';
-    cursorInner.style.top = e.pageY - window.scrollY + 'px';
+function detectTouch() {  // If a touch is detected, make sure the custom cursor is disabled 
+    isMobile = true;
+    console.log("isMobile");
+    window.removeEventListener("touchstart", detectTouch);
+}
 
-    cursorOuter.style.left = e.pageX + 'px';
-    cursorOuter.style.top = e.pageY - window.scrollY + 'px';
-})
+window.addEventListener("touchstart", detectTouch);
 
 
 // LOG CREDITS IN CONSOLE
