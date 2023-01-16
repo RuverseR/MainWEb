@@ -248,7 +248,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         await startPage();
     } else {
         console.log("Starting animation");
-        setTimeout(speedUp, 500)
+        speedUp();
     }
     console.log(userReferrer);
 })
