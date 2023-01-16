@@ -63,7 +63,11 @@ async function audioProgress () {
         audioCurrentTime.innerHTML = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
 
         for (let s = 0; s < 10; s++) {
-            if (!playingAudio || currentAudioTime >= duration) {return}
+            if (!playingAudio) {return}
+            if (currentAudioTime >= duration) {
+                nextSong();
+                return
+            }
             await sleep(100);
         }
     }

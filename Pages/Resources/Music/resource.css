@@ -218,8 +218,24 @@ button {
         padding: 4vh;
     }
 
-    .skip-button,
-    .back-button {
+    .fast-forward-button,
+    .rewind-button {
         display: none;
+    }
+
+    .play-button .button-icons {
+        padding: 2.5vh 3vh;
+    }
+
+    .back-button .button-icons,
+    .skip-button .button-icons {
+        padding: 1.8vh 2.3vh;
+        background: linear-gradient(to bottom left, #ffffd9, orange);
+        color: var(--dark);
+    }
+
+    .rewind-button .button-icons:hover,
+    .fast-forward-button .button-icons:hover {
+        color: #bb7900; 
     }
 }
