@@ -36,6 +36,34 @@ header span {
     animation: fadeIn 3s;
 }
 
+.audio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2vh;
+    padding-bottom: 4vh;
+}
+
+.audio-container li div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+}
+
+.audio-container li div i {
+    padding-right: 1vh;
+    color: orange;
+}
+
+.audio-container li i {
+    visibility: visible;
+}
+
+.audio-container li i.hidden {
+    visibility: hidden;
+}
+
 button {
     padding: 0;
 }
