@@ -8,7 +8,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 1vh;
     padding-bottom: 3vh;
 }
 
@@ -83,16 +82,9 @@ input[type=number] {
 
 /* Responsive Media */
 @media (max-width: 1500px) {
-    header {
-        padding-top: 1vh;
-    }
 }
 
 @media (max-width: 1000px) {
-    header {
-        padding-top: 2vh;
-    }
-
     .gradient-header {
         font-size: 4rem;
     }
@@ -101,5 +93,11 @@ input[type=number] {
 @media (max-width: 700px) {
     header span {
         width: min-content;
+    }
+}
+
+@media (max-width: 500px) {
+    .gradient-header {
+        font-size: 3.5rem;
     }
 }
