@@ -173,30 +173,41 @@ function onScreen(x, y) {
 
 async function speedUp() {
     // console.log("Speeding up")
-    for(let i = 0; i < 50; i ++) {
-        acceleration += 0.01;
+    for(let i = 0; i < 30; i ++) {
+        acceleration += 0.02;
         // console.log(acceleration);
         await sleep(30);
     }
-    setTimeout(slowDown, 1500);
+    setTimeout(slowDown, 900);
 }
 
 async function slowDown() {
     // console.log("Slowing down")
-    for(let i = 0; i < 40; i ++) {
+    for(let i = 0; i < 20; i ++) {
         acceleration -= 0.01;
         // console.log(acceleration);
         await sleep(30);
     }
     // After loading animation is finished
     animationActive = false;
-    await sleep(3000);
+    await sleep(1500);
     startPage();
 }
 
 
 // CUSTOM CURSOR AND HOVER
+function detectMouse() {
+    isDesktop = true;
+    isMobile = false
+    console.log("Desktop");
+    cursor.style.display = 'block';
+    cursorInner.style.display = 'block';
+    cursorOuter.style.display = 'block';
+}
+
 window.addEventListener('mousemove', (e) => {
+    if (!isDesktop) { detectMouse(); }
+
     const target = $(e.target);
     
     const isLinkTag = target.is('a') || target.is('.socials-container img') || target.is('.contextbox');
