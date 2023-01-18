@@ -15,6 +15,20 @@
 </html>
 ```
 
+## Projects
+
+``` python
+# Projects
+[
+'Quadratic Formula',
+'Chemical Formulas',
+'Trigonometry',
+'Fibonacci',
+'Music',
+'Useful Links'
+]
+```
+
 ## Other Websites
 
 #### [Space-themed Website](https://alexlostorto.github.io/space-portfolio/)
