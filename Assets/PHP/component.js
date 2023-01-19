@@ -28,12 +28,6 @@ class Navbar extends HTMLElement {
               <div class="nav-resources">
                 <ul>
                   <li>
-                    <a
-                      href="../../../Pages/Resources/Quadratic_Formula/index.html"
-                      >Quadratic Formula</a
-                    >
-                  </li>
-                  <li>
                   <a
                     href="../../../Pages/Resources/Chemical_Formulas/index.html"
                     >Chemical Formulas</a
@@ -45,6 +39,12 @@ class Navbar extends HTMLElement {
                     >Trigonometry</a
                   >
                   </li>  
+                  <li>
+                  <a
+                    href="../../../Pages/Resources/Quadratics/index.html"
+                    >Quadratics</a
+                  >
+                  </li>
                   <li>
                   <a
                     href="../../../Pages/Resources/Fibonacci/index.html"

@@ -76,9 +76,12 @@
       <app-navbar></app-navbar>
 
       <!-- Header -->
-      <header><span class="gradient-header">Quadratic Formula</span></header>
+      <header><span class="gradient-header">Quadratics</span></header>
 
       <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>Quadratic Formula</h2>
+      </div>
       <div id="about" class="text-container">
         <p class="description">
           This <span class="orange-text">program</span> solves for the variable
@@ -90,7 +93,39 @@
       <p class="quadratic-formula">$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</p>
 
       <!-- Program -->
-      <div class="program-container">
+      <div id="quadratic-formula" class="program-container">
+        <div class="inputs">
+          <input placeholder="a" id="a" type="number" />
+          <input placeholder="b" id="b" type="number" />
+          <input placeholder="c" id="c" type="number" />
+        </div>
+        <div class="sub-header">
+          <h2>Output</h2>
+        </div>
+        <div class="text-container">
+          <p class="output-text" id="output">
+            This is where the <span class="orange-text">output</span> will be...
+          </p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>Completing the Square</h2>
+      </div>
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> solves for the
+          <span class="orange-text">turning point</span> of a quadratic equation
+          by <span class="orange-text">completing the square</span>.
+        </p>
+      </div>
+      <p class="quadratic-formula">
+        $$ax^2+bx+c = a(x+\frac{b}{2a})^2 + c - \frac{b^2}{4a}$$
+      </p>
+
+      <!-- Program -->
+      <div id="completing-the-square" class="program-container">
         <div class="inputs">
           <input placeholder="a" id="a" type="number" />
           <input placeholder="b" id="b" type="number" />
