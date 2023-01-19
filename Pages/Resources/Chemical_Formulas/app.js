@@ -142,3 +142,9 @@ inputElement.addEventListener('input', () => {
     }
     console.log(inputElement.value[inputElement.value.length - 1]);
 })
+
+inputElement.onblur = function () {
+    setTimeout(function() {
+        inputElement.focus()
+    }, 10);
+}
