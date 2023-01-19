@@ -11,6 +11,7 @@ function str_pad_left(string,pad,length) {
 const playButton = document.querySelector('.play-button');
 const innerPlayButton = document.querySelector('.fa-play.delta');
 const playButtonText = document.querySelector('.play-button span');
+const loopButton = document.querySelector('.loop input');
 const backButton = document.querySelector('.back-button');
 const skipButton = document.querySelector('.skip-button');
 const rewindButton = document.querySelector('.rewind-button');
@@ -27,6 +28,7 @@ let progressBarWidth = 0;
 let audioIndex = 1;
 let audio = audioList[audioIndex];
 let playingAudio = false;
+let loopSong = false;
 
 async function audioProgress () {
     const duration = parseInt(audio.duration);
@@ -40,7 +42,7 @@ async function audioProgress () {
         // Audio progress bar 
         progressBarWidth += interval;
         progressBar.style.width = progressBarWidth + "%";
-        console.log(currentAudioTime);
+        // console.log(currentAudioTime);
 
         // Show current audio time 
         currentAudioTime += 1;
@@ -51,13 +53,25 @@ async function audioProgress () {
         for (let s = 0; s < 10; s++) {
             if (!playingAudio) {return}
             if (currentAudioTime >= duration) {
-                nextSong();
+                if (loopSong) {
+                    loopCurrentSong();
+                } else {
+                    nextSong();
+                }
                 return
             }
             await sleep(100);
         }
     }
 }
+
+loopButton.addEventListener('change', () => {
+    if (loopButton.checked) {
+        loopSong = true;
+    } else {
+        loopSong = false
+    }
+})
 
 playButton.addEventListener('click', () => {
     if (!playingAudio) {
@@ -106,6 +120,30 @@ rewindButton.addEventListener('click', () => {
     progressBarWidth -= interval * 10;
     progressBar.style.width = progressBarWidth + "%";
 })
+
+async function loopCurrentSong() {
+    await sleep(1000);
+
+    // Pause audio 
+    audio.pause();
+    playingAudio = false;
+
+    currentAudioTime = 0;
+    audio.currentTime = currentAudioTime;
+    progressBarWidth = 0;
+    audio = audioList[audioIndex];
+
+    await sleep(100);
+
+    // Play audio 
+    audio.play();
+    playingAudio = true;
+    audioProgress(); 
+
+    innerPlayButton.classList.remove('fa-play');
+    innerPlayButton.classList.add('fa-pause');
+    playButtonText.innerHTML = 'Pause';
+}
 
 async function previousSong() {
     if (audioIndex > 0) {loop = false}
