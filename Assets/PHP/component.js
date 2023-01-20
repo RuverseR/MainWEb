@@ -41,6 +41,12 @@ class Navbar extends HTMLElement {
                   </li>  
                   <li>
                   <a
+                    href="../../../Pages/Resources/Insta_Size/index.html"
+                    >Insta Size</a
+                  >
+                  </li>  
+                  <li>
+                  <a
                     href="../../../Pages/Resources/Quadratics/index.html"
                     >Quadratics</a
                   >
