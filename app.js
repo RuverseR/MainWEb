@@ -54,7 +54,7 @@ async function startPage() {
     typewrite(headerDescription);
     homePage.classList.add('fade');
     console.clear();
-    console.log(userReferrer);
+    // console.log(userReferrer);
     credits();
     loadDoc();
 
@@ -107,7 +107,7 @@ if (!isMobile && isDesktop) {
 
 // P5.js SETUP
 function setup() {
-    try {
+    if (animationActive) {
         console.log(numStars);
         createCanvas(window.innerWidth, window.innerHeight);
         stroke(255);
@@ -116,7 +116,7 @@ function setup() {
         for(let i = 0; i < numStars; i++) {
             stars.push(new Star(random(width), random(height)));
         }
-    } catch (err) {console.log(err)}
+    }
 }
 
 function draw() {
@@ -260,6 +260,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Only trigger loading animation if new to website 
     if (userReferrer.startsWith('http://127.0.0.1:5500/') || userReferrer.startsWith('https://alexlostorto.github.io/') || userReferrer.startsWith('http://alexlostorto.github.io/')) {
         console.log("Start page")
+        animationActive = false;
         await startPage();
     } else {
         console.log("Starting animation");
