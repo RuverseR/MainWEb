@@ -53,98 +53,109 @@ inputElement.addEventListener('keypress', (event)=> {
     }
 })
 
+function inputFocus(start, insertedLength=0) {
+    inputElement.focus();
+    const caretPos = start + insertedLength;
+    inputElement.setSelectionRange(caretPos, caretPos);
+}
+
+function addSymbol(symbol, subtract=0) {
+    const start = inputElement.selectionStart;
+    const end = inputElement.selectionEnd;
+    const inputText = inputElement.value;
+    inputElement.value = inputText.slice(0, start - subtract) + symbol + inputText.slice(end);
+    inputLength = inputElement.value.length;
+    inputFocus(start - subtract, symbol.length);
+}
+
 deltaSymbol.addEventListener('click', () => {
-    inputElement.value += 'Δ';
+    addSymbol('Δ');
+})
+
+muSymbol.addEventListener('click', () => {
+    addSymbol('μ');
+})
+
+lessequalSymbol.addEventListener('click', () => {
+    addSymbol('≤');
+})
+
+greaterequalSymbol.addEventListener('click', () => {
+    addSymbol('≥');
+})
+
+piSymbol.addEventListener('click', (e) => {
+    addSymbol('π');
 })
 
 superscriptSymbol.addEventListener('click', () => {
     superscriptSymbol.classList.toggle('active');
     subscriptSymbol.classList.remove('active');
-})
-
-muSymbol.addEventListener('click', () => {
-    inputElement.value += 'μ';
-})
-
-lessequalSymbol.addEventListener('click', () => {
-    inputElement.value += '≤';
-})
-
-greaterequalSymbol.addEventListener('click', () => {
-    inputElement.value += '≥';
-})
-
-piSymbol.addEventListener('click', () => {
-    inputElement.value += 'π';
+    const start = inputElement.selectionStart;
+    inputFocus(start);
 })
 
 subscriptSymbol.addEventListener('click', () => {
     subscriptSymbol.classList.toggle('active');
     superscriptSymbol.classList.remove('active');
-
+    const start = inputElement.selectionStart;
+    inputFocus(start);
 })
 
 const superscript = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹', '⁺', '⁻', '⁼', '⁽', '⁾'];
 const subscript = ['₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉', '₊', '₋', '₌', '₍', '₎'];
-inputElement.addEventListener('input', () => {
+let inputLength = 0;
+inputElement.addEventListener('input', (e) => {
+    // Pressed backspace 
+    if (inputElement.value.length < inputLength) {
+        inputLength = inputElement.value.length;
+        return
+    }
+
+    // Pressed a symbol 
     if (superscriptSymbol.classList.contains('active')) {
-        if (isNumeric(inputElement.value[inputElement.value.length - 1])) {
-            symbol = superscript[inputElement.value[inputElement.value.length - 1]];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '+') {
+        const caretPos = inputElement.selectionStart - 1;
+        if (isNumeric(inputElement.value[caretPos])) {
+            symbol = superscript[inputElement.value[caretPos]];
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '+') {
             symbol = superscript[10];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '-') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '-') {
             symbol = superscript[11];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '=') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '=') {
             symbol = superscript[12];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '(') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '(') {
             symbol = superscript[13];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == ')') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == ')') {
             symbol = superscript[14];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
+            addSymbol(symbol, 1);
         }
     } else if (subscriptSymbol.classList.contains('active')) {
-        if (isNumeric(inputElement.value[inputElement.value.length - 1])) {
-            symbol = subscript[inputElement.value[inputElement.value.length - 1]];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '+') {
+        const caretPos = inputElement.selectionStart - 1;
+        console.log(inputElement.value[caretPos])
+        if (isNumeric(inputElement.value[caretPos])) {
+            symbol = subscript[inputElement.value[caretPos]];
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '+') {
             symbol = subscript[10];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '-') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '-') {
             symbol = subscript[11];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '=') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '=') {
             symbol = subscript[12];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == '(') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == '(') {
             symbol = subscript[10];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
-        } else if (inputElement.value[inputElement.value.length - 1] == ')') {
+            addSymbol(symbol, 1);
+        } else if (inputElement.value[caretPos] == ')') {
             symbol = subscript[10];
-            inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
-            inputElement.value += symbol;
+            addSymbol(symbol, 1);
         }
     }
-    console.log(inputElement.value[inputElement.value.length - 1]);
+    inputLength = inputElement.value.length;
 })
-
-inputElement.onblur = function () {
-    setTimeout(function() {
-        inputElement.focus()
-    }, 10);
-}
