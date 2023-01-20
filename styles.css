@@ -336,6 +336,7 @@ background: #bb7900;
 
 /* Github repos */
 .project-container{
+    height: 500px;
     margin-top: 5vh;
     padding-bottom: 10vh;
     animation: fadeIn 3s;
@@ -417,7 +418,7 @@ background: #bb7900;
   
 .image-gallery > li {
     flex: 1 1 auto;
-    height: 35vh;
+    height: 45vh;
     cursor: pointer;
     position: relative;
 }
