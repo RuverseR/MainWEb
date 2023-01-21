@@ -36,12 +36,84 @@ header span {
     animation: fadeIn 3s;
 }
 
+.sub-header {
+    display: none;
+    padding-bottom: 3vh;
+}
+
+.sub-header.active {
+    display: flex;
+}
+
+/* Grid */
+.grid-container {
+    position: absolute;
+    overflow: hidden;
+}
+
+.grid-container img {
+    width: auto !important;
+    position: absolute;
+    z-index: 1;
+}
+
+#grid {
+    position: relative;
+    border: 2px solid orange; 
+    z-index: 100;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+  
+.box {
+    padding: 5vh;
+    border: 2px solid orange; 
+}
+
+/* Image */
+.uploaded-image {
+    padding: 3vh 3vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.uploaded-image img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+.uploaded-image.active {
+    display: flex;
+}
+
+#source {
+    opacity: 0.5;
+}
+
+.inputs {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.inputs.active {
+    display: flex;
+}
+
 input {
-    width: 50vw;
+    width: 250px;
     border: 0;
     outline: 0;
     padding: 3px;
-    margin: 30px 0px 10px 0px;
+    margin: 30px 10px;
     font-family: "Roboto Mono", monospace;
     font-size: 15px;
     background: transparent;
@@ -50,16 +122,17 @@ input {
 }
 
 input[type=number] {
-    padding-left: 15px;
+    padding-left: 25px;
 }
 
 ::placeholder {
     color: white;
 }
 
-button {
+button,
+label {
     font-size: 100%;
-    margin-top: 8vh;
+    margin-top: 5vh;
     margin-bottom: 4vh;
     width: 20vh;
     height: 30px;
@@ -72,8 +145,14 @@ button {
     box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
 }
 
-button:hover {
+button:hover,
+label:hover {
     background: var(--dark);
+}
+
+#file-chosen{
+    margin-left: 0.3rem;
+    font-family: sans-serif;
 }
 
 /* Responsive Media */
@@ -99,6 +178,6 @@ button:hover {
     }
 
     input {
-        width: 70vw;
+        width: 200px;
     }
 }

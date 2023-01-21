@@ -62,30 +62,51 @@
       <app-navbar></app-navbar>
 
       <!-- Header -->
-      <header><span class="gradient-header">Fibonacci</span></header>
+      <header><span class="gradient-header">Insta Size</span></header>
 
       <!-- Description -->
       <div id="about" class="text-container">
         <p class="description">
-          This <span class="orange-text">program</span> was created to list the
-          <span class="orange-text">fibonacci sequence</span> up to an
-          <span class="orange-text">infinite length</span> (depending on
-          computing power of course).
+          This <span class="orange-text">program</span> was created to
+          <span class="orange-text">split</span> pictures into
+          <span class="orange-text">squares</span> so that they fit Instagram's
+          post format.
         </p>
       </div>
 
       <!-- Program -->
       <div class="program-container">
-        <input placeholder=" Length of the sequence" id="input" type="number" />
-        <button class="generate-button">Generate</button>
+        <!-- Grid Parameters -->
         <div class="sub-header">
-          <h2>Output</h2>
+          <h2>Grid Settings</h2>
         </div>
-        <div class="text-container">
-          <p class="output-text" id="output">
-            This is where the <span class="orange-text">output</span> will be...
-          </p>
+        <div class="inputs">
+          <input placeholder="Columns" id="columns" type="number" />
+          <input placeholder="Rows" id="rows" type="number" />
         </div>
+
+        <!-- Uploaded Image -->
+        <div class="uploaded-image">
+          <div class="grid-container">
+            <img
+              id="inner-source"
+              src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
+              width="1000"
+              height="227"
+            />
+          </div>
+          <img
+            id="source"
+            src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
+            width="1000"
+            height="227"
+          />
+        </div>
+
+        <!-- Upload File Button -->
+        <input type="file" id="upload" hidden />
+        <label for="upload">Choose File</label>
+        <span id="file-chosen">No file chosen</span>
       </div>
 
       <!-- Footer  -->
