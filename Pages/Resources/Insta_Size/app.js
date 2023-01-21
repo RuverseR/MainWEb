@@ -53,6 +53,10 @@ function createGrid() {
 	imageWidth = uploadedImage.width;
 	imageHeight = uploadedImage.height;
 
+	// Make sure cropped image works on mobile 
+	gridImage.style.width = uploadedImage.width + 'px';
+	gridImage.style.height = uploadedImage.height + 'px';
+
 	rows = rowsInput.value;
 	columns = columnsInput.value;
 
@@ -115,5 +119,7 @@ rowsInput.oninput = function() {
 }
 
 window.addEventListener('resize', () => {
+	gridImage.style.width = uploadedImage.width + 'px';
+	gridImage.style.height = uploadedImage.height + 'px';
 	createGrid();
 })

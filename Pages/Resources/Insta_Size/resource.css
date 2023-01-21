@@ -52,7 +52,9 @@ header span {
 }
 
 .grid-container img {
-    width: auto !important;
+    height: auto;
+    max-height: 80vh;
+    width: auto;
     position: absolute;
     z-index: 1;
 }
@@ -83,7 +85,7 @@ header span {
     justify-content: center;
 }
 
-.uploaded-image img {
+#source {
     width: 100%;
     height: auto;
     max-height: 80vh;
@@ -164,8 +166,7 @@ input[type=number]:focus {
 }
 
 #file-chosen{
-    margin-left: 0.3rem;
-    font-family: sans-serif;
+    padding: 5vh;
 }
 
 /* Responsive Media */
@@ -191,6 +192,10 @@ input[type=number]:focus {
     }
 
     input {
-        width: 200px;
+        width: 150px;
+    }
+
+    input[type=number] {
+        padding-left: 15px;
     }
 }
