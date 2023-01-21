@@ -45,6 +45,75 @@ header span {
     display: flex;
 }
 
+/* Range slider */
+input[type='range'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type='range']:focus {
+    outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type='range']::-moz-range-thumb {
+    border: none;
+}
+
+.range-style {
+    margin-top: 20px;
+    width: 250px;
+    height: 15px;
+    padding: 0px;
+    background: var(--light);
+    border: none;
+    border-radius: 10px;
+}
+
+.range-style::-webkit-slider-runnable-track {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.range-style::-webkit-slider-thumb {
+    position: relative;
+    top: -30%;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    border-radius: 50%;
+}
+
+.range-style.inactive::-webkit-slider-thumb {
+    background-color: var(--light);
+}
+
+.range-style.inactive {
+    pointer-events: none;
+}
+
+.range-style::-moz-range-track {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.range-style::-moz-range-thumb {
+    position: relative;
+    top: -30%;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    border-radius: 50%;
+}
+
 /* Grid */
 .grid-container {
     position: absolute;
@@ -127,7 +196,7 @@ input {
     border-radius: 5px;
     outline: 0;
     padding: 10px;
-    margin: 10px 10px 30px;
+    margin: 10px 10px 20px;
     font-family: "Roboto Mono", monospace;
     font-size: 15px;
     background: transparent;
@@ -197,5 +266,9 @@ input[type=number]:focus {
 
     input[type=number] {
         padding-left: 15px;
+    }
+
+    .range-style {
+        width: 150px;
     }
 }

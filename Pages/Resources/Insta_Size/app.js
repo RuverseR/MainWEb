@@ -5,9 +5,11 @@ credits();
 const fileInput = document.querySelector('#upload');
 const fileChosen = document.querySelector('#file-chosen');
 const subHeader = document.querySelector('.sub-header');
-const inputs = document.querySelector('.inputs');
+const inputs = document.querySelectorAll('.inputs');
 const columnsInput = document.querySelector('#columns');
 const rowsInput = document.querySelector('#rows');
+const offsetInputX = document.querySelector('#offset-x');
+const offsetInputY = document.querySelector('#offset-y');
 const gridContainer = document.querySelector('.grid-container');
 const uploadedImageContainer = document.querySelector('.uploaded-image');
 const uploadedImage = document.querySelector('#source');
@@ -31,8 +33,14 @@ function readURL() {
             uploadedImage.src = e.target.result;
             uploadedImageContainer.classList.add('active');
             subHeader.classList.add('active');
-            inputs.classList.add('active');
-        }
+			for (i = 0; i < inputs.length; ++i) {
+				inputs[i].classList.add('active');
+			}
+
+			// Reset sliders 
+			offsetInputX.value = 50;
+			offsetInputY.value = 50;
+		}
         reader.readAsDataURL(fileInput.files[0]);
     }
 }
@@ -82,14 +90,14 @@ function createGrid() {
 				box.style.padding = padding + 'px';
 				box.style.border = '2px solid orange';
 			}
-            row.appendChild(box);
-        };
-      
-        grid.appendChild(row);      
-    };
+			row.appendChild(box);
+		};
+		
+		grid.appendChild(row);
+	};
 
 	gridImage.style.margin = margin;
-    gridContainer.appendChild(grid);
+	gridContainer.appendChild(grid);
 };
 
 function getPadding() {
@@ -107,22 +115,44 @@ function getPadding() {
 
 function getMargin(padding) {
 	if (crop == 'horizontal') {
-		margin = ((imageWidth - padding * 2 * rows) / 2) * -1;
-		console.log(margin)
+		gridContainer.style['margin-top'] = '0px';
+		offsetInputY.classList.add('inactive');
+		offsetInputX.classList.remove('inactive');
+		let offset = ((offsetInputX.value - 50) / 100) * (imageWidth - padding * 2 * rows);
+		let margin = ((imageWidth - padding * 2 * rows) / 2) * -1 + offset;
+		gridContainer.style['margin-left'] = offset * -2 + 5 + 'px';
 		return '2px 0px 0px ' + margin + 'px';
 	} else {
-		margin = ((imageHeight - padding * 2 * columns) / 2) * -1;
-		console.log(margin)
+		gridContainer.style['margin-left'] = '0px';
+		offsetInputX.classList.add('inactive');
+		offsetInputY.classList.remove('inactive');
+		let offset = ((offsetInputY.value - 50) / 100) * (imageHeight - padding * 2 * columns);
+		let margin = ((imageHeight - padding * 2 * columns) / 2) * -1 + offset;
+		gridContainer.style['margin-top'] = offset * -2 + 5 + 'px';
 		return margin + 'px 0px 0px 2px ';
 	}
 }
 
 columnsInput.oninput = function() {
-    createGrid();
+	createGrid();
 }
 
 rowsInput.oninput = function() {
-    createGrid();
+	createGrid();
+}
+
+offsetInputX.oninput = function() {
+	if (offsetInputX.value < 55 && offsetInputX.value > 45) {
+		offsetInputX.value = 50;
+	}
+	createGrid();
+}
+
+offsetInputY.oninput = function() {
+	if (offsetInputY.value < 55 && offsetInputY.value > 45) {
+		offsetInputY.value = 50;
+	}
+	createGrid();
 }
 
 window.addEventListener('resize', () => {
