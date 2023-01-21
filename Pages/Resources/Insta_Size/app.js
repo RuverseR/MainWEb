@@ -34,7 +34,6 @@ function readURL() {
             inputs.classList.add('active');
         }
         reader.readAsDataURL(fileInput.files[0]);
-		createGrid();
     }
 }
 

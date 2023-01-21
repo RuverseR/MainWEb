@@ -104,20 +104,31 @@ header span {
     padding-bottom: 15px;
 }
 
+.inputs div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs div label {
+    /* margin-left: 10px; */
+    color: orange;
+}
+
 .inputs.active {
     display: flex;
 }
 
 input {
     width: 250px;
-    border: 0;
+    border: 2px solid white;
+    border-radius: 5px;
     outline: 0;
-    padding: 3px;
-    margin: 30px 10px;
+    padding: 10px;
+    margin: 10px 10px 30px;
     font-family: "Roboto Mono", monospace;
     font-size: 15px;
     background: transparent;
-    border-bottom: 2px solid white;
     text-align: center;
 }
 
@@ -125,12 +136,15 @@ input[type=number] {
     padding-left: 25px;
 }
 
+input[type=number]:focus {
+    border: 2px solid orange;
+}
+
 ::placeholder {
     color: white;
 }
 
-button,
-label {
+#upload-label {
     font-size: 100%;
     margin-top: 5vh;
     margin-bottom: 4vh;
@@ -145,8 +159,7 @@ label {
     box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
 }
 
-button:hover,
-label:hover {
+#upload-label:hover {
     background: var(--dark);
 }
 

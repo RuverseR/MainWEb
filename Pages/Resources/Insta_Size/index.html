@@ -81,8 +81,14 @@
           <h2>Grid Settings</h2>
         </div>
         <div class="inputs">
-          <input placeholder="Columns" id="columns" type="number" />
-          <input placeholder="Rows" id="rows" type="number" />
+          <div>
+            <label for="columns">Columns</label>
+            <input placeholder="0" id="columns" type="number" />
+          </div>
+          <div>
+            <label for="rows">Rows</label>
+            <input placeholder="0" id="rows" type="number" />
+          </div>
         </div>
 
         <!-- Uploaded Image -->
@@ -105,7 +111,7 @@
 
         <!-- Upload File Button -->
         <input type="file" id="upload" hidden />
-        <label for="upload">Choose File</label>
+        <label id="upload-label" for="upload">Choose File</label>
         <span id="file-chosen">No file chosen</span>
       </div>
 
