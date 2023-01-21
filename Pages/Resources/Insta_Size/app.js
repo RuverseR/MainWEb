@@ -75,12 +75,19 @@ function createGrid() {
         for (k = 0; k < rows; k++) {
             let box = document.createElement("div"); 
             box.className = "box";
-			box.style.padding = padding + 'px';
+			if (rows > 10 || columns > 10) {
+				box.style.border = '1px solid orange';
+				box.style.padding = padding + 1 + 'px';
+			} else {
+				box.style.padding = padding + 'px';
+				box.style.border = '2px solid orange';
+			}
             row.appendChild(box);
         };
       
         grid.appendChild(row);      
     };
+
 	gridImage.style.margin = margin;
     gridContainer.appendChild(grid);
 };
