@@ -145,12 +145,18 @@ offsetInputX.oninput = function() {
 	if (offsetInputX.value < 55 && offsetInputX.value > 45) {
 		offsetInputX.value = 50;
 	}
+	if (offsetInputX.value < 2) {
+		offsetInputX.value = 2;
+	}
 	createGrid();
 }
 
 offsetInputY.oninput = function() {
 	if (offsetInputY.value < 55 && offsetInputY.value > 45) {
 		offsetInputY.value = 50;
+	}
+	if (offsetInputY.value < 2) {
+		offsetInputY.value = 2;
 	}
 	createGrid();
 }
