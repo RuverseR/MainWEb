@@ -1,28 +1,18 @@
-<h1 align="center">Portfolio Website</h1>
+<p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/Assets/Images/Portfolio Website Header.PNG" alt="portfolio header" /></p>
 
-[This](https://alexlostorto.github.io/) website is designed to act as a portfolio for both developers and photographers. 
+<p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/Assets/Images/Portfolio Website Home.PNG" alt="portfolio header" /></p>
 
-``` html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title> Why Me? </title>
-    <script src="something.js"></script>
-  </head>
-  <body>
-    <p> I am NOW mobile responsive!! </p>
-  </body>
-</html>
-```
+<div align="left">
 
-## Projects
+## Resources
 
 ``` python
-# Projects
+# Web pages
 [
-'Quadratic Formula',
 'Chemical Formulas',
 'Trigonometry',
+'Insta Size',
+'Quadratics',
 'Fibonacci',
 'Music',
 'Useful Links'
