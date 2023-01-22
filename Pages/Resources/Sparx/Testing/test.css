@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.themes-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+}
+
+.themes-container ul {
+    border: 2px solid white;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.themes-container ul li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.themes-container ul li div {
+    background-color: orange;
+    height: 50px;
+    width: 25%;
+}
+
+.themes-container ul li:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+@media (max-width: 1000px) {
+    .themes-container {
+        width: 60vw;
+    }
+}

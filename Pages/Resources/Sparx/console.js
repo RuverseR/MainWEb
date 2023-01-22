@@ -1,10 +1,36 @@
 console.log("Script is running");
 
+
+// THEMES 
+const themes = {
+    1: {
+        'darkest': '#241E92',
+        'dark':  '#5432D3',
+        'light':  '#7B6CF6',
+        'lightest': '#E5A5FF',
+    },
+
+    2: {
+        'darkest': '#000000',
+        'dark':  '#150050',
+        'light':  '#3F0071',
+        'lightest': '#610094',
+    },
+
+    3: {
+        'darkest': '#000000',
+        'dark':  '#3D0000',
+        'light':  '#950101',
+        'lightest': '#FF0000',
+    }
+}
+
+
 // Colour palette 
-let darkest = '#000000';
-let dark = '#150050';
-let light = '#3F0071';
-let lightest = '#610094';
+let darkest = themes[1]['darkest'];
+let dark = themes[1]['dark'];
+let light = themes[1]['light'];
+let lightest = themes[1]['lightest'];
 
 const grey = '#f8f8f7';
 const darkGrey = '#e9e9e9';
@@ -239,6 +265,7 @@ function darkMode() {
         changeProperty('.revision-homework-button-container', 'background', dark); //Left menu bar (Independent Learning)
         changeProperty('.view-body', 'background', darkest); //Tasks background
         changeProperty('.package-filter-arrow', 'border-left-color', grey); //Arrow next to left menu buttons
+        showThemes();
     }
 
     // Independent learning screen 
@@ -354,6 +381,41 @@ function darkMode() {
         changeProperties('.zoom-btn', 'color', grey); //Options zoom text
         changeProperties('.answer-markup.choice-wac-option.choice.choice-answer-markup', 'background', grey); //Individual option background
     }
+}
+
+
+function showThemes() {
+    if (!(document.querySelector('.themes-container') === null)) { return }
+
+    const container = document.querySelector('.package-container');
+
+    let textNode = document.createElement('b');
+    let themesContainer = document.createElement('section');
+    let themesList = document.createElement('ul');
+    textNode.innerText = 'Themes';
+    themesContainer.setAttribute('class', 'themes-container');
+
+    for (const [_, theme] of Object.entries(themes)) {
+        let themeNode = document.createElement('li');
+        for (const [_, colour] of Object.entries(theme)) {
+            let colourNode = document.createElement('div');
+            colourNode.style['background-color'] = colour;
+            themeNode.appendChild(colourNode);
+        };
+        themeNode.addEventListener('click', function() {
+            console.log("You clicked a theme");
+            darkest = theme['darkest'];
+            dark = theme['dark'];
+            light = theme['light'];
+            lightest = theme['lightest'];
+            main();
+        });
+        themesList.appendChild(themeNode);
+    };
+
+    themesContainer.appendChild(textNode);
+    themesContainer.appendChild(themesList);
+    container.append(themesContainer);
 }
 
 
@@ -562,3 +624,9 @@ function waitForElms(selector) {
         });
     });
 }
+
+const styles = '[class~=themes-container] ul li{list-style-type:none;}[class~=themes-container] ul{border-left-width:.125pc;}[class~=themes-container] ul{border-bottom-width:.125pc;}[class~=themes-container] ul li div{background-color:orange;}[class~=themes-container] ul{border-right-width:.125pc;}[class~=themes-container] ul{border-top-width:.125pc;}.themes-container,[class~=themes-container] ul,[class~=themes-container] ul li{display:flex;}[class~=themes-container] ul{border-left-style:solid;}[class~=themes-container] ul{border-bottom-style:solid;}[class~=themes-container] ul{border-right-style:solid;}.themes-container{align-items:center;}[class~=themes-container] ul{border-top-style:solid;}.themes-container{justify-content:center;}.themes-container,[class~=themes-container] ul{flex-direction:column;}[class~=themes-container] ul{border-left-color:white;}[class~=themes-container] ul{border-bottom-color:white;}.themes-container ul li:hover{cursor:pointer;}.themes-container{width:40vw;}[class~=themes-container] ul li div{height:37.5pt;}[class~=themes-container] ul li div{width:25%;}.themes-container ul li:hover{filter:brightness(80%);}[class~=themes-container] ul{border-right-color:white;}[class~=themes-container] ul{border-top-color:white;}[class~=themes-container] ul{border-image:none;}[class~=themes-container] ul{padding-left:0;}[class~=themes-container] ul{padding-bottom:0;}[class~=themes-container] ul{padding-right:0;}[class~=themes-container] ul li{flex-direction:row;}[class~=themes-container] ul{padding-top:0;}[class~=themes-container] ul{width:100%;}@media (max-width: 1000px){[class~=themes-container]{width:60vw;}}'
+
+document.head.insertAdjacentHTML('beforeend','<style>' + styles + '</style>');
+
+main();
