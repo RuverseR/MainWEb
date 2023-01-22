@@ -5,6 +5,7 @@ credits();
 const fileInput = document.querySelector('#upload');
 const fileChosen = document.querySelector('#file-chosen');
 const subHeader = document.querySelector('.sub-header');
+const downloadButton = document.querySelector('#download');
 const inputs = document.querySelectorAll('.inputs');
 const columnsInput = document.querySelector('#columns');
 const rowsInput = document.querySelector('#rows');
@@ -22,6 +23,7 @@ let imageWidth = 0;
 let imageHeight = 0;
 
 let crop = '';
+const canvas = document.createElement('canvas');
 
 function readURL() {
     if (fileInput.files && fileInput.files[0]) {
@@ -96,9 +98,37 @@ function createGrid() {
 		grid.appendChild(row);
 	};
 
+	downloadButton.classList.add('active');
+
 	gridImage.style.margin = margin;
 	gridContainer.appendChild(grid);
 };
+
+function getRatio() {
+	heightMultiplier = imageHeight / columns;
+	widthMultiplier = imageWidth / rows;
+
+	if (heightMultiplier > widthMultiplier) {
+		crop = 'vertical';
+		return widthMultiplier / uploadedImage.width
+	} else {
+		crop = 'horizontal';
+		return heightMultiplier / uploadedImage.height
+	}
+}
+
+function getSquareSize() {
+	heightMultiplier = imageHeight / columns;
+	widthMultiplier = imageWidth / rows;
+
+	if (heightMultiplier > widthMultiplier) {
+		crop = 'vertical';
+		return widthMultiplier
+	} else {
+		crop = 'horizontal';
+		return heightMultiplier
+	}
+}
 
 function getPadding() {
 	heightMultiplier = imageHeight / columns;
@@ -111,6 +141,24 @@ function getPadding() {
 		crop = 'horizontal';
 		return heightMultiplier / 2 - 2
 	}
+}
+
+function getPosition(squareSize) {
+	let left = uploadedImage.width / 2 - canvas.width / 2; 
+	let top = uploadedImage.height / 2 - canvas.height / 2; 
+
+	console.log(left);
+	console.log(top);
+
+	if (crop == 'horizontal') {
+		let offset = ((offsetInputX.value - 50) / 100) * (imageWidth - squareSize * rows);
+		left -= offset;
+	} else {
+		let offset = ((offsetInputY.value - 50) / 100) * (imageHeight - squareSize * columns);
+		top -= offset;
+	}
+
+	return [left, top]
 }
 
 function getMargin(padding) {
@@ -165,4 +213,45 @@ window.addEventListener('resize', () => {
 	gridImage.style.width = uploadedImage.width + 'px';
 	gridImage.style.height = uploadedImage.height + 'px';
 	createGrid();
+})
+
+function downloadBase64File(base64Data) {
+	const linkSource = base64Data;
+	const downloadLink = document.createElement("a");
+	downloadLink.href = linkSource;
+	downloadLink.download = 'Test';
+	downloadLink.click();
+}
+
+function cropImage() {
+	let squareSize = getSquareSize();
+	canvas.width = squareSize;
+	canvas.height = squareSize;
+
+	let ratio = getRatio();
+	let cropWidth = uploadedImage.width * ratio;
+	let cropHeight = uploadedImage.height * ratio;
+
+	let position = getPosition(squareSize);
+	let left = position[0];
+	let top = position[1];
+
+	let cropLeft = -left * ratio;
+	let cropTop = -top * ratio;
+
+	let ctx = canvas.getContext('2d');
+
+	ctx.drawImage(uploadedImage, cropLeft, cropTop, cropWidth, cropHeight);
+}
+
+function saveImage() {
+	try {
+		cropImage();
+		const base64Img = canvas.toDataURL('image/jpeg', 1.0);
+		downloadBase64File(base64Img);
+	} catch(e) { alert(e); }
+}
+
+downloadButton.addEventListener('click', () => {
+	saveImage();
 })

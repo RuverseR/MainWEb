@@ -73,6 +73,13 @@
           post format.
         </p>
       </div>
+      <div id="about" class="text-container">
+        <p class="description">
+          <span class="orange-text">Warning</span>: Download feature only works
+          if there is 1 <span class="orange-text">row</span> and 1
+          <span class="orange-text">column</span>.
+        </p>
+      </div>
 
       <!-- Program -->
       <div class="program-container">
@@ -100,11 +107,13 @@
             <input id="offset-y" type="range" class="range-style" />
           </div>
         </div>
+        <button id="download" class="download-button">Download</button>
 
         <!-- Uploaded Image -->
         <div class="uploaded-image">
           <div class="grid-container">
             <img
+              crossorigin="anonymous"
               id="inner-source"
               src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
               width="1000"
@@ -112,6 +121,7 @@
             />
           </div>
           <img
+            crossorigin="anonymous"
             id="source"
             src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
             width="1000"

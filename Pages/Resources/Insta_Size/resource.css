@@ -215,7 +215,17 @@ input[type=number]:focus {
     color: white;
 }
 
-#upload-label {
+#download {
+    display: none;
+    margin-bottom: 50px;
+}
+
+#download.active {
+    display: block;
+}
+
+#upload-label,
+button {
     font-size: 100%;
     margin-top: 5vh;
     margin-bottom: 4vh;
@@ -230,7 +240,8 @@ input[type=number]:focus {
     box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
 }
 
-#upload-label:hover {
+#upload-label:hover,
+button:hover {
     background: var(--dark);
 }
 
