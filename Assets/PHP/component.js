@@ -53,8 +53,8 @@ class Navbar extends HTMLElement {
                   </li>
                   <li>
                   <a
-                    href="../../../Pages/Resources/Fibonacci/index.html"
-                    >Fibonacci</a
+                    href="../../../Pages/Resources/Sequences/index.html"
+                    >Sequences</a
                   >
                   </li>
                   <li>

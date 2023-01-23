@@ -13,6 +13,8 @@ function round(number, decimalPlaces) {
 
 
 // QUADRATIC FORMULA
+const DECIMAL_PLACES = 5;
+
 const inputQuadraticA = document.querySelector('#quadratic-formula #a');
 const inputQuadraticB = document.querySelector('#quadratic-formula #b');
 const inputQuadraticC = document.querySelector('#quadratic-formula #c');
@@ -20,7 +22,7 @@ const outputQuadratic = document.querySelector('#quadratic-formula #output');
 
 function quadraticSolve(a, b, c) {
     let discriminant = ((b*b)-(4*a*c))**(1/2)
-    let solutions = [((-b+discriminant)/(2*a)),((-b-discriminant)/(2*a))]
+    let solutions = [round(((-b+discriminant)/(2*a)), DECIMAL_PLACES), round(((-b-discriminant)/(2*a)), DECIMAL_PLACES)]
     console.log(solutions.join(' '));
     return solutions
 }

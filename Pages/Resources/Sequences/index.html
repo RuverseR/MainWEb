@@ -62,9 +62,12 @@
       <app-navbar></app-navbar>
 
       <!-- Header -->
-      <header><span class="gradient-header">Fibonacci</span></header>
+      <header><span class="gradient-header">Sequences</span></header>
 
       <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>Fibonacci</h2>
+      </div>
       <div id="about" class="text-container">
         <p class="description">
           This <span class="orange-text">program</span> was created to list the
@@ -76,13 +79,48 @@
 
       <!-- Program -->
       <div class="program-container">
-        <input placeholder=" Length of the sequence" id="input" type="number" />
-        <button class="generate-button">Generate</button>
+        <input
+          placeholder=" Length of the sequence"
+          id="fibonacci-input"
+          type="number"
+        />
+        <button id="fibonacci-generate-button">Generate</button>
         <div class="sub-header">
-          <h2>Output</h2>
+          <h2 class="output-sub-header">Output</h2>
         </div>
         <div class="text-container">
-          <p class="output-text" id="output">
+          <p class="output-text" id="fibonacci-output">
+            This is where the <span class="orange-text">output</span> will be...
+          </p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>Triangular Numbers</h2>
+      </div>
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> was created to list the
+          <span class="orange-text">triangular numbers</span> up to an
+          <span class="orange-text">infinite length</span> (depending on
+          computing power of course).
+        </p>
+      </div>
+
+      <!-- Program -->
+      <div class="program-container">
+        <input
+          placeholder=" Length of the sequence"
+          id="triangular-input"
+          type="number"
+        />
+        <button id="triangular-generate-button">Generate</button>
+        <div class="sub-header">
+          <h2 class="output-sub-header">Output</h2>
+        </div>
+        <div class="text-container">
+          <p class="output-text" id="triangular-output">
             This is where the <span class="orange-text">output</span> will be...
           </p>
         </div>
