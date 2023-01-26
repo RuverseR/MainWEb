@@ -62,9 +62,12 @@
       <app-navbar></app-navbar>
 
       <!-- Header -->
-      <header><span class="gradient-header">Chemical Formulas</span></header>
+      <header><span class="gradient-header">Chemistry</span></header>
 
       <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>Chemical Formula Editor</h2>
+      </div>
       <div id="about" class="text-container">
         <p class="description">
           This <span class="orange-text">program</span> (inspired by Mr
@@ -89,6 +92,36 @@
           <div class="pi-symbol">π</div>
           <div class="subscript-symbol selectable">xᵧ</div>
         </section>
+      </div>
+
+      <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>Electrolysis of Aqueous Solutions</h2>
+      </div>
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> was created to show
+          which <span class="orange-text">elements</span> are produced at the
+          <span class="orange-text">cathode</span> and at the
+          <span class="orange-text">anode</span>.
+        </p>
+      </div>
+
+      <!-- Program -->
+      <div class="program-container">
+        <div class="inputs">
+          <input placeholder="Metal" id="metal" type="text" />
+          <input placeholder="Non-metal" id="non-metal" type="text" />
+        </div>
+        <button id="electrolysis-button">Generate</button>
+        <div class="sub-header">
+          <h2 class="output-sub-header">Output</h2>
+        </div>
+        <div class="text-container">
+          <p class="output-text" id="electrolysis-output">
+            This is where the <span class="orange-text">output</span> will be...
+          </p>
+        </div>
       </div>
 
       <!-- Footer  -->
