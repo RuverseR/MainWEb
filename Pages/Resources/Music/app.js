@@ -53,6 +53,7 @@ async function audioProgress () {
         for (let s = 0; s < 10; s++) {
             if (!playingAudio) {return}
             if (currentAudioTime >= duration) {
+                loopSong = loopButton.checked;
                 if (loopSong) {
                     loopCurrentSong();
                 } else {
