@@ -6,14 +6,14 @@
 
 ## Resources
 
-``` python
+```python
 # Web pages
 [
-'Chemical Formulas',
 'Trigonometry',
 'Insta Size',
 'Quadratics',
 'Fibonacci',
+'Chemistry',
 'Music',
 'Useful Links'
 ]
@@ -25,7 +25,7 @@
 
 This website was created in October 2022 (while on holiday in the Netherlands) to act as my portfolio website, except I soon realised... It sucks. So I created a new one! And this time I made sure to take inspiration from a lot of exemplar websites, ensuring that my graphic design isn't entirely trash.
 
-``` python
+```python
 # Functions
 [
 'Space-themed Splash Page',
@@ -38,7 +38,7 @@ This website was created in October 2022 (while on holiday in the Netherlands) t
 
 This website was created in July 2022 to host all my maths functions (even though I code primarily in Python) and utilise the GTP-3 API, which sadly has ran out of credits.
 
-``` python
+```python
 # Functions
 [
 'GTP-3 API',  # ran out of credits
@@ -51,7 +51,7 @@ This website was created in July 2022 to host all my maths functions (even thoug
 ]
 ```
 
-## Credits 
+## Credits
 
 Everything is coded by Alex lo Storto
 
