@@ -38,7 +38,7 @@ function displayQuadratic() {
           outputQuadratic.innerHTML = solutions.join('&nbsp;&nbsp;&nbsp;&nbsp; ') + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>."
         }
         else {
-          outputQuadratic.innerHTML = `<span class="orange-text">x</span> = ${solutions[0]}&nbsp;&nbsp;&nbsp;&nbsp; <span class="orange-text">x</span> = ${solutions[1]}`
+          outputQuadratic.innerHTML = `<span class="orange-text">x</span> = ${solutions[0]}<br><br><span class="orange-text">x</span> = ${solutions[1]}`
         }
       }
 }
