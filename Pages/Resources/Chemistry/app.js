@@ -169,30 +169,55 @@ const electrolysisButton = document.querySelector('#electrolysis-button');
 
 REACTIVITY_SERIES = {
     'Potassium': 24,
+    'K': 24,
     'Sodium': 23,
+    'Na': 23,
     'Lithium': 22,
+    'Li': 22,
     'Barium': 21,
+    'Ba': 21,
     'Strontium': 20,
+    'Sr': 20,
     'Calcium': 19,
+    'Ca': 19,
     'Magnesium': 18,
+    'Mg': 18,
     'Aluminium': 17,
+    'Al': 17,
     'Manganese': 16,
+    'Mn': 16,
     'Zinc': 15,
+    'Zn': 15,
     'Chromium': 14,
+    'Cr': 14,
     'Iron': 13,
+    'Fe': 13,
     'Cadmium': 12,
+    'Cd': 12,
     'Cobalt': 11,
+    'Co': 11,
     'Nickel': 10,
+    'Ni': 10,
     'Tin': 9,
+    'Sn': 9,
     'Lead': 8,
+    'Pb': 8,
     'Hydrogen': 7,
+    'H': 7,
     'Antimony': 6,
+    'Sb': 6,
     'Bismuth': 5,
+    'Bi': 5,
     'Copper': 4,
+    'Cu': 4,
     'Mercury': 3,
+    'Hg': 3,
     'Silver': 2,
+    'Ag': 2,
     'Gold': 1,
+    'Au': 1,
     'Platinum': 0,
+    'Pt': 0
 }
 
 HALOGENS = [
@@ -228,9 +253,23 @@ function electrolysis() {
         nonMetal = 'Oxygen';
     }
 
-    electrolysisOutput.innerHTML = `<span class="orange-text">${metal}</span> is produced at the <span class="orange-text">cathode</span><br><span class="orange-text">${nonMetal}</span> is produced at the <span class="orange-text">anode</span>`;
+    electrolysisOutput.innerHTML = `<span class="orange-text">${metal}</span> is produced at the <span class="orange-text">cathode</span><br><br><span class="orange-text">${nonMetal}</span> is produced at the <span class="orange-text">anode</span>`;
 }
 
 electrolysisButton.addEventListener('click', () => {
+    electrolysis();
+})
+
+metalInput.addEventListener('keypress', (event)=> {
+    // Check if enter key is pressed
+    if (!(event.keyCode === 13)) { return }
+
+    electrolysis();
+})
+
+nonMetalInput.addEventListener('keypress', (event)=> {
+    // Check if enter key is pressed
+    if (!(event.keyCode === 13)) { return }
+
     electrolysis();
 })
