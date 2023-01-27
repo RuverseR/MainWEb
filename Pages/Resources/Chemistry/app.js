@@ -167,57 +167,60 @@ const nonMetalInput = document.querySelector('#non-metal');
 const electrolysisOutput = document.querySelector('#electrolysis-output');
 const electrolysisButton = document.querySelector('#electrolysis-button');
 
-REACTIVITY_SERIES = {
+REACTIVITY_SERIES_ELEMENTS = {
     'Potassium': 24,
-    'K': 24,
     'Sodium': 23,
-    'Na': 23,
     'Lithium': 22,
-    'Li': 22,
     'Barium': 21,
-    'Ba': 21,
     'Strontium': 20,
-    'Sr': 20,
     'Calcium': 19,
-    'Ca': 19,
     'Magnesium': 18,
-    'Mg': 18,
     'Aluminium': 17,
-    'Al': 17,
     'Manganese': 16,
-    'Mn': 16,
     'Zinc': 15,
-    'Zn': 15,
     'Chromium': 14,
-    'Cr': 14,
     'Iron': 13,
-    'Fe': 13,
     'Cadmium': 12,
-    'Cd': 12,
     'Cobalt': 11,
-    'Co': 11,
     'Nickel': 10,
-    'Ni': 10,
     'Tin': 9,
-    'Sn': 9,
     'Lead': 8,
-    'Pb': 8,
     'Hydrogen': 7,
-    'H': 7,
     'Antimony': 6,
-    'Sb': 6,
     'Bismuth': 5,
-    'Bi': 5,
     'Copper': 4,
-    'Cu': 4,
     'Mercury': 3,
-    'Hg': 3,
     'Silver': 2,
-    'Ag': 2,
     'Gold': 1,
-    'Au': 1,
     'Platinum': 0,
-    'Pt': 0
+}
+
+REACTIVITY_SERIES_SYMBOLS = {
+    'K': 'Potassium',
+    'Na': 'Sodium',
+    'Li': 'Lithium',
+    'Ba': 'Barium',
+    'Sr': 'Strontium',
+    'Ca': 'Calcium',
+    'Mg': 'Magnesium',
+    'Al': 'Aluminium',
+    'Mn': 'Manganese',
+    'Zn': 'Zinc',
+    'Cr': 'Chromium',
+    'Fe': 'Iron',
+    'Cd': 'Cadmium',
+    'Co': 'Cobalt',
+    'Ni': 'Nickel',
+    'Sn': 'Tin',
+    'Pb': 'Lead',
+    'H': 'Hydrogen',
+    'Sb': 'Antimony',
+    'Bi': 'Bismuth',
+    'Cu': 'Copper',
+    'Hg': 'Mercury',
+    'Ag': 'Silver',
+    'Au': 'Gold',
+    'Pt': 'Platinum'
 }
 
 HALOGENS = [
@@ -240,8 +243,10 @@ function electrolysis() {
     let metal = formatString(metalInput.value);
     let nonMetal = formatString(nonMetalInput.value);
 
-    if (REACTIVITY_SERIES[metal] !== undefined) {
-        if (REACTIVITY_SERIES[metal] > REACTIVITY_SERIES['Hydrogen']) {
+    if (REACTIVITY_SERIES_SYMBOLS[metal] !== undefined) { metal = REACTIVITY_SERIES_SYMBOLS[metal] }
+
+    if (REACTIVITY_SERIES_ELEMENTS[metal] !== undefined) {
+        if (REACTIVITY_SERIES_ELEMENTS[metal] > REACTIVITY_SERIES_ELEMENTS['Hydrogen']) {
             metal = 'Hydrogen';
         } 
     } else {
