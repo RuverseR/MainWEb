@@ -193,18 +193,17 @@ input {
 }
 
 .custom-cursor .inner {
+    position: absolute;
     background-color: orange;
     transition: linear height 0.2s, linear width 0.2s;
-    margin-left: -3px;
-    margin-top: -3px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 6px;
     height: 6px;
     z-index: 10000001 !important;
 }
 
 .hoveredCursor {
-    margin-left: -15px !important;
-    margin-top: -15px !important;
     width: 30px !important;
     height: 30px !important;
 }
