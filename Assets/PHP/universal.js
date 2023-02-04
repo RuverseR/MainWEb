@@ -6,7 +6,6 @@ const resourcesButton = document.querySelector('.resources-button');
 const recourcesLinks = document.querySelector('.nav-resources');
 const navbarItems = document.querySelector('.navbar-items');
 const cursor = document.querySelector('.custom-cursor');
-const cursorJquery = $('#cursor');
 const cursorInner = document.querySelector('.custom-cursor.inner');
 const cursorOuter = document.querySelector('.custom-cursor.outer');
 
@@ -92,16 +91,16 @@ function detectMouse() {
 
 // CUSTOM CURSOR AND HOVER
 function customMouse(e) {  // Whenever a mouse movement is detected, update the custom cursor position
-    const target = $(e.target);
+    const target = e.target;
     
-    const isLinkTag = target.is('a') || target.is('.socials-container img') || target.is('.contextbox');
-    const isHovered = cursorJquery.hasClass('hoveredCursor');
+    const isLinkTag = target.tagName.toLowerCase() === 'a';
+    const isHovered = cursorInner.classList.contains('hoveredCursor');
     
     // Toggle the cursor class if necessary 
     if(isLinkTag && !isHovered) {
-        cursorJquery.addClass('hoveredCursor');
+        cursorInner.classList.add('hoveredCursor');
     } else if(!isLinkTag && isHovered) {
-        cursorJquery.removeClass('hoveredCursor');
+        cursorInner.classList.remove('hoveredCursor');
     }
 
     cursorInner.style.left = e.pageX + 'px';

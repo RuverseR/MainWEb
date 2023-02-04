@@ -425,6 +425,10 @@ background: #bb7900;
     z-index: 6;
 }
 
+.contentbox:hover h2 {
+    overflow-wrap: break-word;
+}
+
 .contentbox img {
     margin-bottom: 1vh;
     width: 50px;
@@ -440,6 +444,7 @@ background: #bb7900;
 }
 
 .contentbox h2 {
+    overflow: hidden;
     margin-bottom: 1vh;
     font-size: 20px;
     line-height: 23px;
