@@ -242,6 +242,7 @@ function updateTable() {
                 let difference = Math.round((endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24), 0);
 
                 let textNode = document.createElement('p');
+                textNode.classList.add('days-until-exam');
                 textNode.innerHTML = `<span class='orange'>${difference}</span> days until first exam.`;
                 timetable.appendChild(textNode);
             }

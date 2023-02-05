@@ -237,6 +237,10 @@ header span {
 	padding-top: 3vh;
 }
 
+.days-until-exam {
+	padding: 2vh 0vh 3vh;
+}
+
 
 /* Responsive Media */
 @media (max-width: 1500px) {
