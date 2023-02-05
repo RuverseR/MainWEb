@@ -53,7 +53,7 @@ header span {
 	display: grid;
     grid-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 200px 380px;
+    grid-template-rows: 230px 380px;
     grid-auto-flow: row;
 }
 
@@ -257,7 +257,7 @@ header span {
 	.checkboxes-container {
 		grid-gap: 30px;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
-		grid-template-rows: 200px 400px;
+		grid-template-rows: 250px 400px;
 		grid-auto-flow: row;
 	}
 
@@ -285,7 +285,7 @@ header span {
 	.checkboxes-container {
 		grid-gap: 30px;
 		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 200px 300px 400px;
+		grid-template-rows: 250px 300px 400px;
 		grid-auto-flow: row;
 	}
 
