@@ -29,6 +29,12 @@ class Navbar extends HTMLElement {
                 <ul>
                   <li>
                   <a
+                    href="../../../Pages/Resources/Exam_Timetable/index.html"
+                    >Exam Timetable</a
+                  >
+                  </li> 
+                  <li>
+                  <a
                     href="../../../Pages/Resources/Trigonometry/index.html"
                     >Trigonometry</a
                   >

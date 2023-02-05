@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- HEAD -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="keywords"
+      content="alexlostorto, Alex, Alex lo Storto, Alex Lo Storto, Photography Portfolio, portfolio, portfolio website, Portfolio Website, Photography, photographer, programmer, coder, web developer, open source, space-themed, space"
+    />
+    <meta
+      name="description"
+      content="Personal portfolio displaying my photography/web development skills."
+    />
+    <meta name="author" content="Alex lo Storto" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../../Icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../../Icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../../Icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://api.countapi.xyz/hit/alexlostorto.github.io/visits?callback=liveViews"
+      async
+    ></script>
+    <link rel="stylesheet" href="../../../styles.css" />
+    <link rel="stylesheet" href="resource.css" />
+    <script src="../../../Assets/PHP/component.js" defer></script>
+    <script src="../../../Assets/PHP/universal.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>Alex lo Storto</title>
+  </head>
+
+  <!-- BODY -->
+  <body>
+    <div class="body-container">
+      <!-- Navbar  -->
+      <app-navbar></app-navbar>
+
+      <!-- Header -->
+      <header><span class="gradient-header">Exam Timetable</span></header>
+
+      <!-- Description -->
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> is used to easily
+          <span class="orange-text">visualise</span> all your exams.
+        </p>
+      </div>
+
+      <!-- Program -->
+      <div class="program-container">
+        <!-- LANGUAGES -->
+        <section class="checkboxes-container">
+          <div class="container languages">
+            <h2>Languages</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="italian-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="italian-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Italian</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="chinese-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="chinese-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Chinese</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="panjabi-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="panjabi-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Panjabi</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="polish-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="polish-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Polish</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="bengali-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="bengali-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Bengali</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="hebrew-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="hebrew-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Hebrew</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="spanish-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="spanish-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Spanish</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="urdu-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="urdu-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Urdu</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="french-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="french-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>French</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="german-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="german-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>German</span>
+            </div>
+          </div>
+
+          <!-- MATHS -->
+          <div class="container maths">
+            <h2>Maths</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="maths-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="maths-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Mathematics</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="further-maths-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="further-maths-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Further Maths</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="statistics-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="statistics-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Statistics</span>
+            </div>
+          </div>
+
+          <!-- Science -->
+          <div class="container science">
+            <h2>Science</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="chemistry-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="chemistry-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Chemistry</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="biology-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="biology-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Biology</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="physics-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="physics-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Physics</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="combined-science-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="combined-science-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Combined Science</span>
+            </div>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="container english">
+            <h2>English</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="english-literature-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="english-literature-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>English Literature</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="english-language-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="english-language-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>English Language</span>
+            </div>
+          </div>
+
+          <!-- TECHNOLOGY -->
+          <div class="container technology">
+            <h2>Technology</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="engineering-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="engineering-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Engineering</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="design-technology-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="design-technology-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Design & Technology</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="food-preparation-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="food-preparation-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Food Preparation</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="business-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="business-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Business</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="computer-science-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="computer-science-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Computer Science</span>
+            </div>
+          </div>
+
+          <!-- HUMANITIES -->
+          <div class="container humanities">
+            <h2>Humanities</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="religious-studies-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="religious-studies-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Religious Studies</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="citizenship-studies-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="citizenship-studies-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Citizenship Studies</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="sociology-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="sociology-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Sociology</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="economics-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="economics-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Economics</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="history-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="history-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>History</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="psychology-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="psychology-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Psychology</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="geography-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="geography-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Geography</span>
+            </div>
+          </div>
+
+          <!-- HUMANITIES -->
+          <div class="container other">
+            <h2>Other</h2>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="drama-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="drama-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Drama</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="media-studies-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="media-studies-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Media Studies</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="physical-education-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="physical-education-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Physical Education</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="performing-arts-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="performing-arts-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Performing Arts</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="dance-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="dance-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Dance</span>
+            </div>
+            <div class="checkbox">
+              <div class="checkbox-wrapper-12">
+                <div class="cbx">
+                  <input
+                    id="music-checkbox"
+                    onclick="updateTable()"
+                    type="checkbox"
+                  />
+                  <label for="music-checkbox"></label>
+                  <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Music</span>
+            </div>
+          </div>
+        </section>
+        <div class="legend">
+          <span class="orange">Higher</span>
+          <span class="blue">Foundation</span>
+          <span class="purple">Both</span>
+        </div>
+        <section class="timetable"></section>
+      </div>
+
+      <!-- Footer  -->
+      <app-footer></app-footer>
+    </div>
+
+    <!-- Custom cursor  -->
+    <div class="custom-cursor">
+      <div id="cursor" class="custom-cursor inner"></div>
+      <div class="custom-cursor outer"></div>
+    </div>
+  </body>
+</html>

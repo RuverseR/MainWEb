@@ -10,11 +10,11 @@
     --darkest: rgb(13,12,18);
     --light-orange: #f9d423;
     --dark-orange: #f83600;
-    --color-white: #fff;
-    --color-black: #000;
-    --color-purple: #8000ff;
-    --color-light-purple: #cf59e6;
-    --color-light-blue: #6bc5f8;
+    --white: #fff;
+    --black: #000;
+    --purple: #8000ff;
+    --light-purple: #cf59e6;
+    --light-blue: #6bc5f8;
 
     --base-font-size: 1em;
 
