@@ -33,7 +33,7 @@ const chemistry = [document.querySelector('#chemistry-checkbox'), 'chemistry'];
 const biology = [document.querySelector('#biology-checkbox'), 'biology'];
 const physics = [document.querySelector('#physics-checkbox'), 'physics'];
 const combinedScience = [document.querySelector('#combined-science-checkbox'), 'combinedScience'];
-const separateSciences = [document.querySelector('#combined-science-checkbox'), 'separateSciences'];
+const separateSciences = [document.querySelector('#separate-sciences-checkbox'), 'separateSciences'];
 
 // English
 const englishLiterature = [document.querySelector('#english-literature-checkbox'), 'englishLiterature'];
