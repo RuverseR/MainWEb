@@ -27,13 +27,12 @@ const themes = {
 
 
 // Colour palette 
-let darkest = themes[1]['darkest'];
-let dark = themes[1]['dark'];
-let light = themes[1]['light'];
-let lightest = themes[1]['lightest'];
+document.documentElement.style.setProperty('--darkest', themes[1]['darkest']);
+document.documentElement.style.setProperty('--dark', themes[1]['dark']);
+document.documentElement.style.setProperty('--light', themes[1]['light']);
+document.documentElement.style.setProperty('--lightest', themes[1]['lightest']);
 
 const grey = '#f8f8f7';
-const darkGrey = '#e9e9e9';
 const orange = '#f46815';
 
 let answers = {};
@@ -53,7 +52,7 @@ mutationObserver.observe(document.documentElement, {
 });
 
 async function main() {
-    darkMode();
+    if (document.querySelector('.package-container') !== null) { showThemes(); }
 
     // Display stored answer
     let correctStatusElement = document.querySelector('.page.result .result-inner .correct');
@@ -245,145 +244,6 @@ function hasSource(answer) {
     } else { return false}
 }
 
-
-// DARK MODE 
-function darkMode() {
-    // Login screen 
-    if (document.querySelector('.um-login-container') !== null) {
-        changeProperty('.um-login-container', 'background', darkest); //Login background
-        changeProperty('.um-header', 'background', light); //Top header
-        changeProperty('.footer-cookie-banner-container', 'background', light); //Bottom banner
-        changeProperty('.footer-container', 'background', light); //Bottom banner
-        changeProperty('.um-login-box__content', 'background', lightest); //Login box background
-        changeProperty('.school-selector', 'color', grey); //School text
-    }
-
-    // Main screen 
-    if (document.querySelector('.package-container') !== null) {
-        changeProperty('.package-container', 'background', darkest); //Main background
-        changeProperty('.package-filter-list', 'background', dark); //Left menu bar
-        changeProperty('.revision-homework-button-container', 'background', dark); //Left menu bar (Independent Learning)
-        changeProperty('.view-body', 'background', darkest); //Tasks background
-        changeProperty('.package-filter-arrow', 'border-left-color', grey); //Arrow next to left menu buttons
-        showThemes();
-    }
-
-    // Independent learning screen 
-    if (document.querySelector('.revision-container') !== null) {
-        changeProperty('.revision-homework-button-container', 'background', dark); ////Left menu bar (Independent Learning)
-        changeProperty('.revision-tabs', 'border-bottom', light); //Revision tab border
-        changeProperties('.revision-tab', 'background', light); //Revision tab background
-        changeProperties('.revision-tab.revision-tab-active', 'background', lightest); //Active revision tab background
-        changeProperties('.revision-strand-button', 'background', light); //Strand buttons
-        changeProperties('.revision-strand-button', 'color', grey); //Strand buttons
-        changeProperties('.revision-strand-button', 'border', 'none'); //Strand buttons
-    }
-
-    // Inner independent learning screen 
-    if (document.querySelector('.revision-container.revision-scroll-container') !== null) {
-        changeProperty('.revision-homework-button-container', 'background', dark); ////Left menu bar (Independent Learning)
-        changeProperty('.revision-strand-page', 'background', light); //Inner independent learning screen background
-        changeProperties('.accordion-element-header', 'background', lightest); //Substrand background
-        changeProperties('.accordion-element-header', 'color', grey); //Substrand color
-        changeProperties('.accordion-element-header', 'border', 'none'); //Substrand border
-        changeProperties('.revision-substrand-extra', 'color', grey); //Substrand extra color
-    }
-
-    // Inner activity learning screen 
-    if (document.querySelector('.activity-feed') !== null) {
-        changeProperty('.activity-feed-day', 'background', light); //Inner activity learning screen background
-        changeProperty('.activity-feed-day > h2', 'color', grey); //Inner activity learning screen color
-        changeProperties('.activity-feed-work', 'background', lightest); //Activity background
-        changeProperties('.activity-feed-work', 'color', grey); //Activity color
-        changeProperties('.activity-feed-work-counts', 'color', grey); //Activity count color
-        changeProperties('.revision-location-stream', 'color', grey); //Difficulty color
-        changeProperties('.revision-location-stream', 'border-color', grey); //Difficulty border color
-    }
-
-    // Top header
-    if (document.querySelector('.status-bar') !== null) {
-        changeProperty('.status-bar', 'background', light); //Top header
-        xpElement = document.querySelector('.status-bar-label-text') //XP header
-        if (xpElement !== null) {
-            xpElement.textContent = "It doesn't matter :)";
-        } 
-        changeProperty('.status-bar-label-text', 'background', light); //XP header
-        changeProperties('.status-bar-menu-item', 'background', lightest); //Menu item background
-        changeProperties('.status-bar-menu-item', 'border', `none`); //Menu item border
-        changeProperty('.status-bar-menu-button', 'background', lightest); //Upper right menu button
-        changeProperty('.status-bar-menu-button', 'border', `solid ${lightest}`); //Upper right menu button
-    }
-
-    // Left navigation buttons
-    if (document.querySelector('.btn-menu-item') !== null) {
-        changeProperties('.btn-menu-item', 'background', light);
-        changeProperties('.btn-menu-item', 'color', grey);
-        changeProperties('.btn-menu-item', 'border', `1px solid ${light}`);
-        changeProperty('.active', 'border', `1px solid ${grey}`);
-    }
-
-    // Topic page
-    if (document.querySelector('.revision-topic-page') !== null) {
-        changeProperty('.revision-topic-page', 'background', dark); //Topic page background
-        changeProperty('.revision-topic-page', 'color', grey); //Topic page color
-        changeProperties('.revision-task', 'background', light); //Activity background
-        changeProperties('.revision-task-item', 'background', lightest); //Activity item background
-    }
-
-    // Left navigation button (Independent Learning)
-    if (document.querySelector('.revision-homework-button') !== null) {
-        changeProperty('.revision-homework-button', 'background', light);
-        changeProperty('.revision-homework-button', 'color', grey);
-        changeProperty('.revision-homework-button', 'border', `1px solid ${light}`);
-    }
-
-    // Outer tasks
-    if (document.querySelector('.package-heading') !== null) {
-        changeProperties('.package-heading', 'background', light);
-        changeProperties('.package-heading', 'border', `1px solid ${light}`);
-        changeProperties('.package-heading', 'color', grey);
-    }
-
-    // Inner tasks
-    if (document.querySelector('.package-list > div > span > ul > div') !== null) {
-        changeProperties('.package-list > div > span > ul > div', 'background-color', dark);
-        changeProperties('.package-list > div > span > ul > div', 'border-color', dark);
-        changeProperties('.package-list > div > span > ul > div > .task-title', 'color', darkGrey);
-    }
-
-    // Question screen
-    if (document.querySelector('.main-view') !== null) {
-        changeProperties('.dummytaskitem', 'border', 'none'); //Dummy tasks in task selection
-        changeProperty('.main-view', 'background', darkest); //Question view background
-        changeProperty('.question-only', 'background', light); //Question page background
-        changeProperty('.answer-only', 'background', light); //Answer page background
-        changeProperty('.question-text', 'background', light); //Question text background
-        changeProperty('.question-text > div > .text', 'color', grey); //Question text colour
-        changeProperty('.result-inner h2', 'color', grey); //Correct answer color
-        changeProperty('.skill-delivery-view .view-body', 'background', light); //Correct answer background
-        changeProperties('.text-container', 'color', grey); //Answer choice text
-        changeProperties('.choice-text', 'background', grey); //Answer choice background
-        changeProperties('.choice-text .text', 'color', '#0b3470'); //Answer choice text
-        changeProperties('.entry-area-bubble .text', 'color', darkest); //Answer choice text
-        changeProperties('.selected .text', 'color', orange); //Selected choice text
-        changeProperties('.answer-part > div > .text', 'color', grey); //Answer text
-        changeProperties('.gap-container', 'border', 'none'); //Answer text
-    }
-
-    // Bookwork check pop-up 
-    if (document.querySelector('#answer-wac-box') !== null) {
-        changeProperty('#answer-wac-box', 'background', lightest); //Bookwork check background
-        changeProperty('.wac-text-container .bookwork-code', 'background', light); //Bookwork code background
-        changeProperty('.wac-text-container .bookwork-code', 'border', 'none'); //Bookwork code background
-        changeProperty('.wac-header-container', 'color', grey); //Bookwork check title
-        changeProperty('.choice-wac-options', 'background', lightest); //Options background
-        changeProperty('.wac-text', 'color', grey); //Bookwork check text
-        changeProperties('.zoom-btn', 'color', grey); //Options zoom text
-        changeProperties('.answer-markup.choice-wac-option.choice.choice-answer-markup', 'background', grey); //Individual option background
-    }
-}
-
-
 function showThemes() {
     if (!(document.querySelector('.themes-container') === null)) { return }
 
@@ -404,11 +264,10 @@ function showThemes() {
         };
         themeNode.addEventListener('click', function() {
             console.log("You clicked a theme");
-            darkest = theme['darkest'];
-            dark = theme['dark'];
-            light = theme['light'];
-            lightest = theme['lightest'];
-            main();
+            document.documentElement.style.setProperty('--darkest', theme['darkest']);
+            document.documentElement.style.setProperty('--dark', theme['dark']);
+            document.documentElement.style.setProperty('--light', theme['light']);
+            document.documentElement.style.setProperty('--lightest', theme['lightest']);
         });
         themesList.appendChild(themeNode);
     };
@@ -565,26 +424,6 @@ function getInput(bookworkCode) {
     return answerData
 }
 
-async function changeProperty(selector, property, colour) {
-    let element = await waitForElm(selector);
-    if (element !== null) {
-        element.style[property] = colour
-    } else {
-        console.log("Can't find element")
-    }
-}
-
-async function changeProperties(selector, property, colour) {
-    let elements = await waitForElms(selector);
-    for (let i = 0; i < elements.length; i++) {
-        if (elements[i] !== null) {
-            elements[i].style[property] = colour
-        } else {
-            console.log("Can't find element")
-        }
-    }
-}
-
 function waitForElm(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
@@ -625,8 +464,10 @@ function waitForElms(selector) {
     });
 }
 
-const styles = '[class~=themes-container] ul li{list-style-type:none;}[class~=themes-container] ul{border-left-width:.125pc;}[class~=themes-container] ul{border-bottom-width:.125pc;}[class~=themes-container] ul li div{background-color:orange;}[class~=themes-container] ul{border-right-width:.125pc;}[class~=themes-container] ul{border-top-width:.125pc;}.themes-container,[class~=themes-container] ul,[class~=themes-container] ul li{display:flex;}[class~=themes-container] ul{border-left-style:solid;}[class~=themes-container] ul{border-bottom-style:solid;}[class~=themes-container] ul{border-right-style:solid;}.themes-container{align-items:center;}[class~=themes-container] ul{border-top-style:solid;}.themes-container{justify-content:center;}.themes-container,[class~=themes-container] ul{flex-direction:column;}[class~=themes-container] ul{border-left-color:white;}[class~=themes-container] ul{border-bottom-color:white;}.themes-container ul li:hover{cursor:pointer;}.themes-container{width:40vw;}[class~=themes-container] ul li div{height:37.5pt;}[class~=themes-container] ul li div{width:25%;}.themes-container ul li:hover{filter:brightness(80%);}[class~=themes-container] ul{border-right-color:white;}[class~=themes-container] ul{border-top-color:white;}[class~=themes-container] ul{border-image:none;}[class~=themes-container] ul{padding-left:0;}[class~=themes-container] ul{padding-bottom:0;}[class~=themes-container] ul{padding-right:0;}[class~=themes-container] ul li{flex-direction:row;}[class~=themes-container] ul{padding-top:0;}[class~=themes-container] ul{width:100%;}@media (max-width: 1000px){[class~=themes-container]{width:60vw;}}'
+const themeStyles = '[class~=themes-container] ul li{list-style-type:none;}[class~=themes-container] ul{border-left-width:.125pc;}[class~=themes-container] ul{border-bottom-width:.125pc;}[class~=themes-container] ul li div{background-color:orange;}[class~=themes-container] ul{border-right-width:.125pc;}[class~=themes-container] ul{border-top-width:.125pc;}.themes-container,[class~=themes-container] ul,[class~=themes-container] ul li{display:flex;}[class~=themes-container] ul{border-left-style:solid;}[class~=themes-container] ul{border-bottom-style:solid;}[class~=themes-container] ul{border-right-style:solid;}.themes-container{align-items:center;}[class~=themes-container] ul{border-top-style:solid;}.themes-container{justify-content:center;}.themes-container,[class~=themes-container] ul{flex-direction:column;}[class~=themes-container] ul{border-left-color:white;}[class~=themes-container] ul{border-bottom-color:white;}.themes-container ul li:hover{cursor:pointer;}.themes-container{width:40vw;}[class~=themes-container] ul li div{height:37.5pt;}[class~=themes-container] ul li div{width:25%;}.themes-container ul li:hover{filter:brightness(80%);}[class~=themes-container] ul{border-right-color:white;}[class~=themes-container] ul{border-top-color:white;}[class~=themes-container] ul{border-image:none;}[class~=themes-container] ul{padding-left:0;}[class~=themes-container] ul{padding-bottom:0;}[class~=themes-container] ul{padding-right:0;}[class~=themes-container] ul li{flex-direction:row;}[class~=themes-container] ul{padding-top:0;}[class~=themes-container] ul{width:100%;}@media (max-width: 1000px){[class~=themes-container]{width:60vw;}}'
+const darkModeStyles = '[class~=themes-container] ul,body,.themes-container,[class~=themes-container] ul li{display:flex;}[class~=themes-container] ul{border-left-width:1.5pt;}[class~=themes-container] ul{border-bottom-width:1.5pt;}[class~=themes-container] ul li div{background-color:orange;}[class~=themes-container] ul{border-right-width:1.5pt;}[class~=themes-container] ul{border-top-width:1.5pt;}[class~=themes-container] ul{border-left-style:solid;}[class~=themes-container] ul{border-bottom-style:solid;}body,.themes-container{align-items:center;}[class~=themes-container] ul{border-right-style:solid;}[class~=themes-container] ul{border-top-style:solid;}[class~=themes-container] ul li{list-style-type:none;}[class~=themes-container] ul{border-left-color:white;}[class~=themes-container] ul{border-bottom-color:white;}[class~=themes-container] ul{border-right-color:white;}[class~=themes-container] ul{border-top-color:white;}[class~=themes-container] ul li:hover{cursor:pointer;}[class~=themes-container] ul{border-image:none;}.themes-container,body{justify-content:center;}body{box-sizing:border-box;}[class~=themes-container] ul{padding-left:0;}[class~=themes-container] ul{padding-bottom:0;}[class~=themes-container] ul{padding-right:0;}[class~=themes-container] ul{padding-top:0;}[class~=themes-container] ul,.themes-container{flex-direction:column;}[class~=themes-container] ul{width:100%;}[class~=themes-container] ul li div{height:.520833333in;}[class~=themes-container] ul li:hover{filter:brightness(80%);}[class~=themes-container] ul li div{width:25%;}.themes-container{width:40vw;}[class~=themes-container] ul li{flex-direction:row;}@media (max-width: 1000px){[class~=themes-container]{width:60vw;}}:root{--orange:#f46815;}:root{--grey:#f8f8f7;}:root{--dark-grey:#e9e9e9;}:root{--darkest:#241e92;}:root{--dark:#5432d3;}:root{--light:#7b6cf6;}:root{--lightest:#e5a5ff;}[class~=package-container],[class~=main-view],[class~=um-login-container],.entry-area-bubble .text,[class~=view-body]{background:var(--darkest) !important;}[class~=package-list] > div > span > ul > div,.revision-topic-page,[class~=revision-homework-button-container],[class~=package-filter-list]{background:var(--dark) !important;}[class~=package-list] > div > span > ul > div > [class~=task-title]{color:var(--dark-grey) !important;}[class~=footer-container],[class~=revision-task],[class~=revision-strand-button],[class~=answer-only],[class~=status-bar-label-text],[class~=skill-delivery-view] [class~=view-body],[class~=revision-strand-page],[class~=um-header],[class~=footer-cookie-banner-container],[class~=btn-menu-item],.question-text,[class~=status-bar],[class~=package-heading],[class~=revision-homework-button],[class~=activity-feed-day],[class~=question-only],.wac-text-container .bookwork-code,[class~=revision-tab]{background:var(--light) !important;}[class~=wac-text-container] [class~=bookwork-code],[class~=revision-tabs]{border-bottom-width:medium !important;}[class~=revision-tabs]{border-bottom-style:none !important;}[class~=revision-tabs]{border-bottom-color:var(--light) !important;}[class~=revision-tabs]{border-image:none !important;}[class~=btn-menu-item]{border-left-width:.75pt !important;}[class~=btn-menu-item]{border-bottom-width:.75pt !important;}[class~=package-list] > div > span > ul > div{border-left-color:var(--dark) !important;}[class~=btn-menu-item]{border-right-width:.75pt !important;}[class~=btn-menu-item]{border-top-width:.75pt !important;}[class~=btn-menu-item]{border-left-style:solid !important;}[class~=btn-menu-item]{border-bottom-style:solid !important;}[class~=btn-menu-item]{border-right-style:solid !important;}[class~=btn-menu-item]{border-top-style:solid !important;}[class~=btn-menu-item]{border-left-color:var(--light) !important;}[class~=btn-menu-item]{border-bottom-color:var(--light) !important;}[class~=btn-menu-item]{border-right-color:var(--light) !important;}[class~=btn-menu-item]{border-top-color:var(--light) !important;}[class~=btn-menu-item]{border-image:none !important;}[class~=package-heading]{border-left-width:.75pt !important;}[class~=package-heading]{border-bottom-width:.75pt !important;}[class~=package-heading]{border-right-width:.75pt !important;}[class~=package-heading]{border-top-width:.75pt !important;}[class~=package-heading]{border-left-style:solid !important;}[class~=package-heading]{border-bottom-style:solid !important;}[class~=package-heading]{border-right-style:solid !important;}[class~=wac-text-container] [class~=bookwork-code]{border-left-width:medium !important;}[class~=package-heading]{border-top-style:solid !important;}[class~=um-login-box__content],[class~=activity-feed-work],[class~=choice-wac-options],[class~=accordion-element-header],[class~=revision-task-item],[class~=status-bar-menu-button],#answer-wac-box,[class~=status-bar-menu-item]{background:var(--lightest) !important;}[class~=package-heading]{border-left-color:var(--light) !important;}[class~=package-heading]{border-bottom-color:var(--light) !important;}[class~=package-heading]{border-right-color:var(--light) !important;}[class~=package-heading]{border-top-color:var(--light) !important;}[class~=package-heading]{border-image:none !important;}.revision-homework-button{border-left-width:.75pt !important;}.revision-homework-button{border-bottom-width:.75pt !important;}.revision-homework-button{border-right-width:.75pt !important;}.revision-homework-button{border-top-width:.75pt !important;}.revision-homework-button{border-left-style:solid !important;}[class~=answer-markup][class~=choice-wac-option][class~=choice][class~=choice-answer-markup]{background:var(--grey) !important;}.revision-homework-button{border-bottom-style:solid !important;}.revision-homework-button{border-right-style:solid !important;}.revision-homework-button{border-top-style:solid !important;}.revision-homework-button{border-left-color:var(--light) !important;}.revision-homework-button{border-bottom-color:var(--light) !important;}.revision-homework-button{border-right-color:var(--light) !important;}.revision-homework-button{border-top-color:var(--light) !important;}[class~=wac-text-container] [class~=bookwork-code]{border-right-width:medium !important;}.revision-homework-button{border-image:none !important;}.status-bar-menu-button,[class~=wac-text-container] [class~=bookwork-code]{border-top-width:medium !important;}[class~=wac-text-container] [class~=bookwork-code]{border-left-style:none !important;}.status-bar-menu-button{border-left-width:medium !important;}.status-bar-menu-button{border-bottom-width:medium !important;}.status-bar-menu-button{border-right-width:medium !important;}[class~=wac-text-container] [class~=bookwork-code]{border-bottom-style:none !important;}.status-bar-menu-button{border-left-style:solid !important;}.status-bar-menu-button{border-bottom-style:solid !important;}.status-bar-menu-button{border-right-style:solid !important;}.status-bar-menu-button{border-top-style:solid !important;}.status-bar-menu-button{border-left-color:var(--lightest) !important;}.status-bar-menu-button{border-bottom-color:var(--lightest) !important;}.status-bar-menu-button{border-right-color:var(--lightest) !important;}.status-bar-menu-button{border-top-color:var(--lightest) !important;}[class~=text-container],.revision-homework-button,[class~=revision-location-stream],[class~=btn-menu-item],[class~=revision-substrand-extra],[class~=school-selector],[class~=package-heading],[class~=result-inner] h1[class~=incorrect],.accordion-element-header,[class~=activity-feed-work-counts],[class~=activity-feed-work],[class~=wac-header-container],[class~=wac-text],.revision-strand-button,.question-text > div > .text,[class~=revision-topic-page]{color:var(--grey) !important;}.status-bar-menu-button{border-image:none !important;}[class~=status-bar-menu-item]{border-left-color:var(--lightest) !important;}[class~=status-bar-menu-item]{border-bottom-color:var(--lightest) !important;}[class~=status-bar-menu-item]{border-right-color:var(--lightest) !important;}[class~=status-bar-menu-item]{border-top-color:var(--lightest) !important;}[class~=choice-text]{background:var(--grey) !important;}[class~=active],[class~=revision-strand-button],[class~=revision-location-stream]{border-left-color:var(--grey) !important;}[class~=active],[class~=revision-location-stream],[class~=revision-strand-button]{border-bottom-color:var(--grey) !important;}[class~=active],[class~=revision-location-stream],[class~=revision-strand-button]{border-right-color:var(--grey) !important;}[class~=revision-location-stream],[class~=revision-strand-button],[class~=active]{border-top-color:var(--grey) !important;}[class~=wac-text-container] [class~=bookwork-code]{border-right-style:none !important;}[class~=active]{border-left-width:.75pt !important;}[class~=active]{border-bottom-width:.75pt !important;}[class~=active]{border-right-width:.75pt !important;}[class~=active]{border-top-width:.75pt !important;}[class~=active]{border-left-style:solid !important;}[class~=active]{border-bottom-style:solid !important;}[class~=active]{border-right-style:solid !important;}[class~=active]{border-top-style:solid !important;}[class~=active]{border-image:none !important;}[class~=package-filter-arrow]{border-left-color:var(--grey) !important;}[class~=dummytaskitem]{border-left-width:medium !important;}[class~=dummytaskitem]{border-bottom-width:medium !important;}[class~=dummytaskitem]{border-right-width:medium !important;}[class~=dummytaskitem]{border-top-width:medium !important;}[class~=dummytaskitem]{border-left-style:none !important;}[class~=dummytaskitem]{border-bottom-style:none !important;}[class~=wac-text-container] [class~=bookwork-code],[class~=dummytaskitem]{border-top-style:none !important;}[class~=dummytaskitem]{border-right-style:none !important;}[class~=dummytaskitem],[class~=wac-text-container] [class~=bookwork-code]{border-left-color:currentColor !important;}[class~=wac-text-container] [class~=bookwork-code],[class~=dummytaskitem]{border-bottom-color:currentColor !important;}[class~=dummytaskitem],[class~=wac-text-container] [class~=bookwork-code]{border-right-color:currentColor !important;}[class~=package-list] > div > span > ul > div{border-bottom-color:var(--dark) !important;}[class~=wac-text-container] [class~=bookwork-code],[class~=dummytaskitem]{border-top-color:currentColor !important;}[class~=wac-text-container] [class~=bookwork-code],[class~=dummytaskitem]{border-image:none !important;}[class~=package-list] > div > span > ul > div{border-right-color:var(--dark) !important;}[class~=revision-tab][class~=revision-tab-active]{background:var(--lightest) !important;}.activity-feed-day > h2,[class~=result-inner] h2,[class~=answer-part] > div > [class~=text],[class~=result-inner] [class~=result-subtitle-prominent]{color:var(--grey) !important;}[class~=selected] [class~=text]{color:var(--orange) !important;}[class~=package-list] > div > span > ul > div{border-top-color:var(--dark) !important;}'
 
-document.head.insertAdjacentHTML('beforeend','<style>' + styles + '</style>');
+document.head.insertAdjacentHTML('beforeend','<style>' + themeStyles + '</style>');
+document.head.insertAdjacentHTML('beforeend','<style>' + darkModeStyles + '</style>');
 
 main();

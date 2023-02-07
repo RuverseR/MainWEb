@@ -43,3 +43,141 @@ body {
         width: 60vw;
     }
 }
+
+/* DARK MODE */
+:root {
+    --orange: #F46815;
+    --grey: #F8F8F7;
+    --dark-grey: #E9E9E9;
+    --darkest: #241E92;
+    --dark: #5432D3;
+    --light: #7B6CF6;
+    --lightest: #E5A5FF;
+}
+
+.um-login-container,
+.package-container,
+.view-body,
+.main-view,
+.entry-area-bubble .text {
+    background: var(--darkest) !important;
+}
+
+.package-filter-list,
+.revision-homework-button-container,
+.revision-topic-page,
+.package-list > div > span > ul > div {
+    background: var(--dark) !important;
+}
+
+.package-list > div > span > ul > div {
+    border-color: var(--dark) !important;
+}
+
+.um-header,
+.package-heading,
+.footer-cookie-banner-container,
+.footer-container,
+.revision-tab,
+.revision-task
+.revision-strand-button,
+.revision-strand-page,
+.revision-homework-button
+.activity-feed-day,
+.status-bar,
+.status-bar-label-text,
+.btn-menu-item,
+.question-only,
+.answer-only,
+.question-text,
+.skill-delivery-view .view-body,
+.wac-text-container .bookwork-code {
+    background: var(--light) !important;
+}
+
+.revision-tabs {
+    border-bottom: var(--light) !important;
+}
+
+.btn-menu-item,
+.package-heading,
+.revision-homework-button {
+    border: 1px solid var(--light) !important;
+}
+
+.wac-text-container .bookwork-code {
+    border: none !important;
+}
+
+.um-login-box__content,
+.revision-tab.revision-tab-active,
+.accordion-element-header,
+.activity-feed-work,
+.status-bar-menu-item,
+.status-bar-menu-button,
+.revision-task-item,
+#answer-wac-box,
+.choice-wac-options {
+    background: var(--lightest) !important;
+}
+
+.status-bar-menu-button {
+    border: solid var(--lightest) !important;
+}
+
+.status-bar-menu-item {
+    border-color: var(--lightest) !important;
+}
+
+.school-selector,
+.revision-strand-button,
+.accordion-element-header,
+.revision-substrand-extra,
+.activity-feed-day > h2,
+.activity-feed-work,
+.activity-feed-work-counts,
+.revision-location-stream,
+.btn-menu-item,
+.revision-topic-page,
+.revision-homework-button,
+.package-heading,
+.question-text > div > .text,
+.result-inner h2,
+.result-inner .result-subtitle-prominent,
+.result-inner h1.incorrect,
+.text-container,
+.answer-part > div > .text,
+.wac-header-container,
+.wac-text {
+    color: var(--grey) !important;
+}
+
+.answer-markup.choice-wac-option.choice.choice-answer-markup,
+.choice-text {
+    background: var(--grey) !important;
+}
+
+.revision-location-stream,
+.revision-strand-button {
+    border-color: var(--grey) !important;
+}
+
+.active {
+    border: 1px solid var(--grey) !important;
+}
+
+.package-filter-arrow {
+    border-left-color: var(--grey) !important;
+}
+
+.package-list > div > span > ul > div > .task-title {
+    color: var(--dark-grey) !important;
+}
+
+.selected .text {
+    color: var(--orange) !important;
+}
+
+.dummytaskitem {
+    border: none !important;
+}
