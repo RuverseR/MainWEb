@@ -23,7 +23,7 @@ async function getDatabase() {
         "method": "GET",
         "headers": {
           "content-type": "application/json",
-          "x-apikey": "63e1774a3bc6b255ed0c4729",
+          "x-apikey": e,
           "cache-control": "no-cache"
         }
     }
@@ -45,7 +45,7 @@ async function postDatabase() {
         "method": "POST",
         "headers": {
           "content-type": "application/json",
-          "x-apikey": "63e1774a3bc6b255ed0c4729",
+          "x-apikey": e,
           "cache-control": "no-cache"
         },
         "processData": false,
@@ -64,7 +64,7 @@ async function putDatabase() {
         "method": "PUT",
         "headers": {
           "Content-Type": "application/json",
-          "x-apikey": "63e1774a3bc6b255ed0c4729",
+          "x-apikey": e,
           "cache-control": "no-cache"
         },
         "body": JSON.stringify(jsonData)
@@ -73,25 +73,6 @@ async function putDatabase() {
     response = await fetch(databaseURL, settings);
     console.log(await response.json())
 }
-
-var jsondata = {"siuuuu": "updated","field2": "xxx"};
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": databaseURL,
-  "method": "PUT",
-  "headers": {
-    "content-type": "application/json",
-    "x-apikey": "63e1774a3bc6b255ed0c4729",
-    "cache-control": "no-cache"
-  },
-  "processData": false,
-  "data": JSON.stringify(jsondata)
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
 
 postButton.addEventListener('click', () => {
     postDatabase();
