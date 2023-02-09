@@ -181,6 +181,14 @@ body {
     color: var(--orange) !important;
 }
 
+.bookwork-highlight {
+    border: 5px solid var(--light);
+}
+
+.bookwork-highlight-orange {
+    border: 5px solid var(--orange);
+}
+
 .dummytaskitem {
     border: none !important;
 }
