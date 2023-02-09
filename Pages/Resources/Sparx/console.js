@@ -54,6 +54,11 @@ mutationObserver.observe(document.documentElement, {
 async function main() {
     if (document.querySelector('.package-container') !== null) { showThemes(); }
 
+    const xpElement = document.querySelector('.status-bar-label-text') //XP header
+    if (xpElement !== null) {
+        xpElement.textContent = "It doesn't matter :)";
+    } 
+
     // Display stored answer
     let correctStatusElement = document.querySelector('.page.result .result-inner .correct');
     if (correctStatusElement !== null && document.querySelector('#shown-answer') === null) {
