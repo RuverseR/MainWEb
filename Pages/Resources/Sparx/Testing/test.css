@@ -58,9 +58,12 @@ body {
 .um-login-container,
 .package-container,
 .view-body,
-.main-view,
-.entry-area-bubble .text {
+.main-view {
     background: var(--darkest) !important;
+}
+
+.entry-area-bubble .text {
+    color: var(--darkest) !important;
 }
 
 .package-filter-list,
