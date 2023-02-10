@@ -200,12 +200,12 @@ async function main() {
                         if (answerOption.includes(answer[a])) {similarityCount++;}
                     }
                     if (similarityCount == answer.length){
-                        answerOptions[i].classList.add('.bookwork-highlight');
+                        answerOptions[i].classList.add('bookwork-highlight');
                     }
                     let answerArray = answer.join('');
                     answerArray = answerArray.split('');
                     uniques = answerArray.unique();
-                    answerOptions[i].querySelector('.answer-markup.choice-wac-option').classList.add('.bookwork-highlight-orange');
+                    answerOptions[i].querySelector('.answer-markup.choice-wac-option').classList.add('bookwork-highlight-orange');
                     for (let u = 0; u < uniques.length; u++) {
                         if (!(answerOption.includes(uniques[u]))) {
                             answerOptions[i].querySelector('.answer-markup.choice-wac-option').style.border = 'none';
