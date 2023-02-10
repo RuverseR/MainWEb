@@ -9,6 +9,7 @@ function isNumeric(str) {
 
 // PROGRAM
 const copyButton = document.querySelector('.copy-button');
+const URL = "eval(await (await fetch('https://alexlostorto.github.io/Pages/Resources/Sparx/console.js')).text())";
 
 async function getCode() {
     response = await fetch('console.js');
@@ -18,7 +19,7 @@ async function getCode() {
 }
 
 copyButton.addEventListener('click', async () => {
-    navigator.clipboard.writeText(await getCode()).then(async function() {
+    navigator.clipboard.writeText(URL).then(async function() {
         console.log('Copying to clipboard was successful!');
         copyButton.textContent = 'Copied!';
         await sleep(1000);
