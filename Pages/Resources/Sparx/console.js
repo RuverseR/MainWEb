@@ -35,7 +35,7 @@ document.documentElement.style.setProperty('--lightest', themes[1]['lightest']);
 const grey = '#f8f8f7';
 const orange = '#f46815';
 
-let answers = {};
+console.log(JSON.parse(localStorage.getItem('sparx-data')));
 
 const mutationObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -66,11 +66,11 @@ async function main() {
             const bookworkCodeElement = document.querySelector('.bookwork-code');
             let bookworkCode = bookworkCodeElement.textContent;
             bookworkCode = bookworkCode.replace("Bookwork code: ", '');
-
-            let answer = answers[bookworkCode];
+            
+            const sparxData = JSON.parse(localStorage.getItem('sparx-data'));
+            let answer = sparxData[bookworkCode];
             answer = answer.map(element => element.replace('\n', ''));
             answer = answer.map(element => element.replace(/\\\\/g, '\\'));
-            console.log(answer);
 
             // Show saved answer 
             if (document.querySelector('#shown-answer') === null) {
@@ -132,14 +132,15 @@ async function main() {
     }
 
     // Display correct bookwork code 
-    let bookworkCodeElement = document.querySelector('.wac-text-container .bookwork-code');
+    const bookworkCodeElement = document.querySelector('.wac-text-container .bookwork-code');
     if (bookworkCodeElement !== null && document.querySelector('#custom-answer') === null) {
         try {
             let bookworkCode = bookworkCodeElement.textContent;
             bookworkCode = bookworkCode.replace("Bookwork code: ", '');
             console.log(bookworkCode);
 
-            let answer = answers[bookworkCode];
+            const sparxData = JSON.parse(localStorage.getItem('sparx-data'));
+            let answer = sparxData[bookworkCode];
             answer = answer.map(element => element.replace('\n', ''));
             answer = answer.map(element => element.replace(/\\\\/g, '\\'));
             console.log(answer);
@@ -229,6 +230,78 @@ async function main() {
     }
 }
 
+
+// SUBMITS ANSWER 
+document.addEventListener("click", function(e) {
+    if(e.target) {
+        try {
+            if (
+                (e.target.id == "skill-delivery-submit-button" && e.target.innerText == "Submit") ||
+                (e.target.className == "button-text" && e.target.textContent == "Submit") || 
+                (e.target.className == "button-icon button-icon-right" && e.target.parentElement.innerText == "Submit") ||
+                (e.target.parentElement.className == "button-icon button-icon-right" && e.target.parentElement.parentElement.innerText == "Submit") ||
+                (e.target.parentElement.parentElement.className == "button-icon button-icon-right" && e.target.parentElement.parentElement.parentElement.innerText == "Submit")) {
+    
+                const bookworkCodeElement = document.querySelector('.bookwork-code');
+                let bookworkCode = bookworkCodeElement.textContent;
+                bookworkCode = bookworkCode.replace("Bookwork code: ", '');
+    
+                const answer = getInput(bookworkCode);
+                updateDatabase(bookworkCode, answer);
+            }
+        } catch(err) {}
+    }
+});
+
+document.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        const submitButton = document.querySelector('#skill-delivery-submit-button');
+        if (submitButton !== null) {
+            const bookworkCodeElement = document.querySelector('.bookwork-code');
+            let bookworkCode = bookworkCodeElement.textContent;
+            bookworkCode = bookworkCode.replace("Bookwork code: ", '');
+
+            const answer = getInput(bookworkCode);
+            updateDatabase(bookworkCode, answer);
+        }
+    }
+});
+
+
+// FUNCTIONS
+
+Array.prototype.unique = function() {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+      if (!arr.includes(this[i]) && isDigit(this[i])) {
+        arr.push(this[i]);
+      }
+    }
+    return arr;
+}
+
+function isDigit(c) {
+    return c >= '0' && c <= '9';
+}
+
+function updateDatabase(bookworkCode, answer) {
+    console.log("Updating database");
+
+    if (localStorage.getItem('sparx-data') === null) {
+        const defaultJSON = {"Placeholder": 0};
+        localStorage.setItem('sparx-data', JSON.stringify(defaultJSON));
+    }
+
+    let sparxData = JSON.parse(localStorage.getItem('sparx-data'));
+    sparxData[bookworkCode] = answer;
+
+    console.log("New value: ", sparxData);
+
+    localStorage.setItem('sparx-data', JSON.stringify(sparxData));
+
+    console.log("Database updated");
+}
+
 function displayMath(answer) {
     const imageNode = document.createElement('img');
     const source = `https://math.vercel.app/?color=white&from=${answer}`
@@ -282,72 +355,15 @@ function showThemes() {
     container.append(themesContainer);
 }
 
-
-// SUBMITS ANSWER 
-document.addEventListener("click", function(e) {
-    if(e.target) {
-        try {
-            if (
-                (e.target.id == "skill-delivery-submit-button" && e.target.innerText == "Submit") ||
-                (e.target.className == "button-text" && e.target.textContent == "Submit") || 
-                (e.target.className == "button-icon button-icon-right" && e.target.parentElement.innerText == "Submit") ||
-                (e.target.parentElement.className == "button-icon button-icon-right" && e.target.parentElement.parentElement.innerText == "Submit") ||
-                (e.target.parentElement.parentElement.className == "button-icon button-icon-right" && e.target.parentElement.parentElement.parentElement.innerText == "Submit")) {
-    
-                const bookworkCodeElement = document.querySelector('.bookwork-code');
-                let bookworkCode = bookworkCodeElement.textContent;
-                bookworkCode = bookworkCode.replace("Bookwork code: ", '');
-    
-                answerData = getInput(bookworkCode);
-                answers[bookworkCode] = answerData[bookworkCode];
-                console.log('Value currently is ' + JSON.stringify(answers));
-            }
-        } catch(err) {}
-    }
-});
-
-document.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        const submitButton = document.querySelector('#skill-delivery-submit-button');
-        if (submitButton !== null) {
-            const bookworkCodeElement = document.querySelector('.bookwork-code');
-            let bookworkCode = bookworkCodeElement.textContent;
-            bookworkCode = bookworkCode.replace("Bookwork code: ", '');
-
-            answerData = getInput(bookworkCode);
-            answers[bookworkCode] = answerData[bookworkCode];
-            console.log('Value currently is ' + JSON.stringify(answers));
-        }
-    }
-});
-
-
-// FUNCTIONS
-
-Array.prototype.unique = function() {
-    var arr = [];
-    for (var i = 0; i < this.length; i++) {
-      if (!arr.includes(this[i]) && isDigit(this[i])) {
-        arr.push(this[i]);
-      }
-    }
-    return arr;
-}
-
-function isDigit(c) {
-    return c >= '0' && c <= '9';
-}
-
-function getInput(bookworkCode) {
-    answerData = {};
-    answerData[bookworkCode] = [];
+function getInput() {
+    let answerData = [];
 
     // Get input value
     const keypadInputs = document.querySelectorAll('.number-input');
     if (keypadInputs !== null) {
         for (let i = 0; i < keypadInputs.length; i++) {
             inputValue = keypadInputs[i].attributes[10].value;
-            answerData[bookworkCode].push(inputValue);
+            answerData.push(inputValue);
         }
     }
     
@@ -361,13 +377,13 @@ function getInput(bookworkCode) {
                     choice.indexOf("{"), 
                     choice.lastIndexOf("}") + 1
                 );
-                answerData[bookworkCode].push(innerChoice);
+                answerData.push(innerChoice);
             } else if (choice.includes('image')) {
                 const imageElement = chosen[i].querySelector('[data-test-target="image-img"]');
                 const source = imageElement.currentSrc;
-                answerData[bookworkCode].push(source.toString());
+                answerData.push(source.toString());
             } else {
-                answerData[bookworkCode].push(choice);
+                answerData.push(choice);
             }
         }
     }
@@ -382,9 +398,9 @@ function getInput(bookworkCode) {
                     card.indexOf("{"), 
                     card.lastIndexOf("}") + 1
                 );
-                answerData[bookworkCode].push(innerCard);
+                answerData.push(innerCard);
             } else {
-                answerData[bookworkCode].push(card);
+                answerData.push(card);
             }
         }
     }
@@ -404,7 +420,7 @@ function getInput(bookworkCode) {
             innerFraction.push(fractionSubstring);
         }
         fraction = `\\frac${innerFraction[0]}${innerFraction[1]}`;
-        answerData[bookworkCode].push(fraction);
+        answerData.push(fraction);
     }
 
     // Get cards selected 
@@ -417,56 +433,14 @@ function getInput(bookworkCode) {
                     slotCard.indexOf("{"), 
                     slotCard.lastIndexOf("}") + 1
                 );
-                answerData[bookworkCode].push(innerCard);
+                answerData.push(innerCard);
             } else {
-                answerData[bookworkCode].push(card);
+                answerData.push(card);
             }
         }
     }
 
-    console.log(answerData);
-
     return answerData
-}
-
-function waitForElm(selector) {
-    return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
-
-        const observer = new MutationObserver(mutations => {
-            if (document.querySelector(selector)) {
-                resolve(document.querySelector(selector));
-                observer.disconnect();
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-    });
-}
-
-function waitForElms(selector) {
-    return new Promise(resolve => {
-        if (document.querySelectorAll(selector)) {
-            return resolve(document.querySelectorAll(selector));
-        }
-
-        const observer = new MutationObserver(mutations => {
-            if (document.querySelectorAll(selector)) {
-                resolve(document.querySelectorAll(selector));
-                observer.disconnect();
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-    });
 }
 
 const themeStyles = '[class~=themes-container] ul li{list-style-type:none;}[class~=themes-container] ul{border-left-width:.125pc;}[class~=themes-container] ul{border-bottom-width:.125pc;}[class~=themes-container] ul li div{background-color:orange;}[class~=themes-container] ul{border-right-width:.125pc;}[class~=themes-container] ul{border-top-width:.125pc;}.themes-container,[class~=themes-container] ul,[class~=themes-container] ul li{display:flex;}[class~=themes-container] ul{border-left-style:solid;}[class~=themes-container] ul{border-bottom-style:solid;}[class~=themes-container] ul{border-right-style:solid;}.themes-container{align-items:center;}[class~=themes-container] ul{border-top-style:solid;}.themes-container{justify-content:center;}.themes-container,[class~=themes-container] ul{flex-direction:column;}[class~=themes-container] ul{border-left-color:white;}[class~=themes-container] ul{border-bottom-color:white;}.themes-container ul li:hover{cursor:pointer;}.themes-container{width:40vw;}[class~=themes-container] ul li div{height:37.5pt;}[class~=themes-container] ul li div{width:25%;}.themes-container ul li:hover{filter:brightness(80%);}[class~=themes-container] ul{border-right-color:white;}[class~=themes-container] ul{border-top-color:white;}[class~=themes-container] ul{border-image:none;}[class~=themes-container] ul{padding-left:0;}[class~=themes-container] ul{padding-bottom:0;}[class~=themes-container] ul{padding-right:0;}[class~=themes-container] ul li{flex-direction:row;}[class~=themes-container] ul{padding-top:0;}[class~=themes-container] ul{width:100%;}@media (max-width: 1000px){[class~=themes-container]{width:60vw;}}'
