@@ -152,7 +152,8 @@ body {
 .text-container,
 .answer-part > div > .text,
 .wac-header-container,
-.wac-text {
+.wac-text,
+.minigame-description > div {
     color: var(--grey) !important;
 }
 
