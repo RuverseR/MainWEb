@@ -63,7 +63,8 @@ body {
     background: var(--darkest) !important;
 }
 
-.entry-area-bubble .text {
+.entry-area-bubble .text,
+.answer .markdown.text-container {
     color: var(--darkest) !important;
 }
 
@@ -179,16 +180,9 @@ body {
     color: var(--dark-grey) !important;
 }
 
-.selected .text {
+.selected .text,
+.choice-wac-option.selected {
     color: var(--orange) !important;
-}
-
-.bookwork-highlight {
-    border: 5px solid var(--light);
-}
-
-.bookwork-highlight-orange {
-    border: 5px solid var(--orange);
 }
 
 .dummytaskitem {
