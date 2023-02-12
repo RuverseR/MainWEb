@@ -73,55 +73,41 @@ async function main() {
             answer = answer.map(element => element.replace(/\\\\/g, '\\'));
 
             // Show saved answer 
-            if (document.querySelector('#shown-answer') === null) {
-                if (!answer.every(hasCurly)) {
-                    const textNode = document.createElement('b');
-                    const divNode = document.createElement('div');
-                    textNode.innerText = `Stored answer: ${answer.join(', ')}`;
-                    textNode.setAttribute('id', 'shown-answer');
-                    textNode.style['font-size'] = '2.5rem';
+            if (answer.every(hasSource)) {
+                const divNode = document.createElement('div');
+                const imageNode = document.createElement('img');
+                imageNode.src = answer.toString();
+                imageNode.setAttribute('id', 'shown-answer');
+                imageNode.style['height'] = "4rem";
 
-                    divNode.appendChild(textNode);
-                    divNode.style['margin-bottom'] = '20px';
-                    divNode.style['margin-top'] = '20px';
-                    divNode.style.color = grey;
-                    document.querySelector('.result-inner').append(divNode);
-                } else if (answer.every(hasSource)) {
-                    const divNode = document.createElement('div');
-                    const imageNode = document.createElement('img');
-                    imageNode.src = answer.toString();
-                    imageNode.setAttribute('id', 'shown-answer');
-                    imageNode.style['height'] = "4rem";
+                divNode.appendChild(imageNode);
+                divNode.style['margin-bottom'] = '20px';
+                divNode.style['margin-top'] = '20px';
+                divNode.style.color = grey;
+                document.querySelector('.location-title').append(divNode);
+            } else {
+                let answers = answer.join(', ');
 
-                    divNode.appendChild(imageNode);
-                    divNode.style['margin-bottom'] = '20px';
-                    divNode.style['margin-top'] = '20px';
-                    divNode.style.color = grey;
-                    document.querySelector('.location-title').append(divNode);
-                } else {
-                    let answers = answer.join(', ');
+                const textNode = document.createElement('span');
+                textNode.textContent = `Answer: ${answers}`;
+                textNode.style['margin'] = '0.3rem 1rem 0 0';
+                textNode.style['font-size'] = '2.5rem';
+                textNode.style['color'] = 'white';
+                textNode.setAttribute('id', 'shown-answer');
 
-                    const textNode = document.createElement('span');
-                    textNode.textContent = `\(${answers}\)`;
-                    textNode.style['margin'] = '0.3rem 1rem 0 0';
-                    textNode.style['font-size'] = '2.5rem';
-                    textNode.style['color'] = 'white';
-                    textNode.setAttribute('id', 'shown-answer');
+                const divNode = document.createElement('div');
+                divNode.style['display'] = 'flex';
+                divNode.style['align-items'] = 'center';
+                divNode.style['justify-content'] = 'center';
 
-                    const divNode = document.createElement('div');
-                    divNode.style['display'] = 'flex';
-                    divNode.style['align-items'] = 'center';
-                    divNode.style['justify-content'] = 'center';
+                divNode.appendChild(textNode);
+                divNode.style['margin-bottom'] = '20px';
+                divNode.style['margin-top'] = '20px';
+                document.querySelector('.result-inner').append(divNode);
 
-                    divNode.appendChild(textNode);
-                    divNode.style['margin-bottom'] = '20px';
-                    divNode.style['margin-top'] = '20px';
-                    document.querySelector('.result-inner').append(divNode);
-
-                    katex.render(answers, document.getElementById('custom-answer'), {
-                        throwOnError: false
-                    });
-                }
+                katex.render(answers, document.getElementById('shown-answer'), {
+                    throwOnError: false
+                });
             }
         } catch(err) {console.log(err)}
     }
@@ -141,51 +127,48 @@ async function main() {
             console.log(bookworkAnswer);
 
             // Show saved answer 
-            if (document.querySelector('#custom-answer') === null) {
-                console.log("Trying to show answer...")
-                if (!bookworkAnswer.every(hasCurly)) {
-                    const textNode = document.createElement('b');
-                    const divNode = document.createElement('div');
-                    textNode.innerText = `Answer: ${bookworkAnswer.join(', ')}`;
-                    textNode.setAttribute('id', 'custom-answer');
+            if (!bookworkAnswer.every(hasCurly)) {
+                const textNode = document.createElement('b');
+                const divNode = document.createElement('div');
+                textNode.innerText = `Answer: ${bookworkAnswer.join(', ')}`;
+                textNode.setAttribute('id', 'custom-answer');
 
-                    divNode.appendChild(textNode);
-                    divNode.style['margin-bottom'] = '20px';
-                    divNode.style.color = grey;
-                    document.querySelector('.wac-text-container').append(divNode);
-                } else if (bookworkAnswer.every(hasSource)) {
-                    const divNode = document.createElement('div');
-                    const imageNode = document.createElement('img');
-                    imageNode.src = bookworkAnswer.toString();
-                    imageNode.setAttribute('id', 'custom-answer');
-                    imageNode.style['width'] = "50%";
+                divNode.appendChild(textNode);
+                divNode.style['margin-bottom'] = '20px';
+                divNode.style.color = grey;
+                document.querySelector('.wac-text-container').append(divNode);
+            } else if (bookworkAnswer.every(hasSource)) {
+                const divNode = document.createElement('div');
+                const imageNode = document.createElement('img');
+                imageNode.src = bookworkAnswer.toString();
+                imageNode.setAttribute('id', 'custom-answer');
+                imageNode.style['width'] = "50%";
 
-                    divNode.appendChild(imageNode);
-                    divNode.style['margin-bottom'] = '20px';
-                    divNode.style.color = grey;
-                    document.querySelector('.wac-text-container').append(divNode);
-                } else {
-                    let answers = bookworkAnswer.join(', ');
-                    const textNode = document.createElement('span');
-                    textNode.textContent = `\(${answers}\)`;
-                    textNode.style['margin'] = '0.3rem 1rem 0 0';
-                    textNode.style['color'] = 'white';
+                divNode.appendChild(imageNode);
+                divNode.style['margin-bottom'] = '20px';
+                divNode.style.color = grey;
+                document.querySelector('.wac-text-container').append(divNode);
+            } else {
+                let answers = bookworkAnswer.join(', ');
+                const textNode = document.createElement('span');
+                textNode.textContent = `Answer: ${answers}`;
+                textNode.style['margin'] = '0.3rem 1rem 0 0';
+                textNode.style['color'] = 'white';
 
-                    const divNode = document.createElement('div');
-                    divNode.style['display'] = 'flex';
-                    divNode.style['align-items'] = 'center';
-                    divNode.style['justify-content'] = 'center';
-                    textNode.setAttribute('id', 'custom-answer');
-                    textNode.style['height'] = '3rem';
+                const divNode = document.createElement('div');
+                divNode.style['display'] = 'flex';
+                divNode.style['align-items'] = 'center';
+                divNode.style['justify-content'] = 'center';
+                textNode.setAttribute('id', 'custom-answer');
+                textNode.style['height'] = '3rem';
 
-                    divNode.appendChild(textNode);
-                    divNode.style['margin-bottom'] = '20px';
-                    document.querySelector('.wac-text-container').append(divNode);
+                divNode.appendChild(textNode);
+                divNode.style['margin-bottom'] = '20px';
+                document.querySelector('.wac-text-container').append(divNode);
 
-                    katex.render(answers, document.getElementById('custom-answer'), {
-                        throwOnError: false
-                    });
-                }
+                katex.render(answers, document.getElementById('custom-answer'), {
+                    throwOnError: false
+                });
             }
 
             // Get choices
@@ -426,7 +409,9 @@ const katexStyles = '@font-face{font-family:KaTeX_AMS;font-style:normal;font-wei
 
 // Katex 
 document.head.insertAdjacentHTML('beforeend','<style>' + katexStyles + '</style>');
-eval(await (await fetch('https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js')).text());
+katexJS = document.createElement('script');
+katexJS.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js';
+document.head.appendChild(katexJS);
 
 // CSS 
 document.head.insertAdjacentHTML('beforeend','<style>' + themeStyles + '</style>');
