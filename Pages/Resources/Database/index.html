@@ -32,14 +32,28 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://api.countapi.xyz/hit/alexlostorto.github.io/visits?callback=liveViews" async ></script>
+    <script
+      src="https://api.countapi.xyz/hit/alexlostorto.github.io/visits?callback=liveViews"
+      async
+    ></script>
     <link rel="stylesheet" href="../../../styles.css" />
     <link rel="stylesheet" href="resource.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script src="../../../Assets/PHP/jquery.js" defer></script>
     <script src="../../../Assets/PHP/component.js" defer></script>
     <script src="../../../Assets/PHP/universal.js" defer></script>
@@ -57,6 +71,9 @@
       <header><span class="gradient-header">Database</span></header>
 
       <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>RestDB</h2>
+      </div>
       <div id="about" class="text-container">
         <p class="description">
           This <span class="orange-text">program</span> was created to test the
@@ -67,15 +84,46 @@
       <!-- Program -->
       <div class="program-container">
         <div class="buttons">
-          <button id="get-button">GET</button>
-          <button id="put-button">PUT</button>
-          <button id="post-button">POST</button>
+          <button id="rest-get-button">GET</button>
+          <button id="rest-put-button">PUT</button>
+          <button id="rest-post-button">POST</button>
         </div>
         <div class="sub-header">
           <h2 class="output-sub-header">Output</h2>
         </div>
         <div class="text-container">
-          <p class="output-text" id="request-output">
+          <p class="output-text" id="rest-request-output">
+            This is where the <span class="orange-text">output</span> will be...
+          </p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div id="projects" class="sub-header">
+        <h2>MongoDB</h2>
+      </div>
+      <div id="about" class="text-container">
+        <p class="description">
+          This <span class="orange-text">program</span> was created to test the
+          MongoDB database API.
+        </p>
+      </div>
+
+      <!-- Program -->
+      <div class="program-container">
+        <div class="buttons">
+          <button id="mongo-get-answers-button">DATA</button>
+          <button id="mongo-get-users-button">USERS</button>
+          <button id="mongo-post-button">POST</button>
+        </div>
+        <div class="buttons">
+          <button id="mongo-find-button">FIND</button>
+        </div>
+        <div class="sub-header">
+          <h2 class="output-sub-header">Output</h2>
+        </div>
+        <div class="text-container">
+          <p class="output-text" id="mongo-request-output">
             This is where the <span class="orange-text">output</span> will be...
           </p>
         </div>
