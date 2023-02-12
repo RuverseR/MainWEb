@@ -9,7 +9,7 @@ function isNumeric(str) {
 
 // PROGRAM
 const copyButton = document.querySelector('.copy-button');
-const URL = "s=document.createElement('script');s.src='https://alexlostorto.github.io/Pages/Resources/Sparx/console.js';document.head.appendChild(s);";
+const URL = "s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/alexlostorto/Sparx-Extension/console.js';document.head.appendChild(s);";
 
 async function getCode() {
     response = await fetch('console.js');
