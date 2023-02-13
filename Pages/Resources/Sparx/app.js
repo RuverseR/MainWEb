@@ -9,7 +9,7 @@ function isNumeric(str) {
 
 // PROGRAM
 const copyButton = document.querySelector('.copy-button');
-const URL = "s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/alexlostorto/sparx@v2.0.1/console/console.js';document.head.appendChild(s);";
+const URL = "s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/alexlostorto/sparx@v2.0.2/console/console.js';document.head.appendChild(s);";
 
 copyButton.addEventListener('click', async () => {
     navigator.clipboard.writeText(URL).then(async function() {
