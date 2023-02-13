@@ -147,7 +147,6 @@ async function checkUser() {
 
 checkUser();
 
-
 async function authorise() {
     if (authorisedToken === null) {
       let jsondata = {
@@ -157,16 +156,15 @@ async function authorise() {
       let settings = {
         "async": true,
         "crossDomain": true,
-        "url": `https://realm.mongodb.com/api/client/v2.0/app/${appName}/auth/providers/api-key/login`,
         "method": "POST",
         "headers": {
           'Content-Type': 'application/json'
         },
         'processData': false,
-        'data': JSON.stringify(jsondata)
+        body: JSON.stringify(jsondata)
       }
 
-      let response = await $.ajax(settings);
+      let response = await (await fetch(`https://realm.mongodb.com/api/client/v2.0/app/${appName}/auth/providers/api-key/login`, settings)).json();
       authorisedToken = response.access_token;
     }
     return authorisedToken;
