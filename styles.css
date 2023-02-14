@@ -371,6 +371,7 @@ background: #bb7900;
     border-right: .15em solid orange; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     visibility: hidden;
+    height: 1.2rem;
     animation: blink-caret .75s step-end infinite;
 }
 
@@ -579,6 +580,10 @@ background: #bb7900;
 
     .header h2 {
         font-size: 1.5rem;
+    }
+
+    .typewriter {
+        height: 2rem;
     }
 
     .socials-container img {
