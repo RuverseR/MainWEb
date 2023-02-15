@@ -6,47 +6,52 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://alexlostorto.github.io/</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:04+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Assets/Documents/CV%202%20(PDF).pdf</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:03+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://alexlostorto.github.io/Pages/Resources/Exam_Timetable/index.html</loc>
+    <lastmod>2023-02-15T16:34:03+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Trigonometry/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:04+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Insta_Size/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:03+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Quadratics/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:04+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Sequences/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:04+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Chemistry/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:03+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Music/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:04+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://alexlostorto.github.io/Pages/Resources/Useful_Links/index.html</loc>
-    <lastmod>2023-02-04T12:53:07+00:00</lastmod>
+    <lastmod>2023-02-15T16:34:04+00:00</lastmod>
     <priority>0.80</priority>
   </url>
 </urlset>
