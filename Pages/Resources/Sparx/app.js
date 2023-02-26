@@ -14,14 +14,11 @@ async function fetchScript() {
     let response = await fetch('https://raw.githubusercontent.com/alexlostorto/sparx/main/release.json');
     let json = await response.json();
 
-    return json.contentScript;
+    return `s=document.createElement('script');s.src='${json.contentScript}';document.head.appendChild(s);`;
 }
 
-const url = await fetchScript();
-const URL = `s=document.createElement('script');s.src='${await url}';document.head.appendChild(s);`;
-
 copyButton.addEventListener('click', async () => {
-    navigator.clipboard.writeText(URL).then(async function() {
+    navigator.clipboard.writeText(await fetchScript()).then(async function() {
         console.log('Copying to clipboard was successful!');
         copyButton.textContent = 'Copied!';
         await sleep(1000);
