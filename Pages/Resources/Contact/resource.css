@@ -11,7 +11,7 @@ body {
 
 @media (min-width: 48em) {
     body {
-        font-size: calc(var(--base-font-size));
+        font-size: calc(var(--base-font-size)*1.5);
     }
 }
 
