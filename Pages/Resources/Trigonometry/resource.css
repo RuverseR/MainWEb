@@ -22,7 +22,15 @@ header span {
     letter-spacing: -.03em;
 }
 
+.sub-header {
+    padding: 2vh 5vh 3vh;
+}
+
 /* Program section */
+.cosine-formula {
+    padding-bottom: 5vh;
+}
+
 .image-container {
     display: flex;
     align-items: center;
