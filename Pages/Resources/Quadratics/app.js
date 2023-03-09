@@ -64,7 +64,7 @@ const outputTurningPoint = document.querySelector('#completing-the-square #outpu
 
 function completeSquare(a, b, c) {
     let x = -b / (2 * a)
-    let y = c - (b**2 / 4*a)
+    let y = c - (b**2 / (4*a))
     console.log(`(${x}, ${y})`);
     return [x, y]
 }
@@ -76,9 +76,9 @@ function displayTurningPoint() {
       outputTurningPoint.innerHTML = "loading...";
       
       if (isNaN(solutions[0]) || isNaN(solutions[1])) {
-        outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]} ,${solutions[1]})` + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>.";
+        outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]}, ${solutions[1]})` + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>.";
       } else {
-        outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]} ,${solutions[1]})`;
+        outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]}, ${solutions[1]})`;
       }
     }
 }
