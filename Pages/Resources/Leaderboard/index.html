@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- HEAD -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Google Console Verification -->
+    <meta name="google-site-verification" content="Ypc_O50xyYcRsv6t5OlfQYcCYE6oPsvqoFYubJ__8UY" />
+
+    <!-- Default Settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <meta name="keywords" content="alexlostorto, Alex, Alex lo Storto, Alex Lo Storto, Photography Portfolio, portfolio, portfolio website, Portfolio Website, Photography, photographer, programmer, coder, web developer, open source, space-themed, space" />
+    <meta name="description" content="Personal portfolio displaying my photography/web development skills." />
+    <meta name="author" content="Alex lo Storto" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="Icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="Icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="Icons/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../Assets/PHP/universal.css" />
+    <link rel="stylesheet" href="resource.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+    <!-- Javascript -->
+    <script src="../../../Assets/PHP/component.js" defer></script>
+    <script src="../../../Assets/PHP/universal.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>Alex lo Storto</title>
+  </head>
+
+  <!-- BODY -->
+  <body>
+    <div class="body-container">
+      <!-- Navbar  -->
+      <app-navbar></app-navbar>
+
+      <!-- Header -->
+      <header><span class="gradient-header">Leaderboard</span></header>
+
+      <!-- Description -->
+      <div id="about" class="text-container">
+        <p class="description">This <span class="orange-text">program</span> was created to <span class="orange-text">motivate</span> my classmates to finish their <span class="orange-text">engineering</span> coursework!</p>
+      </div>
+
+      <!-- Program -->
+      <div class="program-container">
+        <div class="leaderboard">
+          <div class="user">
+            <div class="name">Alex</div>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <div class="score">80%</div>
+          </div>
+          <div class="user">
+            <div class="name">:></div>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <div class="score">50%</div>
+          </div>
+          <div class="user">
+            <div class="name">Kelvin</div>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <div class="score">20%</div>
+          </div>
+          <div class="user">
+            <div class="name">Daniel</div>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <div class="score">20%</div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div id="about" class="text-container">
+          <p class="description"><span class="orange-text">Click</span> a user to see their <span class="orange-text">stats</span>.</p>
+        </div>
+        <div id="projects" class="sub-header checklist">
+          <h2>R106</h2>
+        </div>
+        <section class="checkboxes">
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="lca-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="lca-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Life Cycle Analysis</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="scales-of-production-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="scales-of-production-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Scales of Production</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="legislation-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="legislation-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Torch Analysis: Legislation</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="lathe-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="lathe-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Machine Lathe</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="injection-moulding-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="injection-moulding-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Injection Moulding</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="soldering-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="soldering-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Soldering Electrical Circuits</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="strengths-and-weaknesses-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="strengths-and-weaknesses-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Strengths and Weaknesses</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="product-analysis-pages-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="product-analysis-pages-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Prodcut Analysis Pages</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="product-analysis-evaluation-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="product-analysis-evaluation-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Product Analysis Evaluation</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="disassembly-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="disassembly-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Disassembly</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="conclusion-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="conclusion-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Conclusion</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="bibliography-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="bibliography-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Bibliography</span>
+          </div>
+        </section>
+
+        <div id="projects" class="sub-header checklist">
+          <h2>R107</h2>
+        </div>
+        <section class="checkboxes">
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="initial-designs-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="initial-designs-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Initial Design Ideas</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="two-point-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="two-point-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Two-Point Perspective (hand drawn)</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="isometric-handdrawn-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="isometric-handdrawn-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Isometric Drawing (hand drawn)</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="orthographic-handdrawn-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="orthographic-handdrawn-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>3rd-Angle Orthographic (hand drawn)</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="orthographic-digital-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="orthographic-digital-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>3rd-Angle Orthographic (digital)</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="isometric-digital-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="isometric-digital-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Isometric (digital)</span>
+          </div>
+        </section>
+
+        <div id="projects" class="sub-header checklist">
+          <h2>R108</h2>
+        </div>
+        <section class="checkboxes">
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="product-specification-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="product-specification-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Product Specification</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="pre-production-plan-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="pre-production-plan-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Pre-Production Plan</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="risk-assessments-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="polish-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Risk Assessments</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="digital-diary-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="polish-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Digital Diary</span>
+          </div>
+          <div class="checkbox">
+            <div class="checkbox-wrapper-12">
+              <div class="cbx">
+                <input id="prototype-evaluation-checkbox" onclick="updateTable()" type="checkbox" />
+                <label for="polish-checkbox"></label>
+                <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                </svg>
+              </div>
+            </div>
+            <span>Prototype Evaluation</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer  -->
+      <app-footer></app-footer>
+    </div>
+
+    <!-- Custom cursor  -->
+    <div class="custom-cursor">
+      <div id="cursor" class="custom-cursor inner"></div>
+      <div class="custom-cursor outer"></div>
+    </div>
+  </body>
+</html>
