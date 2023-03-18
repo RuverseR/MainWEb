@@ -22,9 +22,9 @@ async function getDatabase() {
         "crossDomain": true,
         "method": "GET",
         "headers": {
-          "content-type": "application/json",
-          "x-apikey": e,
-          "cache-control": "no-cache"
+            "content-type": "application/json",
+            "x-apikey": e,
+            "cache-control": "no-cache"
         }
     }
 
@@ -44,9 +44,9 @@ async function postDatabase() {
         "crossDomain": true,
         "method": "POST",
         "headers": {
-          "content-type": "application/json",
-          "x-apikey": e,
-          "cache-control": "no-cache"
+            "content-type": "application/json",
+            "x-apikey": e,
+            "cache-control": "no-cache"
         },
         "processData": false,
         "data": jsonData
@@ -63,9 +63,9 @@ async function putDatabase() {
         "crossDomain": true,
         "method": "PUT",
         "headers": {
-          "Content-Type": "application/json",
-          "x-apikey": e,
-          "cache-control": "no-cache"
+            "Content-Type": "application/json",
+            "x-apikey": e,
+            "cache-control": "no-cache"
         },
         "body": JSON.stringify(jsonData)
     }
@@ -149,23 +149,23 @@ checkUser();
 
 async function authorise() {
     if (authorisedToken === null) {
-      let jsondata = {
+        let jsondata = {
         'key': apiKey
-      }
+        }
 
-      let settings = {
+        let settings = {
         "async": true,
         "crossDomain": true,
         "method": "POST",
         "headers": {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         'processData': false,
         body: JSON.stringify(jsondata)
-      }
+        }
 
-      let response = await (await fetch(`https://realm.mongodb.com/api/client/v2.0/app/${appName}/auth/providers/api-key/login`, settings)).json();
-      authorisedToken = response.access_token;
+        let response = await (await fetch(`https://realm.mongodb.com/api/client/v2.0/app/${appName}/auth/providers/api-key/login`, settings)).json();
+        authorisedToken = response.access_token;
     }
     return authorisedToken;
 }
@@ -207,7 +207,7 @@ async function contactDatabase(action, database, collection, content=false) {
 
 function twoDigits(val) {
     if (val < 10) {
-      return '0' + val;
+        return '0' + val;
     }
     return val;
 }
