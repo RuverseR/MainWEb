@@ -279,10 +279,6 @@ button:hover {
 }
 
 @media (max-width: 700px) {
-    header span {
-        width: min-content;
-    }
-
     button {
         width: 10rem;
     }
@@ -297,5 +293,11 @@ button:hover {
 
     .progress-value {
         height: 1.2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .gradient-header {
+        font-size: 3.5rem;
     }
 }
