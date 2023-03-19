@@ -37,10 +37,16 @@ async function typewrite(element) {
 
 
 // WEBSITE VIEWS
-function liveViews(response) {
-    document.getElementById('visits').innerText = response.value + " 👀";
+async function liveViews() {
+    let response = await(await (fetch("https://api.countapi.xyz/hit/alexlostorto.github.io/visits"))).json();
+    visitsCounter = document.getElementById('visits');
+
+    if (visitsCounter !== null) {
+        visitsCounter.innerText = response.value + " 👀";
+    } else { return }
 }
 
+liveViews()
 
 // LOAD PAGE AFTER ANIMATION
 async function startPage() {
