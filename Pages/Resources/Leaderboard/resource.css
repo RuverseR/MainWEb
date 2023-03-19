@@ -306,6 +306,14 @@ button:hover {
 
     .progress-value {
         height: 1.2rem;
+        box-shadow: 0 10px 50px -5px orange;
+    }
+
+    .progress-value:hover,
+    .progress:hover .progress-value,
+    .user:hover .progress-value,
+    .name:hover + .progress-value {
+        box-shadow: 0 10px 50px -2px orange;
     }
 }
 
