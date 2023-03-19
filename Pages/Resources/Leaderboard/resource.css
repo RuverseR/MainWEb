@@ -79,6 +79,10 @@ header span {
     width: 50vw;
 }
 
+.progress-container {
+    width: 100%;
+}
+
 .progress-value {
     animation: load 3s normal forwards;
     box-shadow: 0 10px 40px -10px orange;
@@ -90,7 +94,7 @@ header span {
 
 @keyframes load {
     0% { width: 0; }
-    100% { width: 60%; }
+    100% { width: 100%; }
 }
 
 .checklist.sub-header {

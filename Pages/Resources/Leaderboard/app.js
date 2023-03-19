@@ -149,10 +149,10 @@ const DATA = {
     'Daniel': [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
 }
 
-user1.querySelector('.progress-value').style = `width: ${DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100}% !important`;
-user2.querySelector('.progress-value').style = `width: ${DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100}% !important`;
-user3.querySelector('.progress-value').style = `width: ${DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100}% !important`;
-user4.querySelector('.progress-value').style = `width: ${DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100}% !important`;
+user1.querySelector('.progress-container').style = `width: ${DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100}% !important`;
+user2.querySelector('.progress-container').style = `width: ${DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100}% !important`;
+user3.querySelector('.progress-container').style = `width: ${DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100}% !important`;
+user4.querySelector('.progress-container').style = `width: ${DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100}% !important`;
 
 user1.querySelector('.score').textContent = `${Math.round(DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100)}%`;
 user2.querySelector('.score').textContent = `${Math.round(DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100)}%`;
