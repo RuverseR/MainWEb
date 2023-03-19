@@ -63,7 +63,8 @@ header span {
 .user:hover,
 .progress-value:hover,
 .progress:hover,
-.name:hover {
+.name:hover,
+.score:hover {
     cursor: pointer;
 }
 
@@ -90,6 +91,14 @@ header span {
     background: orange;
     height: 30px;
     width: 0;
+    transition: transform ease 0.5s, box-shadow ease 0.5s;
+}
+
+.progress-value:hover,
+.progress:hover .progress-value,
+.user:hover .progress-value,
+.name:hover + .progress-value {
+    box-shadow: 0 10px 50px -5px orange;
 }
 
 @keyframes load {

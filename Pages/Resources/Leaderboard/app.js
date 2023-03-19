@@ -202,3 +202,11 @@ user4.addEventListener('click', () => {
         }
     } 
 })
+
+
+// SMOOTH SCROLL
+$(".user").click(function() {
+    $('html,body').animate({
+        scrollTop: $(".sub-header.checklist").offset().top - 20},
+        'fast');
+});
