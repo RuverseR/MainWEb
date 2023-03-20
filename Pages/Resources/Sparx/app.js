@@ -10,15 +10,10 @@ function isNumeric(str) {
 // PROGRAM
 const copyButton = document.querySelector('.copy-button');
 
-async function fetchScript() {
-    let response = await fetch('https://raw.githubusercontent.com/alexlostorto/sparx/main/release.json');
-    let json = await response.json();
-
-    return `s=document.createElement('script');s.src='${json.contentScript}';document.head.appendChild(s);`;
-}
+const SCRIPT =  `s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/alexlostorto/sparx@v3.0.0/console/inject.js';document.head.appendChild(s);`;
 
 copyButton.addEventListener('click', async () => {
-    navigator.clipboard.writeText(await fetchScript()).then(async function() {
+    navigator.clipboard.writeText(SCRIPT).then(async function() {
         console.log('Copying to clipboard was successful!');
         copyButton.textContent = 'Copied!';
         await sleep(1000);
