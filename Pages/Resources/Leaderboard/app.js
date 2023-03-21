@@ -149,15 +149,24 @@ const DATA = {
     'Daniel': [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
 }
 
+function increment(element, start, final, interval) {
+    element.textContent = start + "%"
+    start ++
+    
+    if (start > final) { return }
+    
+    setTimeout(increment, interval, element, start, final, interval)
+}
+
 user1.querySelector('.progress-container').style = `width: ${DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100}% !important`;
 user2.querySelector('.progress-container').style = `width: ${DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100}% !important`;
 user3.querySelector('.progress-container').style = `width: ${DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100}% !important`;
 user4.querySelector('.progress-container').style = `width: ${DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100}% !important`;
 
-user1.querySelector('.score').textContent = `${Math.round(DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100)}%`;
-user2.querySelector('.score').textContent = `${Math.round(DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100)}%`;
-user3.querySelector('.score').textContent = `${Math.round(DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100)}%`;
-user4.querySelector('.score').textContent = `${Math.round(DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100)}%`;
+increment(user1.querySelector('.score'), 0, Math.round(DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100), 30);
+increment(user2.querySelector('.score'), 0, Math.round(DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100), 30);
+increment(user3.querySelector('.score'), 0, Math.round(DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100), 30);
+increment(user4.querySelector('.score'), 0, Math.round(DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100), 30);
 
 user1.addEventListener('click', () => {
     for (let i = 0; i < DATA.Alex.length; i++) {
