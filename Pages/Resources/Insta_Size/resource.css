@@ -140,7 +140,7 @@ input[type='range']::-moz-range-thumb {
     align-items: center;
     justify-content: center;
 }
-  
+
 .box {
     padding: 5vh;
     border: 2px solid orange; 

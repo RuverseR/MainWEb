@@ -1,0 +1,144 @@
+/* Main view */
+.body-container {
+    display: block;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+header span {
+    width: max-content;
+}
+
+.gradient-header {
+    font-size: 5rem;
+    font-family: 'Mark Pro', sans-serif;
+    line-height: 130%;
+    letter-spacing: -.03em;
+}
+
+.sub-header {
+    padding: 2vh 5vh 3vh;
+}
+
+.output-sub-header {
+    padding: 5vh 5vh 0vh;
+}
+
+/* Program section */
+.program-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    padding-bottom: 20vh;
+    z-index: 100;
+    animation: fadeIn 3s;
+}
+
+
+.inputs {
+    margin-top: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.inputs div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs div label {
+    /* margin-left: 10px; */
+    color: orange;
+}
+
+.inputs.active {
+    display: flex;
+}
+
+input,
+textarea {
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 5px;
+    outline: 0;
+    padding: 10px;
+    margin: 10px 10px 20px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
+    background: transparent;
+    text-align: center;
+}
+
+input[type=number],
+textarea {
+    padding-left: 25px;
+}
+
+input[type=number]:focus,
+textarea:focus {
+    border: 2px solid orange;
+}
+
+::placeholder {
+    color: white;
+}
+
+textarea {
+    text-align: left;
+    height: 30vh;
+    width: 50vw;
+}
+
+/* Responsive Media */
+@media (max-width: 1500px) {
+    header {
+        padding-top: 1vh;
+    }
+}
+
+@media (max-width: 1000px) {
+    header {
+        padding-top: 2vh;
+    }
+
+    .gradient-header {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 700px) {
+    header span {
+        width: min-content;
+    }
+
+    input {
+        width: 150px;
+    }
+
+    input[type=number] {
+        padding-left: 15px;
+    }
+
+    textarea {
+        width: 70vw;
+    }
+
+    .sub-header {
+        padding: 2vh 3vh 1vh;
+    }
+}
