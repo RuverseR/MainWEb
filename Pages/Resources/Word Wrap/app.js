@@ -39,6 +39,8 @@ function resetText(text) {
 		}
 	}
 
+	console.log(newText)
+
 	return newText
 }
 
@@ -52,7 +54,6 @@ function wrapText(textList, wrapLength) {
 			newText += textList[i].trim() + '\n';
 		} else {
 			let line = textList[i].split(' ');
-			console.log(line);
 			let lines = [''];
 			while (line.length >= 1) {
 				if (lines[lines.length-1].length + line[0].length < wrapLength) {
@@ -71,18 +72,22 @@ function wrapText(textList, wrapLength) {
 		}
 	}
 
-	console.log(newText)
+	if (newText[newText.length-1] == '\n') {
+		newText = newText.substring(0, newText.length-1);
+	}
 
-	return newText
+	console.log(newText);
+
+	return newText.trimStart();
 }
 
 textInput.oninput = function() {
-	console.log("Change")
-	// textInput.value = wrapText(resetText(lorem), lineLength.value);
+	console.log(textInput.value)
+	// textInput.value = wrapText(resetText(textInput.value), lineLength.value);
 }
 
 lineLength.oninput = function() {
-	textInput.value = wrapText(resetText(lorem), lineLength.value);
+	textInput.value = wrapText(resetText(textInput.value), lineLength.value);
 }
 
 textInput.value = wrapText(resetText(lorem), lineLength.value);
