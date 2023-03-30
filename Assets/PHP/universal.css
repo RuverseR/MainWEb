@@ -7,6 +7,7 @@
 
 /* Colours */
 :root {
+    --lightest: rgb(97,88,133);
     --light: rgb(54,49,74);
     --dark: rgb(22,20,30);
     --darkest: rgb(13,12,18);
@@ -278,7 +279,7 @@ input {
 }
 
 .navbar-items li a {
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out color 0.3s;
 }
 
 .navbar-items ul li a:hover {
@@ -293,7 +294,8 @@ input {
     padding-right: 60px;
 }
 
-.nav-resources {
+.nav-resources,
+.nav-subcategory {
     display: none;
 }
 
@@ -421,8 +423,7 @@ background: #bb7900;
         font-size: 1.5rem;
     }
 
-    .nav-resources ul {
-        transition: ease-in-out 1s;
+    .nav-resources > ul {
         flex-direction: column;
         padding: 3px 5px 5px 0px;
         border-top: 3px solid orange;
@@ -451,6 +452,26 @@ background: #bb7900;
     }
 
     .resources-button:hover .navbar-item {
+        color: orange;
+    }
+
+    .subcategory-button.active .nav-subcategory {
+        display: flex;
+        opacity: 1;
+    }
+
+    .subcategory-button.active ul {
+        padding-top: 5px;
+        border: none;
+    }
+
+    .subcategory-button.active > a {
+        position: relative;
+        z-index: 1;
+        border-bottom: 3px solid #CF6DDE;
+    }
+
+    .subcategory-button.active div ul li a:hover {
         color: orange;
     }
 }
@@ -499,7 +520,14 @@ background: #bb7900;
         width: 100%;
         flex-direction: column;
         margin-right: 0px;
+    }
+
+    .nav-resources ul {
         background-color: var(--light);
+    }
+
+    .nav-subcategory > ul {
+        background-color: var(--lightest);
     }
 
     .navbar-items.active {
@@ -553,6 +581,21 @@ background: #bb7900;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .subcategory-button.active .nav-subcategory {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .subcategory-button.active ul {
+        border: none;
+    }
+
+    .subcategory-button.active div ul li a:hover {
+        color: orange;
     }
 
     .header span {

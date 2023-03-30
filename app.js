@@ -3,6 +3,7 @@ const homePage = document.querySelector('.body-container');
 const toggleButton = document.querySelector('.toggle-button');
 const resourcesButton = document.querySelector('.resources-button');
 const recourcesLinks = document.querySelector('.nav-resources');
+const subcategoryButton = document.querySelector('.subcategory-button');
 const navbarItems = document.querySelector('.navbar-items');
 const projects = document.querySelector('.project-container');
 const bodyElement = document.querySelector('body');
@@ -331,11 +332,14 @@ function loadDoc() {
 
 // HAMBURGER FUNCTIONALITY
 toggleButton.addEventListener('click', () => {
-    console.log("Clicked");
     navbarItems.classList.toggle('active');
 })
 
 resourcesButton.addEventListener('click', () => {
-    console.log("Clicked");
     recourcesLinks.classList.toggle('active')
+})
+
+subcategoryButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    subcategoryButton.classList.toggle('active');
 })
