@@ -6,12 +6,10 @@ function round(number, decimalPlaces) {
 }
 
 
-// PROGRAM#
+// PROGRAM
 const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Pellentesque lacinia velit vitae purus egestas imperdiet ut sit
-amet lacus. Sed imperdiet, dolor at hendrerit ultrices, est velit imperdiet nulla,
-in sagittis nibh lectus et velit. Donec pretium sit amet sapien nec consequat. Nam fermentum eleifend lorem quis rhoncus. Aliquam vel odio at elit sagittis interdum nec et ex. Vestibulum suscipit cursus nisl et rutrum. Praesent eros erat, ultricies ut ex in, euismod laoreet est. Donec a erat a mauris efficitur iaculis. Fusce tincidunt laoreet nisi, in gravida arcu placerat nec.
+Pellentesque lacinia velit vitae purus egestas imperdiet ut sit amet lacus. Sed imperdiet, dolor at hendrerit ultrices, est velit imperdiet nulla, in sagittis nibh lectus et velit. Donec pretium sit amet sapien nec consequat. Nam fermentum eleifend lorem quis rhoncus. Aliquam vel odio at elit sagittis interdum nec et ex. Vestibulum suscipit cursus nisl et rutrum. Praesent eros erat, ultricies ut ex in, euismod laoreet est. Donec a erat a mauris efficitur iaculis. Fusce tincidunt laoreet nisi, in gravida arcu placerat nec.
 
 Etiam nisl felis, luctus et feugiat sed, dictum et libero. Pellentesque convallis sagittis odio et egestas. Morbi sagittis porta lacus porta eleifend. Etiam dictum efficitur dictum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus et nibh vitae augue maximus sodales. Maecenas ac pellentesque leo. Morbi nec leo id sapien posuere convallis. Sed congue orci nec sollicitudin mattis. Vestibulum malesuada nisi sit amet efficitur sollicitudin. Proin sed ultricies velit, vel ornare lectus. Nam ante urna, sollicitudin sit amet purus eu, sollicitudin venenatis ex. Vestibulum et cursus sem, in egestas diam. Praesent semper iaculis turpis, id lacinia ipsum fringilla ac. Nunc eleifend gravida eros. In commodo tincidunt justo at placerat.
 
@@ -19,6 +17,9 @@ Phasellus tempor ex nec metus consequat suscipit. Proin vel nibh tincidunt, pell
 
 const textInput = document.querySelector('#input-text');
 const lineLength = document.querySelector('#line-length');
+const loremButton = document.querySelector('#lorem-button');
+const wrapButton = document.querySelector('#wrap-button');
+const resetButton = document.querySelector('#reset-button');
 
 lineLength.value = 50;
 
@@ -81,13 +82,20 @@ function wrapText(textList, wrapLength) {
 	return newText.trimStart();
 }
 
-textInput.oninput = function() {
-	console.log(textInput.value)
-	// textInput.value = wrapText(resetText(textInput.value), lineLength.value);
-}
-
 lineLength.oninput = function() {
 	textInput.value = wrapText(resetText(textInput.value), lineLength.value);
 }
+
+loremButton.addEventListener('click', () => {
+    textInput.value = wrapText(resetText(lorem), lineLength.value);
+})
+
+wrapButton.addEventListener('click', () => {
+    textInput.value = wrapText(resetText(textInput.value), lineLength.value);
+})
+
+resetButton.addEventListener('click', () => {
+    textInput.value = '';
+})
 
 textInput.value = wrapText(resetText(lorem), lineLength.value);

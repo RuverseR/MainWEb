@@ -104,6 +104,51 @@ textarea {
     width: 50vw;
 }
 
+.grid-container {
+    display: grid;
+    padding-top: 1rem;
+    grid-gap: 5px;
+    grid-template-columns: 5rem 10rem 5rem;
+    grid-template-rows: 30px 30px;
+    grid-auto-flow: row;
+}
+
+.grid-container div {
+    background: var(--light);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
+}
+
+.grid-container div:hover {
+    background: var(--dark);
+}
+
+.grid-container div.active {
+    background: orange;
+}
+
+button {
+    font-size: 100%;
+    margin-top: 6vh;
+    margin-bottom: 4vh;
+    width: 20vh;
+    height: 30px;
+    border: none;
+    background: var(--light);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
+}
+
+button:hover {
+    background: var(--dark);
+}
+
 /* Responsive Media */
 @media (max-width: 1500px) {
     header {
