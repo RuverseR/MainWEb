@@ -251,7 +251,7 @@ input {
 /* Navbar */
 .nav-container {
     position: relative;
-    z-index: 100;
+    z-index: 999;
     font-size: 110%;
     animation: fadeIn 3s;
     display: flex;
