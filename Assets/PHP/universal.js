@@ -101,7 +101,7 @@ function detectMouse() {
 function customMouse(e) {  // Whenever a mouse movement is detected, update the custom cursor position
     const target = e.target;
     
-    const isLinkTag = target.tagName.toLowerCase() === 'a';
+    const isLinkTag = target.tagName.toLowerCase() === 'a'  || target.classList.contains('cursor-hover');
     const isHovered = cursorInner.classList.contains('hoveredCursor');
     
     // Toggle the cursor class if necessary 
