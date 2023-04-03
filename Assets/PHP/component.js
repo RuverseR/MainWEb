@@ -23,7 +23,10 @@ class Navbar extends HTMLElement {
             <div class="nav-resources">
               <ul>
                 <li>
-                  <a href="../../../Pages/Resources/Exam_Timetable/index.html">Exam Timetable</a>
+                  <a href="../../../Pages/Resources/Exam Timetable/index.html">Exam Timetable</a>
+                </li>
+                <li>
+                <a href="../../../Pages/Resources/Revision Buddy/index.html">Revision Buddy</a>
                 </li>
                 <li>
                   <a href="../../../Pages/Resources/Leaderboard/index.html">Leaderboard</a>
