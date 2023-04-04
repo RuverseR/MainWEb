@@ -107,24 +107,24 @@ function round(number, decimalPlaces) {
 // REVISION BUDDY
 const sets = {
     1:  {'name': 'Macbeth Quotes', 'quotes': [
-            {'quote': 'Fair is foul, and foul is fair.', 'speaker': 'Three Witches', 'scene': 'Act 1 Scene 1'},
-            {'quote': 'Present fears\nAre less than horrible imaginings.', 'speaker': 'King Duncan', 'scene': 'Act 1 Scene 4'},
-            {'quote': "There's daggers in men's smiles.", 'speaker': 'Donalbain', 'scene': 'Act 2 Scene 3'},
-            {'quote': 'False face must hide what the false heart doth know.', 'speaker': 'Macbeth', 'scene': 'Act 1 Scene 7'},
-            {'quote': 'I dare do all that may become a man;\nWho dares do more is none.', 'speaker': 'Macbeth', 'scene': 'Act 1 Scene 7'}]
+            {'quote': 'Fair is foul, and foul is fair.', 'info': ['Three Witches', 'Act 1 Scene 1']},
+            {'quote': 'Present fears\nAre less than horrible imaginings.', 'info': ['King Duncan', 'Act 1 Scene 4']},
+            {'quote': "There's daggers in men's smiles.", 'info': ['Donalbain', 'Act 2 Scene 3']},
+            {'quote': 'False face must hide what the false heart doth know.', 'info': ['Macbeth', 'Act 1 Scene 7']},
+            {'quote': 'I dare do all that may become a man;\nWho dares do more is none.', 'info': ['Macbeth', 'Act 1 Scene 7']}]
     },
 
     2:  {'name': 'An Inspector Calls Quotes', 'quotes': [
-            {'quote': "You're squiffy.", 'speaker': 'Sheila', 'scene': 'Act 1'},
-            {'quote': "I speak as a hard headed businessman.", 'speaker': 'Mr Birling', 'scene': 'Act 1'},
-            {'quote': "Unsinkable, completely unsinkable.", 'speaker': 'Mr Birling', 'scene': 'Act 1'},
-            {'quote': "We really must stop these silly pretences.", 'speaker': 'Sheila', 'scene': 'Act 2'},
-            {'quote': "Girls of that class.", 'speaker': 'Mrs Birling', 'scene': 'Act 2'},
-            {'quote': "She was very pretty - soft brown hair.", 'speaker': 'Gerald', 'scene': 'Act 2'},
-            {'quote': "You're not the kind of father a chap could go to when he's in trouble.", 'speaker': 'Eric', 'scene': 'Act 2'},
-            {'quote': "We are members of one body. We are responsible for each other.", 'speaker': 'The Inspector', 'scene': 'Act 3'},
-            {'quote': "Everything's alright now Sheila.", 'speaker': 'Gerald', 'scene': 'Act 3'},
-            {'quote': "Each of you helped to kill her.", 'speaker': 'The Inspector', 'scene': 'Act 3'}]
+            {'quote': "You're squiffy.", 'info': ['Sheila', 'Act 1']},
+            {'quote': "I speak as a hard headed businessman.", 'info': ['Mr Birling', 'Act 1']},
+            {'quote': "Unsinkable, completely unsinkable.", 'info': ['Mr Birling', 'Act 1']},
+            {'quote': "We really must stop these silly pretences.", 'info': ['Sheila', 'Act 2']},
+            {'quote': "Girls of that class.", 'info': ['Mrs Birling', 'Act 2']},
+            {'quote': "She was very pretty - soft brown hair.", 'info': ['Gerald', 'Act 2']},
+            {'quote': "You're not the kind of father a chap could go to when he's in trouble.", 'info': ['Eric', 'Act 2']},
+            {'quote': "We are members of one body. We are responsible for each other.", 'info': ['The Inspector', 'Act 3']},
+            {'quote': "Everything's alright now Sheila.", 'info': ['Gerald', 'Act 3']},
+            {'quote': "Each of you helped to kill her.", 'info': ['The Inspector', 'Act 3']}]
     }
 }
 
@@ -132,25 +132,38 @@ const quoteElement = document.querySelector('#quote');
 const quoteInfo = document.querySelector('#quote-info');
 const answerPage = document.querySelector('.answer-page');
 const mainPage = document.querySelector('.main-page');
+const settingsPage = document.querySelector('.settings-page');
 const setsContainer = document.querySelector('.sets');
 const statisticsContainer = document.querySelector('.statistics');
 const createSetButton = document.querySelector('#create-set-button');
 const startButton = document.querySelector('#start-button');
+const settingsButton = document.querySelector('#settings-button');
+const exitButton = document.querySelector('#exit-button');
 
+const pages = [mainPage, answerPage, settingsPage]
 let currentSet = null;
 let chosenSet = null;
 let difficulty = 3;
 
+function showPage(page) {
+    pages.forEach((pageItem) => {
+        if (page != pageItem) {
+            pageItem.style.display = 'none';
+        }
+    });
+    page.style.display = 'flex';
+}
+
 function startQuiz() {
-    mainPage.style.display = 'none';
-    answerPage.style.display = 'flex';
+    showPage(answerPage);
+
+    currentSet = JSON.parse(JSON.stringify(sets[document.querySelector('.set-container.active').getAttribute('set-id')]));
 
     chooseQuote();
 }
 
-function endQuiz() {
-    answerPage.style.display = 'none';
-    mainPage.style.display = 'flex';
+function breakInfiniteLoop(counter) {
+    if (counter > 50) { return true } else { return false }
 }
 
 async function chooseQuote() {
@@ -169,46 +182,32 @@ async function chooseQuote() {
         }
     
         quoteElement.appendChild(textNode);
-
-        let speakerText = document.createElement('p');
-        let sceneText = document.createElement('p');
-
-        speakerText.textContent = quote.speaker;
-        sceneText.textContent = quote.scene;
-
         quoteInfo.innerHTML = '';
-        quoteInfo.appendChild(speakerText);
-        quoteInfo.appendChild(sceneText);
-    }
 
-    async function checkInput() {
-        document.querySelector('#quote-input.active').addEventListener('blur', keepFocus);
-
-        await sleep(200);
-    
-        document.querySelector('#quote-input').focus();
-    
-        while (document.querySelector('#quote-input.active') !== null) {
-            let currentQuoteInput = document.querySelector('#quote-input.active');
-    
-            if (currentQuoteInput.value.toLowerCase() == missingWords[0].toLowerCase()) {
-                missingWords.shift();
-                currentQuoteInput.removeEventListener('blur', keepFocus);
-                currentQuoteInput.classList.remove('active');
-    
-                if (document.querySelector('#quote-input.active') === null) { chooseQuote(); return }
-    
-                document.querySelector('#quote-input.active').focus();
-                document.querySelector('#quote-input.active').addEventListener('blur', keepFocus);
-            }
-    
-            await sleep(100);
+        for (let i = 0; i < quote.info.length; i++) {
+            let infoElement = document.createElement('p');
+            infoElement.textContent = quote.info[i];
+            quoteInfo.appendChild(infoElement);
         }
     }
 
-    if (currentSet.quotes.length == 0) { endQuiz(); return; }
+    function checkInput() {
+        console.log("Triggered");
+        if (this.value.toLowerCase() == missingWords[0].toLowerCase()) {
+            missingWords.shift();
+            this.removeEventListener('blur', keepFocus);
+            this.removeEventListener('input', checkInput);
+            this.classList.remove('active');
 
-    console.log(currentSet.quotes.length)
+            if (document.querySelector('#quote-input.active') === null) { chooseQuote(); return }
+
+            document.querySelector('#quote-input.active').focus();
+            document.querySelector('#quote-input.active').addEventListener('blur', keepFocus);
+            document.querySelector('#quote-input.active').addEventListener('input', checkInput);
+        }
+    }
+
+    if (currentSet.quotes.length == 0) { showPage(mainPage); return; }
 
     let index = Math.floor(Math.random() * currentSet.quotes.length);
     let quote = currentSet.quotes[index];
@@ -224,7 +223,12 @@ async function chooseQuote() {
 
     displayQuote(newQuote);
 
-    await checkInput();
+    document.querySelector('#quote-input.active').addEventListener('blur', keepFocus);
+    document.querySelector('#quote-input.active').addEventListener('input', checkInput);
+
+    await sleep(200);
+
+    document.querySelector('#quote-input').focus();
 }
 
 function keepFocus() {
@@ -274,12 +278,19 @@ function getRandomNumbers(amount, array) {
         amount = array.length;
     }
 
+    let counter = 1;
+
     while (numbers.length < amount) {
         let number = Math.floor(Math.random() * array.length);
+
+        console.log(number);
 
         if (!(numbers.includes(number)) && (!(array[number].includes(';') || array[number].includes(':') || array[number].includes('&') || array[number].includes(',') || array[number].includes('.') || array[number].includes(';') || array[number].includes('!') ||array[number].includes('?') || array[number].includes(' ') || array[number].includes('\n') || array[number].includes('-')))) {
             numbers.push(number);
         }
+
+        counter ++;
+        if (breakInfiniteLoop(counter)) { return numbers.sort((a,b)=>a-b) }
     }
 
     return numbers.sort((a,b)=>a-b)
@@ -319,9 +330,9 @@ function loadSets() {
                 element.classList.remove('active');
             });
             setContainer.classList.add('active');
+            setContainer.setAttribute('set-id', index);
             startButton.classList.add('active');
             chosenSet = index;
-            currentSet = JSON.parse(JSON.stringify(set));
         });
 
         setContainer.appendChild(setName);
@@ -336,4 +347,12 @@ startButton.addEventListener('click', () => {
     if (startButton.classList.contains('active')) {
         startQuiz();
     }
+})
+
+settingsButton.addEventListener('click', () => {
+    showPage(settingsPage);
+})
+
+exitButton.addEventListener('click', () => {
+    showPage(mainPage);
 })

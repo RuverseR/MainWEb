@@ -42,7 +42,8 @@ header span {
 }
 
 .main-page,
-.answer-page {
+.answer-page,
+.settings-page {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -105,13 +106,14 @@ header span {
 .set-buttons {
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 8rem 8rem;
+    grid-template-columns: 8rem 8rem 2.5rem;
     grid-template-rows: 2rem;
     gap: 1rem;
     padding-bottom: 8rem;
 }
 
-.set-buttons div {
+.set-buttons div,
+#exit-button {
     background: var(--light);
     border-radius: 5px;
     display: flex;
@@ -120,8 +122,14 @@ header span {
     box-shadow: rgba(255, 165, 0, 0.4) 0px 5px, rgba(255, 165, 0, 0.3) 0px 10px, rgba(255, 165, 0, 0.2) 0px 15px, rgba(255, 165, 0, 0.1) 0px 20px, rgba(255, 165, 0, 0.05) 0px 25px;
 }
 
-.set-buttons div:hover {
+.set-buttons div:hover,
+#exit-button:hover {
     background: var(--dark);
+}
+
+#exit-button {
+    margin-top: 3rem;
+    padding: 0.5rem 1rem;
 }
 
 button {
@@ -143,7 +151,8 @@ button:hover {
     background: var(--dark);
 }
 
-#start-button {
+#start-button,
+#create-set-button {
     filter: brightness(0.6);
 }
 
@@ -151,7 +160,7 @@ button:hover {
     filter: brightness(1);
 }
 
-#instruction {
+.instruction {
     padding: 1rem 0;
 }
 
@@ -177,10 +186,95 @@ input {
     padding: 3x;
     margin: 30px 0px 10px 0px;
     font-family: "Roboto Mono", monospace;
-    font-size: 15px;
+    font-size: 100%;
     background: transparent;
     border-bottom: 2px solid white;
     text-align: center;
+}
+
+/* Range slider */
+input[type='range'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type='range']:focus {
+    outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type='range']::-moz-range-thumb {
+    border: none;
+}
+
+.range-style {
+    margin-top: 15px;
+    width: 250px;
+    height: 15px;
+    padding: 0px;
+    background: var(--light);
+    border: none;
+    border-radius: 10px;
+}
+
+.range-style::-webkit-slider-runnable-track {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.range-style::-webkit-slider-thumb {
+    position: relative;
+    top: -30%;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    border-radius: 50%;
+}
+
+.range-style.inactive::-webkit-slider-thumb {
+    background-color: var(--light);
+}
+
+.range-style.inactive {
+    pointer-events: none;
+}
+
+.range-style::-moz-range-track {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.range-style::-moz-range-thumb {
+    position: relative;
+    top: -30%;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    border-radius: 50%;
+}
+
+.inputs {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.inputs > div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
 }
 
 /* Responsive Media */

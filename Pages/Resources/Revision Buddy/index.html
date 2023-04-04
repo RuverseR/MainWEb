@@ -22,6 +22,7 @@
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../../Assets/PHP/universal.css" />
     <link rel="stylesheet" href="resource.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,13 +56,14 @@
           <div id="projects" class="sub-header">
             <h2>Sets</h2>
           </div>
-          <div id="instruction" class="text-container">
+          <div class="instruction" class="text-container">
             <p class="description">Click a set then press <span class="orange-text">start</span>.</p>
           </div>
           <section class="sets"></section>
           <div class="set-buttons">
-            <div id="create-set-button">Create Set</div>
             <div id="start-button">Start</div>
+            <div id="create-set-button">Create Set</div>
+            <div id="settings-button"><i class="fa fa-gear"></i></div>
           </div>
           <div id="projects" class="sub-header">
             <h2>Statistics</h2>
@@ -73,6 +75,7 @@
             </div>
           </section>
         </section>
+
         <section class="answer-page">
           <!-- Description -->
           <div id="description" class="text-container">
@@ -80,6 +83,23 @@
           </div>
           <div id="quote" class="text-container"></div>
           <div id="quote-info"></div>
+        </section>
+
+        <section class="settings-page">
+          <!-- Description -->
+          <div id="projects" class="sub-header">
+            <h2>Settings</h2>
+          </div>
+          <div class="instruction" class="text-container">
+            <p class="description"><span class="orange-text">Difficulty</span> is based on how many words are <span class="orange-text">hidden</span>.</p>
+          </div>
+          <div class="inputs">
+            <div>
+              <label for="difficulty-slider">Difficulty</label>
+              <input id="difficulty-slider" type="range" class="range-style" />
+            </div>
+          </div>
+          <div id="exit-button">Back to Main Page</i></div>
         </section>
       </div>
 
