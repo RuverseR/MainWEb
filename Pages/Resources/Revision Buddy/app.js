@@ -128,19 +128,27 @@ const sets = {
     }
 }
 
+// Quote variables
 const quoteElement = document.querySelector('#quote');
 const quoteInfo = document.querySelector('#quote-info');
-const answerPage = document.querySelector('.answer-page');
-const mainPage = document.querySelector('.main-page');
-const settingsPage = document.querySelector('.settings-page');
+let missingWords = [];
+
 const setsContainer = document.querySelector('.sets');
 const statisticsContainer = document.querySelector('.statistics');
 const createSetButton = document.querySelector('#create-set-button');
 const startButton = document.querySelector('#start-button');
+
+// Pages 
+const answerPage = document.querySelector('.answer-page');
+const mainPage = document.querySelector('.main-page');
+const settingsPage = document.querySelector('.settings-page');
+
+// Settings page
 const settingsButton = document.querySelector('#settings-button');
 const exitButton = document.querySelector('#exit-button');
+const difficultySlider = document.querySelector('#difficulty-slider');
 
-const pages = [mainPage, answerPage, settingsPage]
+const pages = [mainPage, answerPage, settingsPage];
 let currentSet = null;
 let chosenSet = null;
 let difficulty = 3;
@@ -192,7 +200,6 @@ async function chooseQuote() {
     }
 
     function checkInput() {
-        console.log("Triggered");
         if (this.value.toLowerCase() == missingWords[0].toLowerCase()) {
             missingWords.shift();
             this.removeEventListener('blur', keepFocus);
@@ -214,10 +221,7 @@ async function chooseQuote() {
 
     currentSet.quotes.splice(index, 1);
 
-    temporaryReturn = removeWords(quote.quote);
-    let newQuote = temporaryReturn[0];
-    let missingWords = temporaryReturn[1];
-    console.log(quote.quote);
+    let newQuote = removeWords(quote.quote);
     console.log(newQuote.join(''));
     console.log(`${currentSet.quotes.length} quotes remaining!`);
 
@@ -239,20 +243,19 @@ function removeWords(quote) {
     let words = splitQuote(quote);
 
     let missingWordIndexes = getRandomNumbers(difficulty, words);
-    let missingWords = [];
+    missingWords = [];
 
     for (let i = 0; i < missingWordIndexes.length; i++) {
         missingWords.push(words[missingWordIndexes[i]]);
         words[missingWordIndexes[i]] = '_'.repeat(words[missingWordIndexes[i]].length);
     }
 
-    return [words, missingWords]
+    return words
 }
 
 function splitQuote(quote) {
     let words = quote.split(/( |\n)/g);
     words = splitItem(words, ';');
-    words = splitItem(words, '-');
     words = splitItem(words, ':');
     words = splitItem(words, '&');
     words = splitItem(words, ',');
@@ -271,26 +274,34 @@ function onlyIncludes(string, character) {
     return true
 }
 
-function getRandomNumbers(amount, array) {
-    let numbers = [];
-
-    if (amount > array.length) {
-        amount = array.length;
+function includesItems(string, items) {
+    for (let i = 0; i < items.length; i++) {
+        if (string.includes(items[i])) { return true }
     }
 
-    let counter = 1;
+    return false
+}
+
+function getRandomNumbers(amount, array) {
+    let numbers = [];
+    let length = 0;
+
+    for (let i = 0; i < array.length; i++) {
+        if (!(includesItems(array[i], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-']))) {
+            length ++;
+        }
+    }
+
+    if (amount + 1 > length) {
+        amount = length - 1;
+    }
 
     while (numbers.length < amount) {
         let number = Math.floor(Math.random() * array.length);
 
-        console.log(number);
-
-        if (!(numbers.includes(number)) && (!(array[number].includes(';') || array[number].includes(':') || array[number].includes('&') || array[number].includes(',') || array[number].includes('.') || array[number].includes(';') || array[number].includes('!') ||array[number].includes('?') || array[number].includes(' ') || array[number].includes('\n') || array[number].includes('-')))) {
+        if (!(numbers.includes(number)) && (!(includesItems(array[number], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-'])))) {
             numbers.push(number);
         }
-
-        counter ++;
-        if (breakInfiniteLoop(counter)) { return numbers.sort((a,b)=>a-b) }
     }
 
     return numbers.sort((a,b)=>a-b)
@@ -351,8 +362,31 @@ startButton.addEventListener('click', () => {
 
 settingsButton.addEventListener('click', () => {
     showPage(settingsPage);
+    difficultySlider.value = 25 * difficulty - 25;
+    difficultySlider.nextElementSibling.textContent = difficulty;
 })
 
 exitButton.addEventListener('click', () => {
     showPage(mainPage);
 })
+
+difficultySlider.oninput = function() {
+	if (difficultySlider.value < 20 && difficultySlider.value >= 0) {
+		difficultySlider.value = 0;
+        difficulty = 1;
+	} else if (difficultySlider.value < 40 && difficultySlider.value >= 20) {
+        difficultySlider.value = 25;
+        difficulty = 2;
+    } else if (difficultySlider.value < 60 && difficultySlider.value >= 40) {
+        difficultySlider.value = 50;
+        difficulty = 3;
+    } else if (difficultySlider.value < 80 && difficultySlider.value >= 60) {
+        difficultySlider.value = 75;
+        difficulty = 4;
+    } else if (difficultySlider.value <= 100 && difficultySlider.value >= 80) {
+        difficultySlider.value = 100;
+        difficulty = 5;
+    }
+
+    difficultySlider.nextElementSibling.textContent = difficulty;
+}

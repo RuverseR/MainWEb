@@ -128,7 +128,7 @@ header span {
 }
 
 #exit-button {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     padding: 0.5rem 1rem;
 }
 
@@ -161,7 +161,8 @@ button:hover {
 }
 
 .instruction {
-    padding: 1rem 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 #quote p {
@@ -301,6 +302,10 @@ input[type='range']::-moz-range-thumb {
 
     .sub-header {
         padding: 2vh 3vh 1vh;
+    }
+
+    .range-style {
+        width: 150px;
     }
 }
 
