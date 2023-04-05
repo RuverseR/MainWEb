@@ -170,10 +170,6 @@ function startQuiz() {
     chooseQuote();
 }
 
-function breakInfiniteLoop(counter) {
-    if (counter > 50) { return true } else { return false }
-}
-
 async function chooseQuote() {
     function displayQuote(newQuote) {
         quoteElement.innerHTML = '';
