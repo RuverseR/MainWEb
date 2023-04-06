@@ -68,6 +68,10 @@ header span {
     cursor: pointer;
 }
 
+.score {
+    width: 1rem;
+}
+
 .progress {
     background: rgba(255,255,255,0.1);
     justify-content: flex-start;
