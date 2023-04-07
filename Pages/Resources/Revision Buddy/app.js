@@ -152,6 +152,41 @@ const pages = [mainPage, answerPage, settingsPage];
 let currentSet = null;
 let chosenSet = null;
 let difficulty = 3;
+let timeToCompleteSet = 0;
+
+function getTimestampInSeconds () {
+    return Math.floor(Date.now() / 1000)
+}
+
+function updateLocalStorage(itemName, key, newValue, list=true) {
+    console.log("Updating database");
+
+    let item;
+
+    if (localStorage.getItem(itemName) === null) {
+        if (list) {
+            item = {[key]: [newValue]};
+        } else {
+            item = {[key]: newValue};
+        }
+
+        localStorage.setItem(itemName, JSON.stringify(item));
+    } else {
+        item = JSON.parse(localStorage.getItem(itemName));
+
+        if (list) {
+            item[key].push(newValue)
+        } else {
+            item[key] = newValue;
+        }
+    
+        localStorage.setItem(itemName, JSON.stringify(item));
+    }
+
+    console.log("New value: ", item);
+
+    console.log("Database updated");
+}
 
 function showPage(page) {
     pages.forEach((pageItem) => {
@@ -164,10 +199,20 @@ function showPage(page) {
 
 function startQuiz() {
     showPage(answerPage);
+    scrollToTop();
 
+    timeToCompleteSet = getTimestampInSeconds();
     currentSet = JSON.parse(JSON.stringify(sets[document.querySelector('.set-container.active').getAttribute('set-id')]));
 
     chooseQuote();
+}
+
+function endQuiz() {
+    showPage(mainPage);
+
+    let timeTaken = getTimestampInSeconds() - timeToCompleteSet;
+    let statistics = {'name': sets[chosenSet].name, 'time': timeTaken}
+    updateLocalStorage('revision-buddy-statistics', 'history', statistics, true)
 }
 
 async function chooseQuote() {
@@ -210,7 +255,7 @@ async function chooseQuote() {
         }
     }
 
-    if (currentSet.quotes.length == 0) { showPage(mainPage); return; }
+    if (currentSet.quotes.length == 0) { endQuiz(); return; }
 
     let index = Math.floor(Math.random() * currentSet.quotes.length);
     let quote = currentSet.quotes[index];
@@ -218,6 +263,7 @@ async function chooseQuote() {
     currentSet.quotes.splice(index, 1);
 
     let newQuote = removeWords(quote.quote);
+    console.log(quote.quote);
     console.log(newQuote.join(''));
     console.log(`${currentSet.quotes.length} quotes remaining!`);
 
@@ -235,7 +281,44 @@ function keepFocus() {
     this.focus();
 }
 
+function scrollToTop() {
+    window.scrollTo(0, 0);
+}
+
 function removeWords(quote) {
+    function getRandomNumbers(amount, array) {
+        function includesItems(string, items) {
+            for (let i = 0; i < items.length; i++) {
+                if (string.includes(items[i])) { return true }
+            }
+        
+            return false
+        }
+
+        let numbers = [];
+        let length = 0;
+    
+        for (let i = 0; i < array.length; i++) {
+            if (!(includesItems(array[i], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-']))) {
+                length ++;
+            }
+        }
+    
+        if (amount + 1 > length) {
+            amount = length - 1;
+        }
+    
+        while (numbers.length < amount) {
+            let number = Math.floor(Math.random() * array.length);
+    
+            if (!(numbers.includes(number)) && (!(includesItems(array[number], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-'])))) {
+                numbers.push(number);
+            }
+        }
+    
+        return numbers.sort((a,b)=>a-b)
+    }
+
     let words = splitQuote(quote);
 
     let missingWordIndexes = getRandomNumbers(difficulty, words);
@@ -250,6 +333,22 @@ function removeWords(quote) {
 }
 
 function splitQuote(quote) {
+    function splitItem(array, delimiter) {
+        let newArray = [];
+        
+        for (let i = 0; i < array.length; i++) {
+            if (array[i].includes(delimiter)) {
+                splitWords = array[i].split(delimiter);
+                newArray.push(splitWords[0]);
+                newArray.push(delimiter + splitWords[1]);
+            } else {
+                newArray.push(array[i]);
+            }
+        }
+    
+        return newArray
+    }
+
     let words = quote.split(/( |\n)/g);
     words = splitItem(words, ';');
     words = splitItem(words, ':');
@@ -268,55 +367,6 @@ function onlyIncludes(string, character) {
     }
 
     return true
-}
-
-function includesItems(string, items) {
-    for (let i = 0; i < items.length; i++) {
-        if (string.includes(items[i])) { return true }
-    }
-
-    return false
-}
-
-function getRandomNumbers(amount, array) {
-    let numbers = [];
-    let length = 0;
-
-    for (let i = 0; i < array.length; i++) {
-        if (!(includesItems(array[i], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-']))) {
-            length ++;
-        }
-    }
-
-    if (amount + 1 > length) {
-        amount = length - 1;
-    }
-
-    while (numbers.length < amount) {
-        let number = Math.floor(Math.random() * array.length);
-
-        if (!(numbers.includes(number)) && (!(includesItems(array[number], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-'])))) {
-            numbers.push(number);
-        }
-    }
-
-    return numbers.sort((a,b)=>a-b)
-}
-
-function splitItem(array, delimiter) {
-    let newArray = [];
-    
-    for (let i = 0; i < array.length; i++) {
-        if (array[i].includes(delimiter)) {
-            splitWords = array[i].split(delimiter);
-            newArray.push(splitWords[0]);
-            newArray.push(delimiter + splitWords[1]);
-        } else {
-            newArray.push(array[i]);
-        }
-    }
-
-    return newArray
 }
 
 function loadSets() {
