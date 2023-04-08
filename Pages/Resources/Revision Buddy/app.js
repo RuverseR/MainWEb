@@ -122,7 +122,6 @@ function endQuiz() {
     let timeTaken = getTimestampInSeconds() - timeToCompleteSet;
     let statistics = {'name': sets[chosenSet].name, 'time': timeTaken}
     updateLocalStorage('revision-buddy-statistics', 'history', statistics, true)
-    loadSets(setsContainer, sets, statistics=false);
     loadStatistics();
 }
 
