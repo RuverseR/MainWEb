@@ -5,105 +5,6 @@ function round(number, decimalPlaces) {
     return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
 }
 
-
-// MongoDB
-// const appName = 'data-pddjp';
-// const mongoDatabaseURL = `https://data.mongodb-api.com/app/${appName}/endpoint/data/v1/action/`;
-// const apiKey = CryptoJS.AES.decrypt("U2FsdGVkX1+dnt/VAVVIedObPfxFarPHuJ6ttji06Qu75SdEpY5hmD+q5TO2xBomem3iDCTVP3eqsj43QrruTKxEZVT5e8/u5LQtbw/ws5gako9dglBL0EIxZEd58T3e", "s2*%z3B2$4Ka").toString(CryptoJS.enc.Utf8);
-// let authorisedToken = null;
-
-
-// async function authorise() {
-//     if (authorisedToken === null) {
-//         let jsondata = {
-//         'key': apiKey
-//         }
-
-//         let settings = {
-//         "async": true,
-//         "crossDomain": true,
-//         "method": "POST",
-//         "headers": {
-//             'Content-Type': 'application/json'
-//         },
-//         'processData': false,
-//         body: JSON.stringify(jsondata)
-//         }
-
-//         let response = await (await fetch(`https://realm.mongodb.com/api/client/v2.0/app/${appName}/auth/providers/api-key/login`, settings)).json();
-//         authorisedToken = response.access_token;
-//     }
-//     return authorisedToken;
-// }
-
-// async function contactDatabase(action, database, collection, content=false) {
-//     let token = await authorise();
-
-//     const jsonData = {
-//         'database': database,
-//         'collection': collection,
-//         'dataSource': 'Sparx',
-//     }
-
-//     if (content !== false && action == 'updateOne') {
-//         jsonData.filter = { "_id": { "$oid": content[1] } };
-//         jsonData.update = content[0];
-//     } else if (content !== false && action == 'findOne') {
-//         jsonData.filter = content;
-//     } else if (content !== false) {
-//         jsonData.document = content;
-//     }
-
-//     const settings = {
-//         "async": true,
-//         "crossDomain": true,
-//         "method": "POST",
-//         headers: {
-//             'Authorization': 'Bearer ' + token,
-//             'Content-Type': 'application/json'
-//         },
-//         'processData': false,
-//         body: JSON.stringify(jsonData)
-//     }
-
-//     response = await (await fetch(mongoDatabaseURL + action, settings)).json();
-    
-//     return response
-// }
-
-// function twoDigits(val) {
-//     if (val < 10) {
-//         return '0' + val;
-//     }
-//     return val;
-// }
-
-// mongoPostButton.addEventListener('click', () => {
-//     let today = new Date();
-//     let date = today.getFullYear()+'-'+twoDigits((today.getMonth()+1))+'-'+twoDigits(today.getDate());
-//     let time = twoDigits(today.getHours()) + ":" + twoDigits(today.getMinutes()) + ":" + twoDigits(today.getSeconds());
-//     let dateTime = date+' '+time;
-
-//     const document = {
-//         "Jane Doe": "1234567890",
-//         "time": dateTime
-//     }
-    
-//     contactDatabase('insertOne', 'users', 'user-data', document);
-// })
-
-// mongoGetUsersButton.addEventListener('click', async () => {
-//     console.log(await (await contactDatabase('find', 'users', 'user-data')).documents[0]);
-// })
-
-// mongoGetAnswersButton.addEventListener('click', async () => {
-//     console.log(await contactDatabase('find', 'answers', 'user-data'));
-// })
-
-// mongoFindButton.addEventListener('click', async () => {
-//     console.log(await contactDatabase('findOne', 'answers', 'user-data', { "_id": { "$oid": "63e9594bac08792f635e50e7"}})); 
-// })
-
 // REVISION BUDDY
 const sets = {
     1:  {'name': 'Macbeth Quotes', 'quotes': [
@@ -158,6 +59,14 @@ function getTimestampInSeconds () {
     return Math.floor(Date.now() / 1000)
 }
 
+function getLocalStorage(itemName) {
+    if (localStorage.getItem(itemName) === null) {
+        return null
+    } else {
+        return JSON.parse(localStorage.getItem(itemName));
+    }
+}
+
 function updateLocalStorage(itemName, key, newValue, list=true) {
     console.log("Updating database");
 
@@ -175,7 +84,7 @@ function updateLocalStorage(itemName, key, newValue, list=true) {
         item = JSON.parse(localStorage.getItem(itemName));
 
         if (list) {
-            item[key].push(newValue)
+            item[key].unshift(newValue)
         } else {
             item[key] = newValue;
         }
@@ -213,6 +122,8 @@ function endQuiz() {
     let timeTaken = getTimestampInSeconds() - timeToCompleteSet;
     let statistics = {'name': sets[chosenSet].name, 'time': timeTaken}
     updateLocalStorage('revision-buddy-statistics', 'history', statistics, true)
+    loadSets(setsContainer, sets, statistics=false);
+    loadStatistics();
 }
 
 function onlyIncludes(string, character) {
@@ -293,36 +204,85 @@ function scrollToTop() {
     window.scrollTo(0, 0);
 }
 
-function loadSets() {
+function createTextElement(text, instruction=true, highlightStart=false) {
+    let highlight = 0;
+    if (highlightStart) { highlight = 1; }
+
+    let textContainer = document.createElement('div');
+    textContainer.className = 'instruction';
+
+    let textElement = document.createElement('p');
+    if (typeof text == 'string') {
+        textElement.textContent = text;
+    } else if (Array.isArray(text)) {
+        for (let i = 0; i < text.length; i++) {
+            if (i % 2 == highlight) {
+                textElement.innerHTML += text[i];
+            } else {
+                textElement.innerHTML += `<span class="orange-text">${text[i]}</span>`;
+            }
+        }
+    }
+
+    textContainer.appendChild(textElement);
+    return textContainer;
+}
+
+function loadSets(container, sets, statistics=false) {
+    container.innerHTML = '';
+
+    if (statistics) {
+        container.appendChild(createTextElement(['You have completed ', Object.keys(sets).length, ' sets!'], true, false));
+    }
+
     for (const [index, set] of Object.entries(sets)) {
         const setContainer = document.createElement('div');
         setContainer.className = 'set-container';
 
         const setName = document.createElement('span');
         setName.textContent = set.name;
-        setName.className = 'set-name cursor-hover';
 
         const setData = document.createElement('span');
-        setData.textContent = set.quotes.length + ' Cards';
-        setData.className = 'set-data cursor-hover';
 
-        setContainer.addEventListener('click', function() {
-            document.querySelectorAll('.set-container').forEach((element) => {
-                element.classList.remove('active');
+        if (statistics) {
+            setName.className = 'set-name';
+            setData.textContent = 'Finished in ' + set.time + ' seconds!';
+            setData.className = 'set-data';
+        } else {
+            setName.className = 'set-name cursor-hover';
+            setData.textContent = set.quotes.length + ' Cards';
+            setData.className = 'set-data cursor-hover';
+
+            setContainer.addEventListener('click', function() {
+                document.querySelectorAll('.set-container').forEach((element) => {
+                    element.classList.remove('active');
+                });
+                setContainer.classList.add('active');
+                setContainer.setAttribute('set-id', index);
+                startButton.classList.add('active');
+                chosenSet = index;
             });
-            setContainer.classList.add('active');
-            setContainer.setAttribute('set-id', index);
-            startButton.classList.add('active');
-            chosenSet = index;
-        });
+        }
 
         setContainer.appendChild(setName);
         setContainer.appendChild(setData);
-        setsContainer.appendChild(setContainer);
+        container.appendChild(setContainer);
     };
 }
 
-loadSets();
+function loadStatistics() {
+    let statistics = getLocalStorage('revision-buddy-statistics');
+
+    if (statistics !== null) {
+        let setsStatistics = Object.assign({}, ...statistics.history.map((x, index) => ({[index]: {'name': x.name, 'time': x.time}})));
+        loadSets(statisticsContainer, setsStatistics, statistics=true);
+    } else {
+        statisticsContainer.appendChild(createTextElement(['Complete', ' a set to see ', 'statistics', '!'], true, true))
+    }
+}
+
+loadSets(setsContainer, sets, statistics=false);
+loadStatistics();
 
 startButton.addEventListener('click', () => {
     if (startButton.classList.contains('active')) {
@@ -338,6 +298,7 @@ settingsButton.addEventListener('click', () => {
 
 exitButton.addEventListener('click', () => {
     showPage(mainPage);
+    loadSets();
 })
 
 difficultySlider.oninput = function() {
