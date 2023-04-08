@@ -7,8 +7,18 @@ function isNumeric(str) {
            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
 
+function addPlus(number) {
+	if (!(isNumeric(number))) { return number }
+
+	if (number < 0) {
+		return number;
+	} else {
+		return '+' + number;
+	}
+}
+
 function round(number, decimalPlaces) {
-  return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
+	return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
 }
 
 
@@ -32,15 +42,15 @@ function displayQuadratic() {
         let solutions = quadraticSolve(inputQuadraticA.value, inputQuadraticB.value, inputQuadraticC.value)
         outputQuadratic.innerHTML = "loading...";
         if (isNaN(solutions[0]) || isNaN(solutions[1])) {
-          for (i = 0; i < solutions.length; i++) {
-            solutions[i] = 'x = ' + solutions[i];
-          }
-          outputQuadratic.innerHTML = solutions.join('&nbsp;&nbsp;&nbsp;&nbsp; ') + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>."
+			for (i = 0; i < solutions.length; i++) {
+				solutions[i] = 'x = ' + solutions[i];
+			}
+			outputQuadratic.innerHTML = solutions.join('&nbsp;&nbsp;&nbsp;&nbsp; ') + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>."
         }
         else {
-          outputQuadratic.innerHTML = `<span class="orange-text">x</span> = ${solutions[0]}<br><br><span class="orange-text">x</span> = ${solutions[1]}`
+			outputQuadratic.innerHTML = `<span class="orange-text">x</span> = ${solutions[0]}<br><br><span class="orange-text">x</span> = ${solutions[1]}`
         }
-      }
+	}
 }
 
 inputQuadraticA.oninput = function() {
@@ -70,27 +80,32 @@ function completeSquare(a, b, c) {
 }
 
 function displayTurningPoint() {
-  console.log("Getting turning point")
-  if ((inputTurningPointA && inputTurningPointA.value) && (inputTurningPointB && inputTurningPointB.value) && (inputTurningPointC && inputTurningPointC.value)) {
-      let solutions = completeSquare(inputTurningPointA.value, inputTurningPointB.value, inputTurningPointC.value)
-      outputTurningPoint.innerHTML = "loading...";
-      
-      if (isNaN(solutions[0]) || isNaN(solutions[1])) {
-        outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]}, ${solutions[1]})` + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>.";
-      } else {
-        outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]}, ${solutions[1]})`;
-      }
-    }
+	console.log("Getting turning point")
+	if ((inputTurningPointA && inputTurningPointA.value) && (inputTurningPointB && inputTurningPointB.value) && (inputTurningPointC && inputTurningPointC.value)) {
+		let solutions = completeSquare(inputTurningPointA.value, inputTurningPointB.value, inputTurningPointC.value)
+		outputTurningPoint.innerHTML = "loading...";
+
+		if (isNaN(solutions[0]) || isNaN(solutions[1])) {
+			outputTurningPoint.innerHTML = `<span class="orange-text">Turning Point</span> = (${solutions[0]}, ${solutions[1]})` + "<br><br>This <span class='orange-text'>happened</span> because you tried to get the square root of a <span class='orange-text'>negative</span> number.<br><br>Hint: Try <span class='orange-text'>increasing</span> the value of <span class='orange-text'>b</span>.";
+		} else {
+			outputTurningPoint.innerHTML = `<span class="orange-text">Equation </span><span id="equation"></span><br><br><span class="orange-text">Turning Point</span> = (${solutions[0]}, ${solutions[1]})`;
+			
+			equation = `=${inputTurningPointA.value}(x${addPlus(solutions[0]*-1)})²${addPlus(solutions[1])}`;
+			katex.render(equation, document.getElementById('equation'), {
+				throwOnError: false
+			});
+		}
+	}
 }
 
 inputTurningPointA.oninput = function() {
-    displayTurningPoint();
+	displayTurningPoint();
 }
 
 inputTurningPointB.oninput = function() {
-   displayTurningPoint();
+	displayTurningPoint();
 }
 
 inputTurningPointC.oninput = function() {
-   displayTurningPoint();
+	displayTurningPoint();
 }
