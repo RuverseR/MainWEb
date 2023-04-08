@@ -215,6 +215,14 @@ function endQuiz() {
     updateLocalStorage('revision-buddy-statistics', 'history', statistics, true)
 }
 
+function onlyIncludes(string, character) {
+    for (let i = 0; i < string.length; i++) {
+        if (!(string[i].includes(character))) { return false }
+    }
+
+    return true
+}
+
 async function chooseQuote() {
     function displayQuote(newQuote) {
         quoteElement.innerHTML = '';
@@ -262,7 +270,7 @@ async function chooseQuote() {
 
     currentSet.quotes.splice(index, 1);
 
-    let newQuote = removeWords(quote.quote);
+    let newQuote = new Quote(quote.quote).newQuote;
     console.log(quote.quote);
     console.log(newQuote.join(''));
     console.log(`${currentSet.quotes.length} quotes remaining!`);
@@ -283,90 +291,6 @@ function keepFocus() {
 
 function scrollToTop() {
     window.scrollTo(0, 0);
-}
-
-function removeWords(quote) {
-    function getRandomNumbers(amount, array) {
-        function includesItems(string, items) {
-            for (let i = 0; i < items.length; i++) {
-                if (string.includes(items[i])) { return true }
-            }
-        
-            return false
-        }
-
-        let numbers = [];
-        let length = 0;
-    
-        for (let i = 0; i < array.length; i++) {
-            if (!(includesItems(array[i], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-']))) {
-                length ++;
-            }
-        }
-    
-        if (amount + 1 > length) {
-            amount = length - 1;
-        }
-    
-        while (numbers.length < amount) {
-            let number = Math.floor(Math.random() * array.length);
-    
-            if (!(numbers.includes(number)) && (!(includesItems(array[number], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-'])))) {
-                numbers.push(number);
-            }
-        }
-    
-        return numbers.sort((a,b)=>a-b)
-    }
-
-    let words = splitQuote(quote);
-
-    let missingWordIndexes = getRandomNumbers(difficulty, words);
-    missingWords = [];
-
-    for (let i = 0; i < missingWordIndexes.length; i++) {
-        missingWords.push(words[missingWordIndexes[i]]);
-        words[missingWordIndexes[i]] = '_'.repeat(words[missingWordIndexes[i]].length);
-    }
-
-    return words
-}
-
-function splitQuote(quote) {
-    function splitItem(array, delimiter) {
-        let newArray = [];
-        
-        for (let i = 0; i < array.length; i++) {
-            if (array[i].includes(delimiter)) {
-                splitWords = array[i].split(delimiter);
-                newArray.push(splitWords[0]);
-                newArray.push(delimiter + splitWords[1]);
-            } else {
-                newArray.push(array[i]);
-            }
-        }
-    
-        return newArray
-    }
-
-    let words = quote.split(/( |\n)/g);
-    words = splitItem(words, ';');
-    words = splitItem(words, ':');
-    words = splitItem(words, '&');
-    words = splitItem(words, ',');
-    words = splitItem(words, '.');
-    words = splitItem(words, '!');
-    words = splitItem(words, '?');
-
-    return words
-}
-
-function onlyIncludes(string, character) {
-    for (let i = 0; i < string.length; i++) {
-        if (!(string[i].includes(character))) { return false }
-    }
-
-    return true
 }
 
 function loadSets() {
@@ -435,4 +359,90 @@ difficultySlider.oninput = function() {
     }
 
     difficultySlider.nextElementSibling.textContent = difficulty;
+}
+
+class Quote {
+    constructor(quote) {
+        this.originalQuote = quote;
+    }
+
+    get newQuote() {
+        return this.removeWords();
+    }
+
+    removeWords() {
+        function getRandomNumbers(amount, array) {
+            function includesItems(string, items) {
+                for (let i = 0; i < items.length; i++) {
+                    if (string.includes(items[i])) { return true }
+                }
+            
+                return false
+            }
+    
+            let numbers = [];
+            let length = 0;
+        
+            for (let i = 0; i < array.length; i++) {
+                if (!(includesItems(array[i], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-']))) {
+                    length ++;
+                }
+            }
+        
+            if (amount + 1 > length) {
+                amount = length - 1;
+            }
+        
+            while (numbers.length < amount) {
+                let number = Math.floor(Math.random() * array.length);
+        
+                if (!(numbers.includes(number)) && (!(includesItems(array[number], [';', ':', '&', ',', '.', '!', '?', ' ', '\n', '-'])))) {
+                    numbers.push(number);
+                }
+            }
+        
+            return numbers.sort((a,b)=>a-b)
+        }
+
+        function splitQuote(quote) {
+            function splitItem(array, delimiter) {
+                let newArray = [];
+                
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i].includes(delimiter)) {
+                        let splitWords = array[i].split(delimiter);
+                        newArray.push(splitWords[0]);
+                        newArray.push(delimiter + splitWords[1]);
+                    } else {
+                        newArray.push(array[i]);
+                    }
+                }
+            
+                return newArray
+            }
+        
+            let words = quote.split(/( |\n)/g);
+            words = splitItem(words, ';');
+            words = splitItem(words, ':');
+            words = splitItem(words, '&');
+            words = splitItem(words, ',');
+            words = splitItem(words, '.');
+            words = splitItem(words, '!');
+            words = splitItem(words, '?');
+        
+            return words
+        }
+    
+        let words = splitQuote(this.originalQuote);
+    
+        let missingWordIndexes = getRandomNumbers(difficulty, words);
+        missingWords = [];
+    
+        for (let i = 0; i < missingWordIndexes.length; i++) {
+            missingWords.push(words[missingWordIndexes[i]]);
+            words[missingWordIndexes[i]] = '_'.repeat(words[missingWordIndexes[i]].length);
+        }
+    
+        return words
+    }
 }
