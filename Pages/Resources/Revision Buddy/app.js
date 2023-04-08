@@ -291,6 +291,7 @@ startButton.addEventListener('click', () => {
 
 settingsButton.addEventListener('click', () => {
     showPage(settingsPage);
+    scrollToTop();
     difficultySlider.value = 25 * difficulty - 25;
     difficultySlider.nextElementSibling.textContent = difficulty;
 })
