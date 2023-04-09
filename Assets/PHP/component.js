@@ -5,8 +5,8 @@ class Navbar extends HTMLElement {
         <div class="nav-container">
         <nav class="navbar">
           <ul class="logo" href="">
-            <li><a class="logo-text" href="../../../index.html">Alex</a></li>
-            <li><a class="logo-circle" href="../../../index.html">.</a></li>
+            <li><a class="logo-text" href="../../index.html">Alex</a></li>
+            <li><a class="logo-circle" href="../../index.html">.</a></li>
           </ul>
           <a href="#" class="toggle-button">
             <span class="bar"></span>
@@ -16,57 +16,57 @@ class Navbar extends HTMLElement {
         </nav>
         <ul class="navbar-items">
           <li>
-            <a class="navbar-item" href="../../../Assets/Documents/CV 2 (PDF).pdf" target="_blank">Resume</a>
+            <a class="navbar-item" href="../../Assets/Documents/CV 2 (PDF).pdf" target="_blank">Resume</a>
           </li>
           <li class="resources-button">
             <a class="navbar-item" href="#">Resources</a>
             <div class="nav-resources">
               <ul>
                 <li>
-                  <a href="../../../Pages/Resources/Exam Timetable/index.html">Exam Timetable</a>
+                  <a href="../../resources/exam-timetable/index.html">Exam Timetable</a>
                 </li>
                 <li>
-                <a href="../../../Pages/Resources/Revision Buddy/index.html">Revision Buddy</a>
+                <a href="../../resources/revision-buddy/index.html">Revision Buddy</a>
                 </li>
                 <li>
-                  <a href="../../../Pages/Resources/Leaderboard/index.html">Leaderboard</a>
+                  <a href="../../resources/leaderboard/index.html">Leaderboard</a>
                 </li>
                 <li>
-                  <a href="../../../Pages/Resources/Insta Size/index.html">Insta Size</a>
+                  <a href="../../resources/insta-size/index.html">Insta Size</a>
                 </li>
                 <li>
-                  <a href="../../../Pages/Resources/Word Wrap/index.html">Word Wrap</a>
+                  <a href="../../resources/word-wrap/index.html">Word Wrap</a>
                 </li>
                 <li>
-                  <a href="../../../Pages/Resources/Chemistry/index.html">Chemistry</a>
+                  <a href="../../resources/chemistry/index.html">Chemistry</a>
                 </li>
                 <li>
-                  <a href="../../../Pages/Resources/Music/index.html">Music</a>
+                  <a href="../../resources/music/index.html">Music</a>
                 </li>
                 <li class="subcategory-button">
                   <a href="#">Maths</a>
                   <div class="nav-subcategory">
                     <ul>
                       <li>
-                        <a href="../../../Pages/Resources/Trigonometry/index.html">Trigonometry</a>
+                        <a href="../../resources/trigonometry/index.html">Trigonometry</a>
                       </li>
                       <li>
-                        <a href="../../../Pages/Resources/Quadratics/index.html">Quadratics</a>
+                        <a href="../../resources/quadratics/index.html">Quadratics</a>
                       </li>
                       <li>
-                        <a href="../../../Pages/Resources/Sequences/index.html">Sequences</a>
+                        <a href="../../resources/sequences/index.html">Sequences</a>
                       </li>
                     </ul>
                   </div>
                 </li>
                 <li>
-                  <a href="../../../Pages/Resources/Useful_Links/index.html">Useful Links</a>
+                  <a href="../../resources/useful-links/index.html">Useful Links</a>
                 </li>
               </ul>
             </div>
           </li>
           <li>
-            <a class="navbar-item" href="../../../index.html#contact">Contact</a>
+            <a class="navbar-item" href="../../index.html#contact">Contact</a>
           </li>
         </ul>
       </div>
