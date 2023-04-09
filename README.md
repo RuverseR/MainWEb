@@ -1,6 +1,6 @@
-<p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/Assets/Images/Portfolio Website Header.PNG" alt="portfolio header" /></p>
+<p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/assets/Images/Portfolio Website Header.PNG" alt="portfolio header" /></p>
 
-<p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/Assets/Images/Portfolio Website Home.PNG" alt="portfolio header" /></p>
+<p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/assets/Images/Portfolio Website Home.PNG" alt="portfolio header" /></p>
 
 <div align="left">
 
