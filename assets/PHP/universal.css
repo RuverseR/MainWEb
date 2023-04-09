@@ -113,8 +113,9 @@ li {
     list-style: none;
 }
 
-input {
-    font-size: 90%;
+input,
+textarea {
+    font-size: 100%;
 }
 
 /* Animations */

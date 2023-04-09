@@ -97,8 +97,4 @@ button:hover {
     header span {
         width: min-content;
     }
-
-    input {
-        width: 70vw;
-    }
 }
