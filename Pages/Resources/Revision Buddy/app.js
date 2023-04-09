@@ -283,6 +283,14 @@ function loadStatistics() {
 loadSets(setsContainer, sets, statistics=false);
 loadStatistics();
 
+document.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        if (startButton.classList.contains('active')) {
+            startQuiz();
+        }
+    }
+});
+
 startButton.addEventListener('click', () => {
     if (startButton.classList.contains('active')) {
         startQuiz();
