@@ -10,7 +10,7 @@ function isNumeric(str) {
 // PROGRAM
 const copyButton = document.querySelector('.copy-button');
 
-const SCRIPT =  `s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/alexlostorto/sparx@v3.0.0/console/inject.js';document.head.appendChild(s);`;
+const SCRIPT =  `s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/alexlostorto/magic-notes@v3.0.0/console/inject.js';document.head.appendChild(s);`;
 
 copyButton.addEventListener('click', async () => {
     navigator.clipboard.writeText(SCRIPT).then(async function() {
