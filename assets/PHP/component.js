@@ -32,6 +32,9 @@ class Navbar extends HTMLElement {
                   <a href="../../resources/leaderboard/index.html">Leaderboard</a>
                 </li>
                 <li>
+                  <a href="https://alexlostorto.github.io/magic-notes/">Magic Notes</a>
+                </li>
+                <li>
                   <a href="../../resources/insta-size/index.html">Insta Size</a>
                 </li>
                 <li>
