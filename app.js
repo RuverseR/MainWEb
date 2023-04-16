@@ -249,6 +249,15 @@ function detectTouch() {  // If a touch is detected, make sure the custom cursor
 
 window.addEventListener("touchstart", detectTouch);
 
+if (screen.availWidth > screen.availHeight){
+    isDesktop = true;
+    isMobile = false
+    console.log("Desktop");
+    cursor.style.display = 'block';
+    cursorInner.style.display = 'block';
+    cursorOuter.style.display = 'block';
+}
+
 window.addEventListener('scroll', (e) => {
     let p5canvas = document.querySelector('.p5Canvas');
 
