@@ -4,18 +4,29 @@
 
 <div align="left">
 
-## Resources
+## Pages
 
 ```python
 # Web pages
 [
-'Trigonometry',
-'Insta Size',
-'Quadratics',
-'Fibonacci',
-'Chemistry',
-'Music',
-'Useful Links'
+  'Resume',
+  'Resources': [
+    'Exam Timetable',
+    'Revision Buddy',
+    'Leaderboard',
+    'Magic Notes',
+    'Insta Size',
+    'Word Wrap',
+    'Chemistry',
+    'Music',
+    'Maths': [
+      'Trigonometry',
+      'Quadratics',
+      'Sequences'
+    ],
+    'Useful Links'
+  ],
+    'Contact'
 ]
 ```
 
