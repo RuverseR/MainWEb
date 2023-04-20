@@ -2,6 +2,12 @@
 
 <p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/assets/Images/Portfolio Website Home.PNG" alt="portfolio header" /></p>
 
+<h1 align="center">Portfolio Website</h1>
+
+<p align="center">
+  <b>Sharing ideas and cool projects!</a></b>
+</p>
+
 <div align="left">
 
 ## Pages
