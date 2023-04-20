@@ -29,7 +29,7 @@ const homePage = document.querySelector('.body-container');
 const bodyElement = document.querySelector('body');
 const toggleButton = document.querySelector('.toggle-button');
 const resourcesButton = document.querySelector('.resources-button');
-const recourcesLinks = document.querySelector('.nav-resources');
+const resourcesLinks = document.querySelector('.nav-resources');
 const subcategoryButton = document.querySelector('.subcategory-button');
 const navbarItems = document.querySelector('.navbar-items');
 const cursor = document.querySelector('.custom-cursor');
@@ -143,7 +143,7 @@ toggleButton.addEventListener('click', () => {
 })
 
 resourcesButton.addEventListener('click', () => {
-    recourcesLinks.classList.toggle('active');
+    resourcesLinks.classList.toggle('active');
 })
 
 subcategoryButton.addEventListener('click', (event) => {
@@ -165,7 +165,7 @@ let orientationLandscape = (screen.availWidth > screen.availHeight);
 let isMobile = (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i));
 let coarsePointer = window.matchMedia("(any-pointer:coarse)").matches;
 
-if (orientationLandscape || (!isMobile) || coarsePointer) { enableCustomMouse(); }
+if (orientationLandscape || (!isMobile) || coarsePointer) { enableCustomCursor(); }
 
 window.addEventListener("touchstart", detectTouch);
 
@@ -180,21 +180,31 @@ function detectTouch() {  // If a touch is detected, make sure the custom cursor
     |
     ------------------------------------------------------------*/
 
-window.addEventListener('mousemove', updateCustomCursor)
+const customCursorListener = (event) => { updateCustomCursor(event); };
+
+window.addEventListener('mousemove', customCursorListener);
 
 function detectTouch() {  // If a touch is detected, make sure the custom cursor is disabled 
     console.log("isMobile");
+    disableCustomCursor();
     window.removeEventListener("touchstart", detectTouch);
+    window.removeEventListener("mousemove", customCursorListener);
 }
 
-function enableCustomMouse() {
+function enableCustomCursor() {
     cursor.style.display = 'block';
     cursorInner.style.display = 'block';
     cursorOuter.style.display = 'block';
 }
 
-function toggleCursorHover(e) {
-    const target = e.target;
+function disableCustomCursor() {
+    cursor.style.display = 'none';
+    cursorInner.style.display = 'none';
+    cursorOuter.style.display = 'none';
+}
+
+function toggleCursorHover(event) {
+    const target = event.target;
     
     const isLinkTag = target.tagName.toLowerCase() === 'a'  || target.classList.contains('cursor-hover');
     const isHovered = cursorInner.classList.contains('hoveredCursor');
@@ -207,15 +217,15 @@ function toggleCursorHover(e) {
     }
 }
 
-function positionCustomCursor(e) {  // Whenever a mouse movement is detected, update the custom cursor position
-    cursorInner.style.left = e.pageX + 'px';
-    cursorInner.style.top = e.pageY - window.scrollY + 'px';
+function positionCustomCursor(event) {  // Whenever a mouse movement is detected, update the custom cursor position
+    cursorInner.style.left = event.pageX + 'px';
+    cursorInner.style.top = event.pageY - window.scrollY + 'px';
 
-    cursorOuter.style.left = e.pageX + 'px';
-    cursorOuter.style.top = e.pageY - window.scrollY + 'px';
+    cursorOuter.style.left = event.pageX + 'px';
+    cursorOuter.style.top = event.pageY - window.scrollY + 'px';
 }
 
-function updateCustomCursor(e) {
-    toggleCursorHover(e);
-    positionCustomCursor();
+function updateCustomCursor(event) {
+    toggleCursorHover(event);
+    positionCustomCursor(event);
 } 
