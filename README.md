@@ -8,6 +8,10 @@
   <b>Sharing ideas and cool projects!</a></b>
 </p>
 
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/alexlostorto/alexlostorto.github.io?style=for-the-badge&message=Code+Climate&labelColor=222222&logo=Code+Climate&logoColor=FFFFFF)](https://codeclimate.com/github/alexlostorto/alexlostorto.github.io/maintainability)
+
+> **Note** I'm currently trying to get the maintenance rating to an A!
+
 <div align="left">
 
 ## Pages
