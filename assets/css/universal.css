@@ -1,7 +1,7 @@
 /* Fonts */
 @font-face {
     font-family: 'Mark Pro';
-    src: url('../Fonts/Mark_Pro.woff') format('woff');
+    src: url('../fonts/Mark_Pro.woff') format('woff');
 }
 
 
@@ -363,7 +363,7 @@ textarea {
     bottom: 5vh;
     position: absolute;
     aspect-ratio: 3/2;
-    background-image: url('../SVG/footer.svg');
+    background-image: url('../svg/footer.svg');
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
