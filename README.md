@@ -2,20 +2,37 @@
 
 <p align="center"><img width="100%" src="https://github.com/alexlostorto/alexlostorto.github.io/raw/main/.github/Portfolio Website Home.PNG" alt="portfolio header" /></p>
 
+<h1 align="center">Portfolio Website</h1>
+
+<p align="center">
+  <b>Sharing ideas and cool projects!</a></b>
+</p>
+
 <div align="left">
 
-## Resources
+## Pages
 
 ```python
 # Web pages
 [
-'Trigonometry',
-'Insta Size',
-'Quadratics',
-'Fibonacci',
-'Chemistry',
-'Music',
-'Useful Links'
+  'Resume',
+  'Resources': [
+    'Exam Timetable',
+    'Revision Buddy',
+    'Leaderboard',
+    'Magic Notes',
+    'Insta Size',
+    'Word Wrap',
+    'Chemistry',
+    'Music',
+    'Maths': [
+      'Trigonometry',
+      'Quadratics',
+      'Sequences'
+    ],
+    'Useful Links'
+  ],
+    'Contact'
 ]
 ```
 
