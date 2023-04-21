@@ -23,34 +23,10 @@ reversibleSymbol.addEventListener('click', () => {
     chemicalFormulaInput.value += '⇌';
 })
 
-copyButton.addEventListener('click', () => {
-    navigator.clipboard.writeText(chemicalFormulaInput.value).then(async function() {
-        console.log('Copying to clipboard was successful!');
-        copyButton.textContent = 'Copied!';
-        await sleep(1000);
-        copyButton.textContent = 'Copy';
-    }, async function(err) {
-        copyButton.textContent = 'Failed to copy';
-        await sleep(1000);
-        copyButton.textContent = 'Copy';
-        console.error('Could not copy text: ', err);
-    });
-})
+copyButton.addEventListener('click', () => {copy(chemicalFormulaInput.value, copyButton, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000)})
 
-chemicalFormulaInput.addEventListener('keypress', (event)=> {
-    if (event.keyCode === 13) {
-        navigator.clipboard.writeText(chemicalFormulaInput.value).then(async function() {
-            console.log('Copying to clipboard was successful!');
-            copyButton.textContent = 'Copied!';
-            await sleep(1000);
-            copyButton.textContent = 'Copy';
-        }, async function(err) {
-            copyButton.textContent = 'Failed to copy';
-            await sleep(1000);
-            copyButton.textContent = 'Copy';
-            console.error('Could not copy text: ', err);
-        });
-    }
+chemicalFormulaInput.addEventListener('keypress', (event) => {
+    if (event.keyCode === 13) {copy(chemicalFormulaInput.value, copyButton, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000)}
 })
 
 function inputFocus(start, insertedLength=0) {

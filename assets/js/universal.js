@@ -8,6 +8,8 @@ TABLE OF CONTENTS
     2.2 VIEW COUNTER
     2.3 FADERS
     2.4 TYPEWRITER
+    2.5 CREDITS
+    2.6 COPY BUTTON
 3.0 NAVIGATION
     3.1 HAMBURGER FUNCTIONALITY
 4.0 CUSTOM CURSOR
@@ -51,6 +53,12 @@ homePage.classList.add('fade');
 
 const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+function isNumeric(str) {
+    if (typeof str != "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
 
     /*------------------------------------------------------------
@@ -128,6 +136,25 @@ function credits() {
     console.log.apply(console, ["%c Designed and Developed by Alex lo Storto %c\ud83d\ude80 ","color: #fff; background: #8000ff; padding:5px 0;","color: #fff; background: #242424; padding:5px 0 5px 5px;"])
 }
 
+    /*------------------------------------------------------------
+    |
+    | 2.6 COPY BUTTON
+    |
+    ------------------------------------------------------------*/
+
+function copy(text, button, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000) {
+    navigator.clipboard.writeText(text).then(async function() {
+        button.textContent = message;
+        await sleep(delay);
+        button.textContent = initialText;
+    }, async function(err) {
+        button.textContent = errorMessage;
+        await sleep(delay);
+        button.textContent = initialText;
+        console.error('Could not copy: ', err);
+    });
+}
+
 /*--------------------------------------------------------------
 3.0 NAVIGATION
 --------------------------------------------------------------*/
@@ -138,18 +165,24 @@ function credits() {
     |
     ------------------------------------------------------------*/
 
-toggleButton.addEventListener('click', () => {
-    navbarItems.classList.toggle('active');
-})
+if (toggleButton !== null) {
+    toggleButton.addEventListener('click', () => {
+        navbarItems.classList.toggle('active');
+    })
+}
 
-resourcesButton.addEventListener('click', () => {
-    resourcesLinks.classList.toggle('active');
-})
+if (resourcesButton !== null) {
+    resourcesButton.addEventListener('click', () => {
+        resourcesLinks.classList.toggle('active');
+    })
+}
 
-subcategoryButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    subcategoryButton.classList.toggle('active');
-})
+if (subcategoryButton !== null) {
+    subcategoryButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        subcategoryButton.classList.toggle('active');
+    })
+}
 
 /*--------------------------------------------------------------
 4.0 CUSTOM CURSOR
