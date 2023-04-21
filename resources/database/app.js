@@ -1,11 +1,6 @@
 console.clear();
 credits();
 
-function round(number, decimalPlaces) {
-    return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
-}
-
-
 // RestDB
 const restPostButton = document.querySelector('#rest-post-button');
 const restPutButton = document.querySelector('#rest-put-button');

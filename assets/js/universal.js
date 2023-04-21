@@ -61,6 +61,10 @@ function isNumeric(str) {
            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
 
+function round(number, decimalPlaces) {
+    return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
+}
+
     /*------------------------------------------------------------
     |
     | 2.2 VIEW COUNTER

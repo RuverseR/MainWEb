@@ -1,11 +1,6 @@
 console.clear();
 credits();
 
-function round(number, decimalPlaces) {
-    return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
-}
-
-
 // FIBONACCI
 const generateFibonacciButton = document.querySelector('#fibonacci-generate-button');
 const fibonacciInputElement = document.querySelector('#fibonacci-input');

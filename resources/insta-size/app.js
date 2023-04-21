@@ -81,7 +81,7 @@ function createGrid() {
         let row = document.createElement("div");
         row.className = "row";
         row.id = "row" + i;
-      
+
         for (k = 0; k < rows; k++) {
             let box = document.createElement("div"); 
             box.className = "box";

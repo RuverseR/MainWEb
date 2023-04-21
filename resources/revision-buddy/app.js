@@ -1,10 +1,6 @@
 console.clear();
 credits();
 
-function round(number, decimalPlaces) {
-    return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
-}
-
 // REVISION BUDDY
 
 // Quote variables

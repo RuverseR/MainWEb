@@ -1,19 +1,6 @@
 console.clear();
 credits();
 
-
-// FUNCTIONS 
-function isNumeric(str) {
-    if (typeof str != "string") return false // we only process strings!  
-    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
-}
-
-function round(number, decimalPlaces) {
-    return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
-}
-
-
 // TRIGIONOMETRY
 const inputATrig = document.querySelector('#a-trig');
 const inputBTrig = document.querySelector('#b-trig');
