@@ -1,10 +1,52 @@
 console.clear();
 credits();
 
-// FIBONACCI
+/*--------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+1.0 GLOBAL FUNCTIONS
+2.0 FIBONACCI SEQUENCE
+    2.1 DOM ELEMENTS
+    2.2 FUNCTIONS
+    2.3 EVENT LISTENERS
+3.0 TRIANGULAR NUMBERS
+    3.1 DOM ELEMENTS
+    3.2 FUNCTIONS
+    3.3 EVENT LISTENERS
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 GLOBAL FUNCTIONS
+--------------------------------------------------------------*/
+
+function outputSequence(inputElement, outputElement, generatorFunction, errorMessage) {
+    if (inputElement.value == '') {
+        outputElement.innerHTML = errorMessage;
+        return
+    }
+    sequence = generatorFunction(inputElement.value);
+    outputElement.textContent = sequence;
+}
+
+/*--------------------------------------------------------------
+2.0 FIBONACCI SEQUENCE
+--------------------------------------------------------------*/
+
+    /*------------------------------------------------------------
+    |
+    | 2.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
 const generateFibonacciButton = document.querySelector('#fibonacci-generate-button');
 const fibonacciInputElement = document.querySelector('#fibonacci-input');
 const fibonacciOutputElement = document.querySelector('#fibonacci-output');
+
+    /*------------------------------------------------------------
+    |
+    | 2.2 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
 
 function fibonacci(length) {
     if (parseInt(length) <= 1) {
@@ -26,33 +68,44 @@ function fibonacci(length) {
     return fibonacciList.join(', ')
 }
 
+    /*------------------------------------------------------------
+    |
+    | 2.3 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
+
 generateFibonacciButton.addEventListener('click', () => {
-    if (fibonacciInputElement.value == '') {
-        fibonacciOutputElement.innerHTML = "Don't leave it <span class='orange-text'>empty</span>!";
-        return
-    }
-    sequence = fibonacci(fibonacciInputElement.value);
-    fibonacciOutputElement.textContent = sequence;
+    outputSequence(fibonacciInputElement, fibonacciOutputElement, fibonacci, "Don't leave it <span class='orange-text'>empty</span>!");
 })
 
 fibonacciInputElement.addEventListener('keypress', (event)=> {
     if (event.keyCode === 13) {
-      event.preventDefault();
-        if (fibonacciInputElement.value == '') {
-            fibonacciOutputElement.innerHTML = "Don't leave it <span class='orange-text'>empty</span>!";
-            return
-        }
-        sequence = fibonacci(fibonacciInputElement.value);
-        fibonacciOutputElement.textContent = sequence;
+        event.preventDefault();
+        outputSequence(fibonacciInputElement, fibonacciOutputElement, fibonacci, "Don't leave it <span class='orange-text'>empty</span>!");
     }
 })
 
-// TRIANGULAR NUMBERS
+/*--------------------------------------------------------------
+3.0 TRIANGULAR NUMBERS
+--------------------------------------------------------------*/
+
+    /*------------------------------------------------------------
+    |
+    | 3.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
 const generateTriangularButton = document.querySelector('#triangular-generate-button');
 const triangularInputElement = document.querySelector('#triangular-input');
 const triangularOutputElement = document.querySelector('#triangular-output');
 
-function fibonacci(length) {
+    /*------------------------------------------------------------
+    |
+    | 3.2 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
+
+function triangular(length) {
     // Formula: (n^2 + n) / 2
 
     let triangularNumbers = [];
@@ -66,23 +119,19 @@ function fibonacci(length) {
     return triangularNumbers.join(', ')
 }
 
+    /*------------------------------------------------------------
+    |
+    | 3.3 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
+
 generateTriangularButton.addEventListener('click', () => {
-    if (triangularInputElement.value == '') {
-        triangularOutputElement.innerHTML = "Don't leave it <span class='orange-text'>empty</span>!";
-        return
-    }
-    sequence = fibonacci(triangularInputElement.value);
-    triangularOutputElement.textContent = sequence;
+    outputSequence(triangularInputElement, triangularOutputElement, triangular, "Don't leave it <span class='orange-text'>empty</span>!");
 })
 
-fibonacciInputElement.addEventListener('keypress', (event)=> {
+triangularInputElement.addEventListener('keypress', (event)=> {
     if (event.keyCode === 13) {
-      event.preventDefault();
-        if (triangularInputElement.value == '') {
-            triangularOutputElement.innerHTML = "Don't leave it <span class='orange-text'>empty</span>!";
-            return
-        }
-        sequence = fibonacci(triangularInputElement.value);
-        triangularOutputElement.textContent = sequence;
+        event.preventDefault();
+        outputSequence(triangularInputElement, triangularOutputElement, triangular, "Don't leave it <span class='orange-text'>empty</span>!");
     }
 })
