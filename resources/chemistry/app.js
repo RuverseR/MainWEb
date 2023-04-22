@@ -1,7 +1,29 @@
 console.clear();
 credits();
 
-// CHEMICAL FORMULAS
+/*--------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+1.0 CHEMICAL FORMULA EDITOR
+    1.1 DOM ELEMENTS
+    1.2 FUNCTIONS
+    1.3 EVENT LISTENERS
+2.0 ELECTROLYSIS OF AQUEOUS SOLUTIONS 
+    2.1 DOM ELEMENTS
+    2.2 FUNCTIONS
+    2.3 EVENT LISTENERS
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 CHEMICAL FORMULA EDITOR
+--------------------------------------------------------------*/
+
+    /*------------------------------------------------------------
+    |
+    | 1.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
 const reversibleSymbol = document.querySelector('.reversible-symbol');
 const copyButton = document.querySelector('.copy-button');
 const deltaSymbol = document.querySelector('.delta-symbol');
@@ -13,15 +35,11 @@ const piSymbol = document.querySelector('.pi-symbol');
 const subscriptSymbol = document.querySelector('.subscript-symbol');
 const chemicalFormulaInput = document.querySelector('#input');
 
-reversibleSymbol.addEventListener('click', () => {
-    chemicalFormulaInput.value += '⇌';
-})
-
-copyButton.addEventListener('click', () => {copy(chemicalFormulaInput.value, copyButton, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000)})
-
-chemicalFormulaInput.addEventListener('keypress', (event) => {
-    if (event.keyCode === 13) {copy(chemicalFormulaInput.value, copyButton, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000)}
-})
+    /*------------------------------------------------------------
+    |
+    | 1.2 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
 
 function inputFocus(start, insertedLength=0) {
     chemicalFormulaInput.focus();
@@ -37,6 +55,50 @@ function addSymbol(symbol, subtract=0) {
     inputLength = chemicalFormulaInput.value.length;
     inputFocus(start - subtract, symbol.length);
 }
+
+function typeSuperSubscript(scriptSymbols) {
+    const caretPos = chemicalFormulaInput.selectionStart - 1;
+    console.log(chemicalFormulaInput.value[caretPos])
+    if (isNumeric(chemicalFormulaInput.value[caretPos])) {
+        symbol = scriptSymbols[chemicalFormulaInput.value[caretPos]];
+        addSymbol(symbol, 1);
+    } else if (chemicalFormulaInput.value[caretPos] == '+') {
+        symbol = scriptSymbols[10];
+        addSymbol(symbol, 1);
+    } else if (chemicalFormulaInput.value[caretPos] == '-') {
+        symbol = scriptSymbols[11];
+        addSymbol(symbol, 1);
+    } else if (chemicalFormulaInput.value[caretPos] == '=') {
+        symbol = scriptSymbols[12];
+        addSymbol(symbol, 1);
+    } else if (chemicalFormulaInput.value[caretPos] == '(') {
+        symbol = scriptSymbols[13];
+        addSymbol(symbol, 1);
+    } else if (chemicalFormulaInput.value[caretPos] == ')') {
+        symbol = scriptSymbols[14];
+        addSymbol(symbol, 1);
+    }
+}
+
+    /*------------------------------------------------------------
+    |
+    | 1.3 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
+
+reversibleSymbol.addEventListener('click', () => {
+    chemicalFormulaInput.value += '⇌';
+})
+
+copyButton.addEventListener('click', () => {
+    copy(chemicalFormulaInput.value, copyButton, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000)
+})
+
+chemicalFormulaInput.addEventListener('keypress', (event) => {
+    if (event.keyCode === 13) {
+        copy(chemicalFormulaInput.value, copyButton, message='Copied!', initialText='Copy', errorMessage='Failed to copy', delay=1000)
+    }
+})
 
 deltaSymbol.addEventListener('click', () => {
     addSymbol('Δ');
@@ -74,8 +136,9 @@ subscriptSymbol.addEventListener('click', () => {
 
 const superscript = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹', '⁺', '⁻', '⁼', '⁽', '⁾'];
 const subscript = ['₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉', '₊', '₋', '₌', '₍', '₎'];
+
 let inputLength = 0;
-chemicalFormulaInput.addEventListener('input', (e) => {
+chemicalFormulaInput.addEventListener('input', () => {
     // Pressed backspace 
     if (chemicalFormulaInput.value.length < inputLength) {
         inputLength = chemicalFormulaInput.value.length;
@@ -83,123 +146,32 @@ chemicalFormulaInput.addEventListener('input', (e) => {
     }
 
     // Pressed a symbol 
-    if (superscriptSymbol.classList.contains('active')) {
-        const caretPos = chemicalFormulaInput.selectionStart - 1;
-        if (isNumeric(chemicalFormulaInput.value[caretPos])) {
-            symbol = superscript[chemicalFormulaInput.value[caretPos]];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '+') {
-            symbol = superscript[10];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '-') {
-            symbol = superscript[11];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '=') {
-            symbol = superscript[12];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '(') {
-            symbol = superscript[13];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == ')') {
-            symbol = superscript[14];
-            addSymbol(symbol, 1);
-        }
-    } else if (subscriptSymbol.classList.contains('active')) {
-        const caretPos = chemicalFormulaInput.selectionStart - 1;
-        console.log(chemicalFormulaInput.value[caretPos])
-        if (isNumeric(chemicalFormulaInput.value[caretPos])) {
-            symbol = subscript[chemicalFormulaInput.value[caretPos]];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '+') {
-            symbol = subscript[10];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '-') {
-            symbol = subscript[11];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '=') {
-            symbol = subscript[12];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == '(') {
-            symbol = subscript[10];
-            addSymbol(symbol, 1);
-        } else if (chemicalFormulaInput.value[caretPos] == ')') {
-            symbol = subscript[10];
-            addSymbol(symbol, 1);
-        }
-    }
+    if (superscriptSymbol.classList.contains('active')) { typeSuperSubscript(superscript); } 
+    else if (subscriptSymbol.classList.contains('active')) { typeSuperSubscript(subscript); }
+
     inputLength = chemicalFormulaInput.value.length;
 })
 
+/*--------------------------------------------------------------
+2.0 ELECTROLYSIS OF AQUEOUS SOLUTIONS
+--------------------------------------------------------------*/
 
-// ELECTROLYSIS OF AQUEOUS SOLUTIONS 
+    /*------------------------------------------------------------
+    |
+    | 2.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
 const metalInput = document.querySelector('#metal');
 const nonMetalInput = document.querySelector('#non-metal');
 const electrolysisOutput = document.querySelector('#electrolysis-output');
 const electrolysisButton = document.querySelector('#electrolysis-button');
 
-REACTIVITY_SERIES_ELEMENTS = {
-    'Potassium': 24,
-    'Sodium': 23,
-    'Lithium': 22,
-    'Barium': 21,
-    'Strontium': 20,
-    'Calcium': 19,
-    'Magnesium': 18,
-    'Aluminium': 17,
-    'Manganese': 16,
-    'Zinc': 15,
-    'Chromium': 14,
-    'Iron': 13,
-    'Cadmium': 12,
-    'Cobalt': 11,
-    'Nickel': 10,
-    'Tin': 9,
-    'Lead': 8,
-    'Hydrogen': 7,
-    'Antimony': 6,
-    'Bismuth': 5,
-    'Copper': 4,
-    'Mercury': 3,
-    'Silver': 2,
-    'Gold': 1,
-    'Platinum': 0,
-}
-
-REACTIVITY_SERIES_SYMBOLS = {
-    'K': 'Potassium',
-    'Na': 'Sodium',
-    'Li': 'Lithium',
-    'Ba': 'Barium',
-    'Sr': 'Strontium',
-    'Ca': 'Calcium',
-    'Mg': 'Magnesium',
-    'Al': 'Aluminium',
-    'Mn': 'Manganese',
-    'Zn': 'Zinc',
-    'Cr': 'Chromium',
-    'Fe': 'Iron',
-    'Cd': 'Cadmium',
-    'Co': 'Cobalt',
-    'Ni': 'Nickel',
-    'Sn': 'Tin',
-    'Pb': 'Lead',
-    'H': 'Hydrogen',
-    'Sb': 'Antimony',
-    'Bi': 'Bismuth',
-    'Cu': 'Copper',
-    'Hg': 'Mercury',
-    'Ag': 'Silver',
-    'Au': 'Gold',
-    'Pt': 'Platinum'
-}
-
-HALOGENS = [
-    'Fluorine',
-    'Chlorine',
-    'Bromine',
-    'Iodine',
-    'Astatine'
-]
+    /*------------------------------------------------------------
+    |
+    | 2.2 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
 
 function formatString(string) {
     // Capitalises the first letter of the string 
@@ -230,6 +202,12 @@ function electrolysis() {
 
     electrolysisOutput.innerHTML = `<span class="orange-text">${metal}</span> is produced at the <span class="orange-text">cathode</span><br><br><span class="orange-text">${nonMetal}</span> is produced at the <span class="orange-text">anode</span>`;
 }
+
+    /*------------------------------------------------------------
+    |
+    | 2.3 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
 
 electrolysisButton.addEventListener('click', () => {
     electrolysis();
