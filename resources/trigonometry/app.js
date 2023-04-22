@@ -1,7 +1,41 @@
 console.clear();
 credits();
 
-// TRIGIONOMETRY
+/*--------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+1.0 GLOBAL FUNCTIONS
+1.0 TRIGONOMETRY
+    1.1 DOM ELEMENTS
+    1.2 FUNCTIONS
+    1.3 EVENT LISTENERS
+2.0 COSINE RULE
+    2.1 DOM ELEMENTS
+    2.2 FUNCTIONS
+    2.3 EVENT LISTENERS
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 GLOBAL FUNCTIONS
+--------------------------------------------------------------*/
+
+function generateAnswer(changedVariables, variable, generatorFunction) {
+    if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != variable) {
+        changedVariables.push(variable);
+    }
+    generatorFunction();
+}
+
+/*--------------------------------------------------------------
+1.0 TRIGONOMETRY
+--------------------------------------------------------------*/
+
+    /*------------------------------------------------------------
+    |
+    | 1.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
 const inputATrig = document.querySelector('#a-trig');
 const inputBTrig = document.querySelector('#b-trig');
 const inputCTrig = document.querySelector('#c-trig');
@@ -9,12 +43,18 @@ const inputAlphaTrig = document.querySelector('#alpha-trig');
 const inputBetaTrig = document.querySelector('#beta-trig');
 const outputTrig = document.querySelector('#output-trig');
 
-let changedVariables = [];
+    /*------------------------------------------------------------
+    |
+    | 1.2 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
+
+let changedVariablesTrig = [];
 
 async function trigonometry() {
-    if (changedVariables.length <= 1) { return }
+    if (changedVariablesTrig.length <= 1) { return }
 
-    const inputs = [changedVariables[changedVariables.length - 1], changedVariables[changedVariables.length - 2]];
+    const inputs = [changedVariablesTrig[changedVariablesTrig.length - 1], changedVariablesTrig[changedVariablesTrig.length - 2]];
     console.log(inputs.join(', '));
 
     // Computation
@@ -104,46 +144,53 @@ async function trigonometry() {
     }
 }
 
+    /*------------------------------------------------------------
+    |
+    | 1.3 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
+
 inputATrig.oninput = function() {
-    if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != 'a') {
-        changedVariables.push('a');
-    }
-    trigonometry();
+    generateAnswer(changedVariablesTrig, 'a', trigonometry);
 }
 
 inputBTrig.oninput = function() {
-    if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != 'b') {
-        changedVariables.push('b');
-    }
-    trigonometry();
+    generateAnswer(changedVariablesTrig, 'b', trigonometry);
 }
 
 inputCTrig.oninput = function() {
-    if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != 'c') {
-        changedVariables.push('c');
-    }
-    trigonometry();
+    generateAnswer(changedVariablesTrig, 'c', trigonometry);
 }
 
 inputAlphaTrig.oninput = function() {
-    if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != 'alpha') {
-        changedVariables.push('alpha');
-    }    trigonometry();
+    generateAnswer(changedVariablesTrig, 'alpha', trigonometry);
 }
 
 inputBetaTrig.oninput = function() {
-    if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != 'beta') {
-        changedVariables.push('beta');
-    }    trigonometry();
+    generateAnswer(changedVariablesTrig, 'beta', trigonometry);
 }
 
+/*--------------------------------------------------------------
+2.0 COSINE RULE
+--------------------------------------------------------------*/
 
-// COSINE RULE
+    /*------------------------------------------------------------
+    |
+    | 2.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
 const inputACosine = document.querySelector('#a-cosine');
 const inputBCosine = document.querySelector('#b-cosine');
 const inputCCosine = document.querySelector('#c-cosine');
 const inputGammaCosine = document.querySelector('#gamma-cosine');
 const outputCosine = document.querySelector('#output-cosine');
+
+    /*------------------------------------------------------------
+    |
+    | 2.2 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
 
 let changedVariablesCosine = [];
 
@@ -194,30 +241,24 @@ async function cosine() {
     }
 }
 
+    /*------------------------------------------------------------
+    |
+    | 2.3 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
+
 inputACosine.oninput = function() {
-    if (changedVariablesCosine.length == 0 || changedVariablesCosine[changedVariablesCosine.length - 1] != 'a') {
-        changedVariablesCosine.push('a');
-    }
-    cosine();
+    generateAnswer(changedVariablesCosine, 'a', cosine);
 }
 
 inputBCosine.oninput = function() {
-    if (changedVariablesCosine.length == 0 || changedVariablesCosine[changedVariablesCosine.length - 1] != 'b') {
-        changedVariablesCosine.push('b');
-    }
-    cosine();
+    generateAnswer(changedVariablesCosine, 'b', cosine);
 }
 
 inputCCosine.oninput = function() {
-    if (changedVariablesCosine.length == 0 || changedVariablesCosine[changedVariablesCosine.length - 1] != 'c') {
-        changedVariablesCosine.push('c');
-    }
-    cosine();
+    generateAnswer(changedVariablesCosine, 'c', cosine);
 }
 
 inputGammaCosine.oninput = function() {
-    if (changedVariablesCosine.length == 0 || changedVariablesCosine[changedVariablesCosine.length - 1] != 'gamma') {
-        changedVariablesCosine.push('gamma');
-    }    
-    cosine();
+    generateAnswer(changedVariablesCosine, 'gamma', cosine);
 }
