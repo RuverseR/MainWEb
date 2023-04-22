@@ -19,11 +19,16 @@ TABLE OF CONTENTS
 1.0 GLOBAL FUNCTIONS
 --------------------------------------------------------------*/
 
-function generateAnswer(changedVariables, variable, generatorFunction) {
+function generateAnswer(changedVariables, variable, requiredVariables, generatorFunction) {
     if (changedVariables.length == 0 || changedVariables[changedVariables.length - 1] != variable) {
         changedVariables.push(variable);
     }
-    generatorFunction();
+
+    if (changedVariables.length <= 1) { return }
+
+    const inputs = changedVariables.slice(changedVariables.length-requiredVariables);
+
+    generatorFunction(inputs);
 }
 
 function toRadians(degrees) {
@@ -39,11 +44,11 @@ function sin(degrees) {
 }
 
 function cos(degrees) {
-    return Math.sin(toRadians(degrees))
+    return Math.cos(toRadians(degrees))
 }
 
 function tan(degrees) {
-    return Math.sin(toRadians(degrees))
+    return Math.tan(toRadians(degrees))
 }
 
 function asin(degrees) {
@@ -83,12 +88,7 @@ const outputTrig = document.querySelector('#output-trig');
 
 let changedVariablesTrig = [];
 
-async function trigonometry() {
-    if (changedVariablesTrig.length <= 1) { return }
-
-    const inputs = [changedVariablesTrig[changedVariablesTrig.length - 1], changedVariablesTrig[changedVariablesTrig.length - 2]];
-    console.log(inputs.join(', '));
-
+async function trigonometry(inputs) {
     const a = inputATrig.value;
     const b = inputBTrig.value;
     const c = inputCTrig.value;
@@ -147,7 +147,7 @@ async function trigonometry() {
         outputTrig.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
     }
 
-    if (isNaN(aValue) || isNaN(bValue) || isNaN(cValue) || isNaN(alphaValue) || isNaN(betaValue)) {
+    if (inputATrig.value == '' || inputBTrig.value == '' || inputCTrig.value == '' || inputAlphaTrig.value == '' || inputBetaTrig.value == '') {
         outputTrig.innerHTML = '<span class="orange-text">Error</span>: Angle α and Angle β must be <span class="orange-text">bigger</span> than <span class="orange-text">zero</span>.';
         await sleep(2000);
         outputTrig.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
@@ -161,23 +161,23 @@ async function trigonometry() {
     ------------------------------------------------------------*/
 
 inputATrig.oninput = function() {
-    generateAnswer(changedVariablesTrig, 'a', trigonometry);
+    generateAnswer(changedVariablesTrig, 'a', 2, trigonometry);
 }
 
 inputBTrig.oninput = function() {
-    generateAnswer(changedVariablesTrig, 'b', trigonometry);
+    generateAnswer(changedVariablesTrig, 'b', 2, trigonometry);
 }
 
 inputCTrig.oninput = function() {
-    generateAnswer(changedVariablesTrig, 'c', trigonometry);
+    generateAnswer(changedVariablesTrig, 'c', 2, trigonometry);
 }
 
 inputAlphaTrig.oninput = function() {
-    generateAnswer(changedVariablesTrig, 'alpha', trigonometry);
+    generateAnswer(changedVariablesTrig, 'alpha', 2, trigonometry);
 }
 
 inputBetaTrig.oninput = function() {
-    generateAnswer(changedVariablesTrig, 'beta', trigonometry);
+    generateAnswer(changedVariablesTrig, 'beta', 2, trigonometry);
 }
 
 /*--------------------------------------------------------------
@@ -204,12 +204,7 @@ const outputCosine = document.querySelector('#output-cosine');
 
 let changedVariablesCosine = [];
 
-async function cosine() {
-    if (changedVariablesCosine.length <= 1) { return }
-
-    const inputs = changedVariablesCosine.slice(changedVariablesCosine.length-3);
-    console.log(inputs.join(', '));
-
+async function cosine(inputs) {
     const a = inputACosine.value;
     const b = inputBCosine.value;
     const c = inputCCosine.value;
@@ -225,7 +220,7 @@ async function cosine() {
         inputACosine.value = round(b * cos(gamma) + (c**2 - b**2 * (sin(gamma)**2))**(1/2), 3)
     }
 
-    if (isNaN(aValue) || isNaN(bValue) || isNaN(cValue) || isNaN(gammaValue)) {
+    if (inputACosine.value == '' || inputBCosine.value == '' || inputCCosine.value == '' || inputGammaCosine.value == '') {
         outputCosine.innerHTML = '<span class="orange-text">Error</span>: You f*cked up.';
         await sleep(2000);
         outputCosine.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
@@ -239,17 +234,17 @@ async function cosine() {
     ------------------------------------------------------------*/
 
 inputACosine.oninput = function() {
-    generateAnswer(changedVariablesCosine, 'a', cosine);
+    generateAnswer(changedVariablesCosine, 'a', 3, cosine);
 }
 
 inputBCosine.oninput = function() {
-    generateAnswer(changedVariablesCosine, 'b', cosine);
+    generateAnswer(changedVariablesCosine, 'b', 3, cosine);
 }
 
 inputCCosine.oninput = function() {
-    generateAnswer(changedVariablesCosine, 'c', cosine);
+    generateAnswer(changedVariablesCosine, 'c', 3, cosine);
 }
 
 inputGammaCosine.oninput = function() {
-    generateAnswer(changedVariablesCosine, 'gamma', cosine);
+    generateAnswer(changedVariablesCosine, 'gamma', 3, cosine);
 }

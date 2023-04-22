@@ -202,7 +202,7 @@ let orientationLandscape = (screen.availWidth > screen.availHeight);
 let isMobile = (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i));
 let coarsePointer = window.matchMedia("(any-pointer:coarse)").matches;
 
-if (orientationLandscape || (!isMobile) || coarsePointer) { toggleCustomCursor(enable); }
+if (orientationLandscape || (!isMobile) || coarsePointer) { toggleCustomCursor(true); }
 
 window.addEventListener("touchstart", detectTouch);
 
