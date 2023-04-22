@@ -26,6 +26,38 @@ function generateAnswer(changedVariables, variable, generatorFunction) {
     generatorFunction();
 }
 
+function toRadians(degrees) {
+    return degrees * Math.PI/180;
+}
+
+function toDegrees(radians) {
+    return radians * 180/Math.PI;
+}
+
+function sin(degrees) {
+    return Math.sin(toRadians(degrees))
+}
+
+function cos(degrees) {
+    return Math.sin(toRadians(degrees))
+}
+
+function tan(degrees) {
+    return Math.sin(toRadians(degrees))
+}
+
+function asin(degrees) {
+    return toDegrees(Math.asin(degrees))
+}
+
+function acos(degrees) {
+    return toDegrees(Math.acos(degrees))
+}
+
+function atan(degrees) {
+    return toDegrees(Math.atan(degrees))
+}
+
 /*--------------------------------------------------------------
 1.0 TRIGONOMETRY
 --------------------------------------------------------------*/
@@ -57,16 +89,6 @@ async function trigonometry() {
     const inputs = [changedVariablesTrig[changedVariablesTrig.length - 1], changedVariablesTrig[changedVariablesTrig.length - 2]];
     console.log(inputs.join(', '));
 
-    // Computation
-
-    function toRadians(degrees) {
-        return degrees * Math.PI/180;
-    }
-
-    function toDegrees(radians) {
-        return radians * 180/Math.PI;
-    }
-
     const a = inputATrig.value;
     const b = inputBTrig.value;
     const c = inputCTrig.value;
@@ -82,46 +104,46 @@ async function trigonometry() {
     // input a 
     if (inputs.includes('a') && inputs.includes('b')) {
         cValue = round((a**2 + b**2) ** (0.5), 3);
-        alphaValue = round(toDegrees(Math.atan(a / b)), 3);
-        betaValue = round(toDegrees(Math.atan(b / a)), 3);
+        alphaValue = round(atan(a / b), 3);
+        betaValue = round(atan(b / a), 3);
     } else if (inputs.includes('a') && inputs.includes('c')) {
         bValue = round((c**2 - a**2) ** (0.5), 3);
-        alphaValue = round(toDegrees(Math.asin(a / c)), 3);
-        betaValue = round(toDegrees(Math.acos(a / c)), 3);
+        alphaValue = round(asin(a / c), 3);
+        betaValue = round(acos(a / c), 3);
     } else if (inputs.includes('a') && inputs.includes('alpha')) {
-        bValue = round(a / (Math.tan(toRadians(alpha))), 3);
-        cValue = round(a / (Math.sin(toRadians(alpha))), 3);
-        betaValue = round(toDegrees(Math.atan((a / Math.tan(toRadians(alpha))) / a)), 3);
+        bValue = round(a / tan(alpha), 3);
+        cValue = round(a / sin(alpha), 3);
+        betaValue = round(atan((a / tan(alpha)) / a), 3);
     } else if (inputs.includes('a') && inputs.includes('beta')) {
-        bValue = round(a * (Math.tan(toRadians(beta))), 3);
-        cValue = round(a / (Math.cos(toRadians(beta))), 3);
-        alphaValue = round(toDegrees(Math.atan(a / (a * Math.tan(toRadians(beta))))), 3);
+        bValue = round(a * tan(beta), 3);
+        cValue = round(a / cos(beta), 3);
+        alphaValue = round(atan(a / (a * tan(beta))), 3);
     }
 
     // input b 
     else if (inputs.includes('b') && inputs.includes('c')) {
         aValue = round((c**2 - b**2) ** (0.5), 3);
-        alphaValue = round(toDegrees(Math.acos(b / c)), 3);
-        betaValue = round(toDegrees(Math.asin(b / c)), 3);
+        alphaValue = round(acos(b / c), 3);
+        betaValue = round(asin(b / c), 3);
     } else if (inputs.includes('b') && inputs.includes('alpha')) {
-        aValue = round(b * Math.tan(toRadians(alpha)), 3);
-        cValue = round(b / Math.cos(toRadians(alpha)), 3);
-        betaValue = round(toDegrees(Math.atan(b / (b * Math.tan(toRadians(alpha))))), 3);
+        aValue = round(b * tan(alpha), 3);
+        cValue = round(b / cos(alpha), 3);
+        betaValue = round(atan(b / (b * tan(alpha))), 3);
     } else if (inputs.includes('b') && inputs.includes('beta')) {
-        aValue = round(b / (Math.tan(toRadians(beta))), 3);
-        cValue = round(b / (Math.sin(toRadians(beta))), 3);
-        alphaValue = round(toDegrees(Math.atan((b / (Math.tan(toRadians(beta)))) / b)), 3);
+        aValue = round(b / tan(beta), 3);
+        cValue = round(b / sin(beta), 3);
+        alphaValue = round(atan(b / (tan(beta) / b)), 3);
     }
 
     // input c 
     else if (inputs.includes('c') && inputs.includes('alpha')) {
-        aValue = round(c * Math.sin(toRadians(alpha)), 3);
-        bValue = round(c * Math.cos(toRadians(alpha)), 3);
-        betaValue = round(toDegrees(Math.acos((c * Math.sin(toRadians(alpha))) / c)), 3);
+        aValue = round(c * sin(alpha), 3);
+        bValue = round(c * cos(alpha), 3);
+        betaValue = round(acos((c * sin(alpha)) / c), 3);
     } else if (inputs.includes('c') && inputs.includes('beta')) {
-        aValue = round(c * Math.cos(toRadians(beta)), 3);
-        bValue = round(c * Math.sin(toRadians(beta)), 3);
-        alphaValue = round(toDegrees(Math.asin((c * Math.cos(toRadians(beta))) / c)), 3);
+        aValue = round(c * cos(beta), 3);
+        bValue = round(c * sin(beta), 3);
+        alphaValue = round(asin(c * cos(beta) / c), 3);
     }
 
     // input alpha 
@@ -200,15 +222,6 @@ async function cosine() {
     const inputs = changedVariablesCosine.slice(changedVariablesCosine.length-3);
     console.log(inputs.join(', '));
 
-    // Computation
-    function toRadians(degrees) {
-        return degrees * Math.PI/180;
-    }
-
-    function toDegrees(radians) {
-        return radians * 180/Math.PI;
-    }
-
     const a = inputACosine.value;
     const b = inputBCosine.value;
     const c = inputCCosine.value;
@@ -220,13 +233,13 @@ async function cosine() {
     let gammaValue = inputGammaCosine.value;
 
     if (inputs.includes('a') && inputs.includes('b') && inputs.includes('c')) {
-        gammaValue = round(toDegrees(Math.acos((a**2 + b**2 - c**2) / (2*a*b))), 3)
+        gammaValue = round(acos((a**2 + b**2 - c**2) / (2*a*b)), 3);
     } else if (inputs.includes('a') && inputs.includes('b') && inputs.includes('gamma')) {
-        cValue = round((a**2 + b**2 - 2*a*b*Math.cos(toRadians(gamma)))**(1/2), 3)
+        cValue = round((a**2 + b**2 - 2*a*b*cos(gamma))**(1/2), 3);
     } else if (inputs.includes('a') && inputs.includes('c') && inputs.includes('gamma')) {
-        bValue = round(a * Math.cos(toRadians(gamma)) + (c**2 - a**2 * (Math.sin(toRadians(gamma))**2))**(1/2), 3)
+        bValue = round(a * cos(gamma) + (c**2 - a**2 * (sin(gamma)**2))**(1/2), 3)
     } else if (inputs.includes('b') && inputs.includes('c') && inputs.includes('gamma')) {
-        aValue = round(b * Math.cos(toRadians(gamma)) + (c**2 - b**2 * (Math.sin(toRadians(gamma))**2))**(1/2), 3)
+        aValue = round(b * cos(gamma) + (c**2 - b**2 * (sin(gamma)**2))**(1/2), 3)
     } 
 
     inputACosine.value = aValue;
