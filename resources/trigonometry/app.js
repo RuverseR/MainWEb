@@ -95,55 +95,49 @@ async function trigonometry() {
     const alpha = inputAlphaTrig.value;
     const beta = inputBetaTrig.value;
 
-    let aValue = inputATrig.value;
-    let bValue = inputBTrig.value;
-    let cValue = inputCTrig.value;
-    let alphaValue = inputAlphaTrig.value;
-    let betaValue = inputBetaTrig.value;
-
     // input a 
     if (inputs.includes('a') && inputs.includes('b')) {
-        cValue = round((a**2 + b**2) ** (0.5), 3);
-        alphaValue = round(atan(a / b), 3);
-        betaValue = round(atan(b / a), 3);
+        inputCTrig.value = round((a**2 + b**2) ** (0.5), 3);
+        inputAlphaTrig.value = round(atan(a / b), 3);
+        inputBetaTrig.value = round(atan(b / a), 3);
     } else if (inputs.includes('a') && inputs.includes('c')) {
-        bValue = round((c**2 - a**2) ** (0.5), 3);
-        alphaValue = round(asin(a / c), 3);
-        betaValue = round(acos(a / c), 3);
+        inputBTrig.value = round((c**2 - a**2) ** (0.5), 3);
+        inputAlphaTrig.value = round(asin(a / c), 3);
+        inputBetaTrig.value = round(acos(a / c), 3);
     } else if (inputs.includes('a') && inputs.includes('alpha')) {
-        bValue = round(a / tan(alpha), 3);
-        cValue = round(a / sin(alpha), 3);
-        betaValue = round(atan((a / tan(alpha)) / a), 3);
+        inputBTrig.value = round(a / tan(alpha), 3);
+        inputCTrig.value = round(a / sin(alpha), 3);
+        inputBetaTrig.value = round(atan((a / tan(alpha)) / a), 3);
     } else if (inputs.includes('a') && inputs.includes('beta')) {
-        bValue = round(a * tan(beta), 3);
-        cValue = round(a / cos(beta), 3);
-        alphaValue = round(atan(a / (a * tan(beta))), 3);
+        inputBTrig.value = round(a * tan(beta), 3);
+        inputCTrig.value = round(a / cos(beta), 3);
+        inputAlphaTrig.value = round(atan(a / (a * tan(beta))), 3);
     }
 
     // input b 
     else if (inputs.includes('b') && inputs.includes('c')) {
-        aValue = round((c**2 - b**2) ** (0.5), 3);
-        alphaValue = round(acos(b / c), 3);
-        betaValue = round(asin(b / c), 3);
+        inputATrig.value = round((c**2 - b**2) ** (0.5), 3);
+        inputAlphaTrig.value = round(acos(b / c), 3);
+        inputBetaTrig.value = round(asin(b / c), 3);
     } else if (inputs.includes('b') && inputs.includes('alpha')) {
-        aValue = round(b * tan(alpha), 3);
-        cValue = round(b / cos(alpha), 3);
-        betaValue = round(atan(b / (b * tan(alpha))), 3);
+        inputATrig.value = round(b * tan(alpha), 3);
+        inputCTrig.value = round(b / cos(alpha), 3);
+        inputBetaTrig.value = round(atan(b / (b * tan(alpha))), 3);
     } else if (inputs.includes('b') && inputs.includes('beta')) {
-        aValue = round(b / tan(beta), 3);
-        cValue = round(b / sin(beta), 3);
-        alphaValue = round(atan(b / (tan(beta) / b)), 3);
+        inputATrig.value = round(b / tan(beta), 3);
+        inputCTrig.value = round(b / sin(beta), 3);
+        inputAlphaTrig.value = round(atan(b / (tan(beta) / b)), 3);
     }
 
     // input c 
     else if (inputs.includes('c') && inputs.includes('alpha')) {
-        aValue = round(c * sin(alpha), 3);
-        bValue = round(c * cos(alpha), 3);
-        betaValue = round(acos((c * sin(alpha)) / c), 3);
+        inputATrig.value = round(c * sin(alpha), 3);
+        inputBTrig.value = round(c * cos(alpha), 3);
+        inputBetaTrig.value = round(acos((c * sin(alpha)) / c), 3);
     } else if (inputs.includes('c') && inputs.includes('beta')) {
-        aValue = round(c * cos(beta), 3);
-        bValue = round(c * sin(beta), 3);
-        alphaValue = round(asin(c * cos(beta) / c), 3);
+        inputATrig.value = round(c * cos(beta), 3);
+        inputBTrig.value = round(c * sin(beta), 3);
+        inputAlphaTrig.value = round(asin(c * cos(beta) / c), 3);
     }
 
     // input alpha 
@@ -152,12 +146,6 @@ async function trigonometry() {
         await sleep(2000);
         outputTrig.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
     }
-
-    inputATrig.value = aValue;
-    inputBTrig.value = bValue;
-    inputCTrig.value = cValue;
-    inputAlphaTrig.value = alphaValue;
-    inputBetaTrig.value = betaValue;
 
     if (isNaN(aValue) || isNaN(bValue) || isNaN(cValue) || isNaN(alphaValue) || isNaN(betaValue)) {
         outputTrig.innerHTML = '<span class="orange-text">Error</span>: Angle α and Angle β must be <span class="orange-text">bigger</span> than <span class="orange-text">zero</span>.';
@@ -227,25 +215,15 @@ async function cosine() {
     const c = inputCCosine.value;
     const gamma = inputGammaCosine.value;
 
-    let aValue = inputACosine.value;
-    let bValue = inputBCosine.value;
-    let cValue = inputCCosine.value;
-    let gammaValue = inputGammaCosine.value;
-
     if (inputs.includes('a') && inputs.includes('b') && inputs.includes('c')) {
-        gammaValue = round(acos((a**2 + b**2 - c**2) / (2*a*b)), 3);
+        inputGammaCosine.value = round(acos((a**2 + b**2 - c**2) / (2*a*b)), 3);
     } else if (inputs.includes('a') && inputs.includes('b') && inputs.includes('gamma')) {
-        cValue = round((a**2 + b**2 - 2*a*b*cos(gamma))**(1/2), 3);
+        inputCCosine.value = round((a**2 + b**2 - 2*a*b*cos(gamma))**(1/2), 3);
     } else if (inputs.includes('a') && inputs.includes('c') && inputs.includes('gamma')) {
-        bValue = round(a * cos(gamma) + (c**2 - a**2 * (sin(gamma)**2))**(1/2), 3)
+        inputBCosine.value = round(a * cos(gamma) + (c**2 - a**2 * (sin(gamma)**2))**(1/2), 3)
     } else if (inputs.includes('b') && inputs.includes('c') && inputs.includes('gamma')) {
-        aValue = round(b * cos(gamma) + (c**2 - b**2 * (sin(gamma)**2))**(1/2), 3)
-    } 
-
-    inputACosine.value = aValue;
-    inputBCosine.value = bValue;
-    inputCCosine.value = cValue;
-    inputGammaCosine.value = gammaValue;
+        inputACosine.value = round(b * cos(gamma) + (c**2 - b**2 * (sin(gamma)**2))**(1/2), 3)
+    }
 
     if (isNaN(aValue) || isNaN(bValue) || isNaN(cValue) || isNaN(gammaValue)) {
         outputCosine.innerHTML = '<span class="orange-text">Error</span>: You f*cked up.';
