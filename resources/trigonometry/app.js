@@ -31,6 +31,12 @@ function generateAnswer(changedVariables, variable, requiredVariables, generator
     generatorFunction(inputs);
 }
 
+async function displayError(element, defaultMessage, errorMessage, delay=2000) {
+    element.innerHTML = errorMessage;
+    await sleep(delay);
+    element.innerHTML = defaultMessage;
+}
+
 function toRadians(degrees) {
     return degrees * Math.PI/180;
 }
@@ -95,6 +101,8 @@ async function trigonometry(inputs) {
     const alpha = inputAlphaTrig.value;
     const beta = inputBetaTrig.value;
 
+    const defaultMessage = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
+
     // input a 
     if (inputs.includes('a') && inputs.includes('b')) {
         inputCTrig.value = round((a**2 + b**2) ** (0.5), 3);
@@ -142,15 +150,13 @@ async function trigonometry(inputs) {
 
     // input alpha 
     else if (inputs.includes('alpha') && inputs.includes('beta')) {
-        outputTrig.innerHTML = '<span class="orange-text">Hint</span>: Try adding the length of a <span class="orange-text">side</span>.';
-        await sleep(2000);
-        outputTrig.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
+        let errorMessage = '<span class="orange-text">Hint</span>: Try adding the length of a <span class="orange-text">side</span>.';
+        displayError(outputTrig, defaultMessage, errorMessage, delay=2000)
     }
 
     if (inputATrig.value == '' || inputBTrig.value == '' || inputCTrig.value == '' || inputAlphaTrig.value == '' || inputBetaTrig.value == '') {
-        outputTrig.innerHTML = '<span class="orange-text">Error</span>: Angle α and Angle β must be <span class="orange-text">bigger</span> than <span class="orange-text">zero</span>.';
-        await sleep(2000);
-        outputTrig.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
+        let errorMessage = '<span class="orange-text">Error</span>: Angle α and Angle β must be <span class="orange-text">bigger</span> than <span class="orange-text">zero</span>.';
+        displayError(outputTrig, defaultMessage, errorMessage, delay=2000)
     }
 }
 
@@ -210,6 +216,8 @@ async function cosine(inputs) {
     const c = inputCCosine.value;
     const gamma = inputGammaCosine.value;
 
+    const defaultMessage = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
+
     if (inputs.includes('a') && inputs.includes('b') && inputs.includes('c')) {
         inputGammaCosine.value = round(acos((a**2 + b**2 - c**2) / (2*a*b)), 3);
     } else if (inputs.includes('a') && inputs.includes('b') && inputs.includes('gamma')) {
@@ -221,9 +229,8 @@ async function cosine(inputs) {
     }
 
     if (inputACosine.value == '' || inputBCosine.value == '' || inputCCosine.value == '' || inputGammaCosine.value == '') {
-        outputCosine.innerHTML = '<span class="orange-text">Error</span>: You f*cked up.';
-        await sleep(2000);
-        outputCosine.innerHTML = '<span class="orange-text">Hint</span>: Angles are calculated in <span class="orange-text">degrees</span>.';
+        let errorMessage = '<span class="orange-text">Error</span>: You f*cked up.';
+        displayError(outputCosine, defaultMessage, errorMessage, delay=2000)
     }
 }
 
