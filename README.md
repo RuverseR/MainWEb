@@ -14,7 +14,19 @@
 
 <div align="left">
 
-## Pages
+## 📔 Table of Contents
+
+<details>
+  <summary>Click to expand</summary>
+  
+- [Pages](#-pages)
+- [Other Websites](#-other-websites)
+  - [Space-themed Website](#space-themed-website)
+  - [Maths-Functions](#maths-functions)
+- [Credits](#-credits)
+</details>
+
+## 📋 Pages
 
 ```python
 # Web pages
@@ -40,7 +52,7 @@
 ]
 ```
 
-## Other Websites
+## 🌐 Other Websites
 
 #### [Space-themed Website](https://alexlostorto.github.io/space-portfolio/)
 
@@ -72,7 +84,7 @@ This website was created in July 2022 to host all my maths functions (even thoug
 ]
 ```
 
-## Credits
+## 📜 Credits
 
 Everything is coded by Alex lo Storto
 
