@@ -116,7 +116,7 @@ greaterequalSymbol.addEventListener('click', () => {
     addSymbol('≥');
 })
 
-piSymbol.addEventListener('click', (e) => {
+piSymbol.addEventListener('click', () => {
     addSymbol('π');
 })
 

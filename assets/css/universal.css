@@ -92,13 +92,13 @@ body.scroll {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto Mono', monospace;;
+    font-family: 'Roboto Mono', monospace;
     color: white;
     cursor: none;
 }
 
 .text-container {
-    padding: 5vh 15vh 5vh;
+    padding: 5vh 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,7 +144,6 @@ textarea {
 
 @keyframes fadeScroll {
     0% {background: var(--darkest);}
-    100% {}
 }
 
 @keyframes gradient {
@@ -573,7 +572,7 @@ background: #bb7900;
     }
     
     .nav-resources li a {
-        padding: 10px 10px;
+        padding: 10px;
         font-size: 0.9rem;
     }
     

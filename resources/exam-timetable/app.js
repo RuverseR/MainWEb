@@ -60,8 +60,6 @@ const timetable = document.querySelector('.timetable');
 
 const MONTHS = {'January': 1, 'February': 2,'March': 3, 'April': 4, 'May': 5, 'June': 6, 'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12};
 
-let counter = 0;
-
 function padDate(number) {
     if (number.toString().length < 2) {
         return `0${number}`;

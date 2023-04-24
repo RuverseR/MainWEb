@@ -93,16 +93,16 @@ function createGrid() {
 				box.style.border = '2px solid orange';
 			}
 			row.appendChild(box);
-		};
+		}
 		
 		grid.appendChild(row);
-	};
+	}
 
 	downloadButton.classList.add('active');
 
 	gridImage.style.margin = margin;
 	gridContainer.appendChild(grid);
-};
+}
 
 function getRatio() {
 	heightMultiplier = imageHeight / columns;

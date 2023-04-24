@@ -61,7 +61,7 @@ input {
     border: 0;
     outline: 0;
     padding: 3px;
-    margin: 30px 10px 10px 10px;
+    margin: 30px 10px 10px;
     font-family: "Roboto Mono", monospace;
     background: transparent;
     border-bottom: 2px solid white;
@@ -88,9 +88,6 @@ input[type=number] {
 }
 
 /* Responsive Media */
-@media (max-width: 1500px) {
-}
-
 @media (max-width: 1000px) {
     .gradient-header {
         font-size: 4rem;

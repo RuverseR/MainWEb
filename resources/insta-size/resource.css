@@ -148,7 +148,7 @@ input[type='range']::-moz-range-thumb {
 
 /* Image */
 .uploaded-image {
-    padding: 3vh 3vh;
+    padding: 3vh;
     display: none;
     align-items: center;
     justify-content: center;
