@@ -27,13 +27,13 @@ TABLE OF CONTENTS
     |
     ------------------------------------------------------------*/
 
+let toggleButton;
+let resourcesButton;
+let resourcesLinks;
+let subcategoryButton;
+let navbarItems;
 const homePage = document.querySelector('.body-container');
 const bodyElement = document.querySelector('body');
-const toggleButton = document.querySelector('.toggle-button');
-const resourcesButton = document.querySelector('.resources-button');
-const resourcesLinks = document.querySelector('.nav-resources');
-const subcategoryButton = document.querySelector('.subcategory-button');
-const navbarItems = document.querySelector('.navbar-items');
 const cursor = document.querySelector('.custom-cursor');
 const cursorInner = document.querySelector('.custom-cursor.inner');
 const cursorOuter = document.querySelector('.custom-cursor.outer');
@@ -63,6 +63,16 @@ function isNumeric(str) {
 
 function round(number, decimalPlaces) {
     return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
+}
+
+async function waitUntilLoaded(selector) {
+    let trials = 0;
+    while (document.querySelector(selector) === null && trials <= 10) {
+        await sleep(100);
+        trials ++;
+    }
+
+    return document.querySelector(selector);
 }
 
     /*------------------------------------------------------------
@@ -169,24 +179,34 @@ function copy(text, button, message='Copied!', initialText='Copy', errorMessage=
     |
     ------------------------------------------------------------*/
 
-if (toggleButton !== null) {
-    toggleButton.addEventListener('click', () => {
-        navbarItems.classList.toggle('active');
-    })
+async function enableNavbar() {
+    toggleButton = await waitUntilLoaded('.toggle-button');
+    resourcesButton = await waitUntilLoaded('.resources-button');
+    resourcesLinks = await waitUntilLoaded('.nav-resources');
+    subcategoryButton = await waitUntilLoaded('.subcategory-button');
+    navbarItems = await waitUntilLoaded('.navbar-items');
+
+    if (toggleButton !== null) {
+        toggleButton.addEventListener('click', () => {
+            navbarItems.classList.toggle('active');
+        })
+    }
+    
+    if (resourcesButton !== null) {
+        resourcesButton.addEventListener('click', () => {
+            resourcesLinks.classList.toggle('active');
+        })
+    }
+    
+    if (subcategoryButton !== null) {
+        subcategoryButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            subcategoryButton.classList.toggle('active');
+        })
+    }
 }
 
-if (resourcesButton !== null) {
-    resourcesButton.addEventListener('click', () => {
-        resourcesLinks.classList.toggle('active');
-    })
-}
-
-if (subcategoryButton !== null) {
-    subcategoryButton.addEventListener('click', (event) => {
-        event.stopPropagation();
-        subcategoryButton.classList.toggle('active');
-    })
-}
+enableNavbar();
 
 /*--------------------------------------------------------------
 4.0 CUSTOM CURSOR
