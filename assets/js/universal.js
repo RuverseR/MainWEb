@@ -82,12 +82,16 @@ async function waitUntilLoaded(selector) {
     ------------------------------------------------------------*/
 
 async function liveViews() {
-    let response = await(await (fetch("https://api.countapi.xyz/hit/alexlostorto.github.io/visits"))).json();
-    visitsCounter = document.getElementById('visits');
+    try {
+        let response = await(await (fetch("https://api.countapi.xyz/hit/alexlostorto.github.io/visits"))).json();
+        visitsCounter = document.getElementById('visits');
 
-    if (visitsCounter !== null) {
-        visitsCounter.innerText = response.value + " 👀";
-    } else { return }
+        if (visitsCounter !== null) {
+            visitsCounter.innerText = response.value + " 👀";
+        } else { return }
+    } catch(err) {
+        console.log(err)
+    }
 }
 
 liveViews()
