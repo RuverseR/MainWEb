@@ -5,7 +5,7 @@
 <h1 align="center">Portfolio Website</h1>
 
 <p align="center">
-  <b>Sharing ideas and cool projects!</a></b>
+  <b>Sharing ideas and cool projects!</b>
 </p>
 
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/alexlostorto/alexlostorto.github.io?style=for-the-badge&message=Code+Climate&labelColor=222222&logo=Code+Climate&logoColor=FFFFFF)](https://codeclimate.com/github/alexlostorto/alexlostorto.github.io/maintainability)
