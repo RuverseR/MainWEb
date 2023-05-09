@@ -32,18 +32,12 @@ const prototypeEvaluation = document.querySelector('#prototype-evaluation-checkb
 
 const checkboxes = [lifeCycleAnalysis, scalesOfProduction, legislation, lathe, injectionMoulding, soldering, strengthsAndWeaknesses, productAnalysisPages, productAnalysisEvaluation, disassembly, conclusion, bibliography, initialDesigns, twoPoint, isometricHanddrawn, orthographicHanddrawn, orthographicDigital, isometricDigital, productSpecification, preProductionPlan, riskAssessments, digitalDiary, prototypeEvaluation]
 
-const users = document.querySelectorAll('.user');
-
-const user1 = users[0];
-const user2 = users[1];
-const user3 = users[2];
-const user4 = users[3];
-
+const leaderboard = document.querySelector('.leaderboard');
 const DATA = {
     'Alex': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    ':>': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    'Kelvin': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    'Daniel': [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+    ':>': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    'Kelvin': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    'Daniel': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 }
 
 function increment(element, start, final, interval) {
@@ -55,60 +49,46 @@ function increment(element, start, final, interval) {
     setTimeout(increment, interval, element, start, final, interval)
 }
 
-user1.querySelector('.progress-container').style = `width: ${DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100}% !important`;
-user2.querySelector('.progress-container').style = `width: ${DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100}% !important`;
-user3.querySelector('.progress-container').style = `width: ${DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100}% !important`;
-user4.querySelector('.progress-container').style = `width: ${DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100}% !important`;
+function getScore(scoreList) {
+    return Math.round(scoreList.reduce((partialSum, a) => partialSum + a, 0) / scoreList.length * 100);
+}
 
-increment(user1.querySelector('.score'), 0, Math.round(DATA.Alex.reduce((partialSum, a) => partialSum + a, 0) / DATA.Alex.length * 100), 30);
-increment(user2.querySelector('.score'), 0, Math.round(DATA[':>'].reduce((partialSum, a) => partialSum + a, 0) / DATA[':>'].length * 100), 30);
-increment(user3.querySelector('.score'), 0, Math.round(DATA.Kelvin.reduce((partialSum, a) => partialSum + a, 0) / DATA.Kelvin.length * 100), 30);
-increment(user4.querySelector('.score'), 0, Math.round(DATA.Daniel.reduce((partialSum, a) => partialSum + a, 0) / DATA.Daniel.length * 100), 30);
+function loadScores() {
+    leaderboard.innerHTML = '';
 
-user1.addEventListener('click', () => {
-    for (let i = 0; i < DATA.Alex.length; i++) {
-        checkboxes[i].checked = false;
-        if (DATA.Alex[i] == 1) {
-            checkboxes[i].checked = true;
-        } else {
-            checkboxes[i].checked = false;
-        }
+    for (const [key, value] of Object.entries(DATA)) {
+        const score = getScore(value);
+        const user = document.createElement('div');
+        user.classList.add('user');
+
+        const html = `
+        <div class="name">${key}</div>
+        <div class="progress">
+            <div class="progress-container" style="width: ${score}% !important">
+                <div class="progress-value"></div>
+            </div>
+        </div>
+        <div class="score">0%</div>`
+
+        user.innerHTML = html;
+        increment(user.querySelector('.score'), 0, score, 30);
+
+        user.addEventListener('click', () => {
+            for (let i = 0; i < value.length; i++) {
+                checkboxes[i].checked = false;
+                if (value[i] == 1) {
+                    checkboxes[i].checked = true;
+                } else {
+                    checkboxes[i].checked = false;
+                }
+            }
+        })
+
+        leaderboard.appendChild(user);
     }
-})
+}
 
-user2.addEventListener('click', () => {
-    for (let i = 0; i < DATA[':>'].length; i++) {
-        checkboxes[i].checked = false;
-        if (DATA[':>'][i] == 1) {
-            checkboxes[i].checked = true;
-        } else {
-            checkboxes[i].checked = false;
-        }
-    }
-})
-
-user3.addEventListener('click', () => {
-    for (let i = 0; i < DATA.Kelvin.length; i++) {
-        checkboxes[i].checked = false;
-        if (DATA.Kelvin[i] == 1) {
-            checkboxes[i].checked = true;
-        } else {
-            checkboxes[i].checked = false;
-        }
-    }
-})
-
-user4.addEventListener('click', () => {
-    for (let i = 0; i < DATA.Daniel.length; i++) {
-        checkboxes[i].checked = false;
-        if (DATA.Daniel[i] == 1) {
-            checkboxes[i].checked = true;
-        } else {
-            checkboxes[i].checked = false;
-        }
-    } 
-})
-
+loadScores();
 
 // SMOOTH SCROLL
 $(".user").click(function() {
