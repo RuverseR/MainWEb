@@ -50,7 +50,7 @@ const userReferrer = document.referrer;
     |
     ------------------------------------------------------------*/
 
-let numStars = 500;
+let numStars = (screen.availWidth > screen.availHeight) ? 500 : 200;
 let stars = [];
 let acceleration = 0.01;
 let animationActive = true
@@ -101,7 +101,6 @@ class Star {
     
 function setup() {
     if (animationActive) {
-        console.log(numStars);
         createCanvas(window.innerWidth, window.innerHeight);
         stroke(255);
         strokeWeight(2);
