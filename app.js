@@ -20,7 +20,7 @@ TABLE OF CONTENTS
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-1.0 CHEMICAL FORMULA EDITOR
+1.0 VARIABLES
 --------------------------------------------------------------*/
 
     /*------------------------------------------------------------
@@ -159,7 +159,7 @@ async function slowDown() {
     |
     ------------------------------------------------------------*/
 
-window.addEventListener('scroll', (e) => {
+window.addEventListener('scroll', () => {
     let p5canvas = document.querySelector('.p5Canvas');
 
     if (!(p5canvas === null)) {
@@ -169,6 +169,7 @@ window.addEventListener('scroll', (e) => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     // Only trigger loading animation if new to website 
+    fetchGithubRepos();
     if (userReferrer.startsWith('http://127.0.0.1:5500/') || userReferrer.startsWith('https://alexlostorto.github.io/') || userReferrer.startsWith('http://alexlostorto.github.io/')) {
         console.log("Start page")
         animationActive = false;
@@ -208,7 +209,6 @@ async function startPage() {
     homePage.classList.add('fade');
     console.clear();
     credits();
-    fetchGithubRepos();
 }
     
     /*------------------------------------------------------------
