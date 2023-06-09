@@ -1,23 +1,23 @@
 const sets = {
     1:  {'name': 'Macbeth Quotes', 'quotes': [
-            {'quote': 'Fair is foul, and foul is fair.', 'info': ['Three Witches', 'Act 1 Scene 1']},
-            {'quote': 'Present fears\nAre less than horrible imaginings.', 'info': ['King Duncan', 'Act 1 Scene 4']},
-            {'quote': "There's daggers in men's smiles.", 'info': ['Donalbain', 'Act 2 Scene 3']},
-            {'quote': 'False face must hide what the false heart doth know.', 'info': ['Macbeth', 'Act 1 Scene 7']},
-            {'quote': 'I dare do all that may become a man;\nWho dares do more is none.', 'info': ['Macbeth', 'Act 1 Scene 7']}]
+        {'quote': 'Fair is foul, and foul is fair.', 'info': ['Three Witches', 'Act 1 Scene 1']},
+        {'quote': 'Present fears\nAre less than horrible imaginings.', 'info': ['King Duncan', 'Act 1 Scene 4']},
+        {'quote': "There's daggers in men's smiles.", 'info': ['Donalbain', 'Act 2 Scene 3']},
+        {'quote': 'False face must hide what the false heart doth know.', 'info': ['Macbeth', 'Act 1 Scene 7']},
+        {'quote': 'I dare do all that may become a man;\nWho dares do more is none.', 'info': ['Macbeth', 'Act 1 Scene 7']}]
     },
 
     2:  {'name': 'An Inspector Calls Quotes', 'quotes': [
-            {'quote': "You're squiffy.", 'info': ['Sheila', 'Act 1']},
-            {'quote': "I speak as a hard headed businessman.", 'info': ['Mr Birling', 'Act 1']},
-            {'quote': "Unsinkable, completely unsinkable.", 'info': ['Mr Birling', 'Act 1']},
-            {'quote': "We really must stop these silly pretences.", 'info': ['Sheila', 'Act 2']},
-            {'quote': "Girls of that class.", 'info': ['Mrs Birling', 'Act 2']},
-            {'quote': "She was very pretty - soft brown hair.", 'info': ['Gerald', 'Act 2']},
-            {'quote': "You're not the kind of father a chap could go to when he's in trouble.", 'info': ['Eric', 'Act 2']},
-            {'quote': "We are members of one body. We are responsible for each other.", 'info': ['The Inspector', 'Act 3']},
-            {'quote': "Everything's alright now Sheila.", 'info': ['Gerald', 'Act 3']},
-            {'quote': "Each of you helped to kill her.", 'info': ['The Inspector', 'Act 3']}]
+        {'quote': "You're squiffy.", 'info': ['Sheila', 'Act 1']},
+        {'quote': "I speak as a hard headed businessman.", 'info': ['Mr Birling', 'Act 1']},
+        {'quote': "Unsinkable, completely unsinkable.", 'info': ['Mr Birling', 'Act 1']},
+        {'quote': "We really must stop these silly pretences.", 'info': ['Sheila', 'Act 2']},
+        {'quote': "Girls of that class.", 'info': ['Mrs Birling', 'Act 2']},
+        {'quote': "She was very pretty - soft brown hair.", 'info': ['Gerald', 'Act 2']},
+        {'quote': "You're not the kind of father a chap could go to when he's in trouble.", 'info': ['Eric', 'Act 2']},
+        {'quote': "We are members of one body. We are responsible for each other.", 'info': ['The Inspector', 'Act 3']},
+        {'quote': "Everything's alright now Sheila.", 'info': ['Gerald', 'Act 3']},
+        {'quote': "Each of you helped to kill her.", 'info': ['The Inspector', 'Act 3']}]
     },
 
     3: {"name": "Common Verbs - Set 1", "quotes": [
