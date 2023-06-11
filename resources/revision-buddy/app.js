@@ -1,33 +1,64 @@
 console.clear();
 credits();
 
-// REVISION BUDDY
+/*--------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+1.0 PAPERSSS
+    1.1 DOM ELEMENTS
+    1.2 VARIABLES
+    1.3 FUNCTIONS
+    1.4 EVENT LISTENERS
+--------------------------------------------------------------*/
 
-// Quote variables
-const quoteElement = document.querySelector('#quote');
-const quoteInfo = document.querySelector('#quote-info');
-let missingWords = [];
+/*--------------------------------------------------------------
+1.0 SET-UP
+--------------------------------------------------------------*/
 
+    /*------------------------------------------------------------
+    |
+    | 1.1 DOM ELEMENTS
+    |
+    ------------------------------------------------------------*/
+
+// Main page
 const setsContainer = document.querySelector('.sets');
 const statisticsContainer = document.querySelector('.statistics');
 const createSetButton = document.querySelector('#create-set-button');
 const startButton = document.querySelector('#start-button');
-
-// Pages 
-const answerPage = document.querySelector('.answer-page');
-const mainPage = document.querySelector('.main-page');
-const settingsPage = document.querySelector('.settings-page');
 
 // Settings page
 const settingsButton = document.querySelector('#settings-button');
 const exitButton = document.querySelector('#exit-button');
 const difficultySlider = document.querySelector('#difficulty-slider');
 
+// Pages 
+const answerPage = document.querySelector('.answer-page');
+const mainPage = document.querySelector('.main-page');
+const settingsPage = document.querySelector('.settings-page');
+
 const pages = [mainPage, answerPage, settingsPage];
+
+    /*------------------------------------------------------------
+    |
+    | 1.2 VARIABLES
+    |
+    ------------------------------------------------------------*/
+
+const quoteElement = document.querySelector('#quote');
+const quoteInfo = document.querySelector('#quote-info');
+let missingWords = [];
+
 let currentSet = null;
 let chosenSet = null;
 let difficulty = 3;
 let timeToCompleteSet = 0;
+
+    /*------------------------------------------------------------
+    |
+    | 1.3 FUNCTIONS
+    |
+    ------------------------------------------------------------*/
 
 function getTimestampInSeconds () {
     return Math.floor(Date.now() / 1000)
@@ -97,10 +128,6 @@ function endQuiz() {
     let statistics = {'name': sets[chosenSet].name, 'time': timeTaken}
     updateLocalStorage('revision-buddy-statistics', 'history', statistics, true)
     loadStatistics();
-}
-
-function keepFocus() {
-    this.focus();
 }
 
 function scrollToTop() {
@@ -187,6 +214,12 @@ function loadStatistics() {
 loadSets(setsContainer, sets, statistics=false);
 loadStatistics();
 
+    /*------------------------------------------------------------
+    |
+    | 1.4 EVENT LISTENERS
+    |
+    ------------------------------------------------------------*/
+
 document.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         if (startButton.classList.contains('active')) {
@@ -212,6 +245,13 @@ exitButton.addEventListener('click', () => {
     showPage(mainPage);
     loadSets();
 })
+
+document.onkeydown = function(e) {
+    e = e || window.event;
+    if (e.keyCode == 27) {
+        showPage(mainPage);
+    }
+};
 
 difficultySlider.oninput = function() {
 	if (difficultySlider.value < 20 && difficultySlider.value >= 0) {
