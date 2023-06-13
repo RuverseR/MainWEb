@@ -84,7 +84,7 @@ async function waitUntilLoaded(selector) {
 async function liveViews() {
     try {
         let html = document.createElement('html');
-        let response = await ((await (fetch("http://cors-anywhere.herokuapp.com/https://vbr.wocr.tk/badge?page_id=alexlostorto.github.io"))).text());
+        let response = await ((await (fetch("https://cors-anywhere.herokuapp.com/https://vbr.wocr.tk/badge?page_id=alexlostorto.github.io"))).text());
         html.innerHTML = response;
         let counter = document.querySelector('#visits');
         let count = html.querySelectorAll('svg g text')[3].innerHTML;
