@@ -83,12 +83,15 @@ async function waitUntilLoaded(selector) {
 
 async function liveViews() {
     try {
-        let response = await(await (fetch("https://api.countapi.xyz/hit/alexlostorto.github.io/visits"))).json();
-        visitsCounter = document.getElementById('visits');
+        let html = document.createElement('html');
+        let response = await ((await (fetch("http://cors-anywhere.herokuapp.com/https://vbr.wocr.tk/badge?page_id=alexlostorto.github.io"))).text());
+        html.innerHTML = response;
+        let counter = document.querySelector('#visits');
+        let count = html.querySelectorAll('svg g text')[3].innerHTML;
 
-        if (visitsCounter !== null) {
-            visitsCounter.innerText = response.value + " 👀";
-        } else { return }
+        if (counter !== null) {
+            counter.innerText = count + " 👀";
+        }
     } catch(err) {
         console.log(err)
     }

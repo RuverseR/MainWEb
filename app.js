@@ -178,7 +178,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.log("Starting animation");
         speedUp();
     }
-    console.log(userReferrer);
 })
 
 window.addEventListener('resize', () => {
