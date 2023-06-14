@@ -83,11 +83,13 @@ async function waitUntilLoaded(selector) {
 
 async function liveViews() {
     try {
-        let html = document.createElement('html');
-        let response = await ((await (fetch("https://cors-anywhere.herokuapp.com/https://vbr.wocr.tk/badge?page_id=alexlostorto.github.io"))).text());
-        html.innerHTML = response;
-        let counter = document.querySelector('#visits');
-        let count = html.querySelectorAll('svg g text')[3].innerHTML;
+        let counter = await waitUntilLoaded('#visits');
+        let data = {
+            headers: {"X-Api-Key": "auvqqz2erOJhY7Mx71BllA==FnbYTNzw3EzrDfcB"}
+        }
+        let response = await fetch("https://api.api-ninjas.com/v1/counter?id=portfolio.website&hit=true", data);
+        let jsonData = await response.json();
+        let count = jsonData.value;
 
         if (counter !== null) {
             counter.innerText = count + " 👀";
