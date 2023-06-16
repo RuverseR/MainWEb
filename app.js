@@ -216,13 +216,66 @@ async function startPage() {
     |
     ------------------------------------------------------------*/
 
+function createSpecialProject(url, repoName, description, language, colour) {
+    if (colour.toLowerCase() == 'gold') {
+        return `<a href="${url}" target="_blank"> <div class="contentbox cursor-hover" style="background-image: url('assets/images/gold-background.jpg'); background-size: cover;"> <img class="contentImage cursor-hover" src="assets/svg/file.png" /> <h2 class="cursor-hover"><strong class="cursor-hover">${repoName}</strong></h2><p class="cursor-hover">${description}</p><h6 class="cursor-hover">${language}</h6></div></a>`
+    } else {
+        return `<a href="${url}" target="_blank"> <div class="contentbox cursor-hover" style="background-image: url('assets/images/gold-background.jpg'); background-size: cover; filter: grayscale(1);"> <img class="contentImage cursor-hover" src="assets/svg/file.png" /> <h2 class="cursor-hover"><strong class="cursor-hover">${repoName}</strong></h2><p class="cursor-hover">${description}</p><h6 class="cursor-hover">${language}</h6></div></a>`
+    }
+}
+
+function createProject(url, repoName, description, language) {
+    const anchorElement = document.createElement('a');
+    anchorElement.href = url;
+    anchorElement.target = '_blank';
+
+    const projectContainer = document.createElement('div');
+    projectContainer.classList.add('contentbox');
+    projectContainer.classList.add('cursor-hover');
+
+    const fileIcon = document.createElement('img');
+    projectContainer.classList.add('contentImage');
+    fileIcon.classList.add('cursor-hover');
+    fileIcon.src = 'assets/svg/file.png';
+
+    const projectHeader = document.createElement('h2');
+    projectHeader.classList.add('cursor-hover');
+
+    const projectName = document.createElement('strong');
+    projectName.classList.add('cursor-hover');
+    projectName.textContent = repoName;
+
+    const descriptionContainer = document.createElement('p');
+    descriptionContainer.classList.add('cursor-hover');
+    descriptionContainer.textContent = description;
+
+    const languageContainer = document.createElement('h6');
+    languageContainer.classList.add('cursor-hover');
+    languageContainer.textContent = language;
+
+    projectHeader.appendChild(projectName);
+    projectContainer.appendChild(fileIcon);
+    projectContainer.appendChild(projectHeader);
+    projectContainer.appendChild(descriptionContainer);
+    projectContainer.appendChild(languageContainer);
+    anchorElement.appendChild(projectContainer);
+
+    return anchorElement
+}
+
 async function fetchGithubRepos() {   
     let response = await fetch('https://api.github.com/users/alexlostorto/repos');
     let repoData = await response.json();
+    let projectsContainer = document.querySelector(".horizontalscroller");
+    let specialProjects = ['magic-notes', 'papersss','spanish-spelling-bee'];
 
-    htmlToAppend = `<a href="https://github.com/alexlostorto/magic-notes" target="_blank"> <div class="contentbox cursor-hover" style="background-image: url('https://media.istockphoto.com/id/183041676/photo/golden-background.jpg?s=170667a&w=0&k=20&c=-tQOmvzFuppJ5MvcH5kdDOLUjiRV9Fg0DiTH01GKWjc='); background-size: cover;"> <img class="contentImage cursor-hover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAAABmJLR0QA/wD/AP+gvaeTAAADZklEQVR4nO3dQWtUVxjG8f+rKZquGhEFwYUpFb9ALUhdmI0i1GhcSDftQr+BXVQQdGEFK278CkK7cSMIIpW2NC50I6WIILhJ2xQsolJQIkYfF2NhOHNNRrx37hvv89vNyUnOyf3ryR0NM2BmZmZmZtYtsdQHJY0DB4DPgfU1rvsEuAFciIinNX7d7pC0W9LfatZdSdva/l5XHElfSFpsOM7/5iVtavt7zmrgiJO0DrgHTIxwH7PAVEQsjnDNFWGsYuwwg3F+An4Dnte07kHg077HO4GjwJmavv77S9LV4gj6sYE1PpI0V6zzVNLWutd670j6o7hwXza0zpSkF8VaNyRV/a3urFUVY+UFetbEwhHxM3C+GP4M+LaJ9Vaqtv+0HgemgS19YyckLQBz7WxpZB4DNyPiv6UmtRooIp5IOkzvJmT16+Ex4Gx7uxqpZ5IuAMci4kHVhKojbqQi4hfgZNv7aMka4AhwU9LmqgmtB3rtO+Bc25to0SRwUdJAj7Z/BgEQEQK+kXSF3vOwSZLsrSFjwFZgvG9sOzADXFzyMyXdKW59Z5rbZ3dJ2ijpdnGtfyjnZTniOici7jP4NGPgiboDtau8c/uwnOBAyTlQcg6U3DC3skclfQ+sa3ozHfMQuL/cpGEC7Xj3vViFCeDj5Sb5iEvOgZIb5ohboPffAtcB/85APcbo/SrbKWDtW31mxT/1nGpihwaSThfX+k45Z5gj7vcG9mY9t5abMEyglzVsxKote219k5CcAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJVcVqHx1+TWj2EhHla86P/DK/lWB/ikeT9e2HSvtLx7PlxOq3rvhGrC77/EhSeuBX4Hn9e2t0z4AdgFTxfi1cmKUA5ImgHv4DZ1G7QHwSUQ87h8cOOIi4hHwNX6nk1FaBL4q48Ab7uIi4jKwF/ir4Y0Z/AnsiYgrVR8cOOL6SRoH9gE7gQ31763T/gVmgUsRsdD2ZszMzMzMzLJ4BR1/81tLFuuIAAAAAElFTkSuQmCC" /> <h2 class="cursor-hover"><strong class="cursor-hover">Magic Notes</strong></h2><p class="cursor-hover">Magic Notes - an extension to make learning on Sparx Maths more fun!</p><h6 class="cursor-hover">Javascript</h6></div></a>`;
+    projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/magic-notes", "Magic Notes", "Magic Notes - an extension to make learning on Sparx Maths more fun!", "Javascript", "gold");
+    projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/papersss", "Papersss", "Finding GCSE past papers has never been easier!", "Javascript", "silver");
+    projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/spanish-spelling-bee", "Spanish Spelling Bee", "Simple spanish spelling game.", "Python", "silver");
 
     for(let i = 0; i < repoData.length; i++) {
+        if (repoData[i].name in specialProjects) { continue }
+
         let description = "Looks like I was forgotten...";
         let language = "ReadME";
 
@@ -234,11 +287,7 @@ async function fetchGithubRepos() {
             language = repoData[i].language;
         }
 
-        nameOfRepo = repoData[i].name;
-        htmlUrl = repoData[i].html_url;
-
-        htmlToAppend += '<a href="' + htmlUrl + '" target="_blank"> <div class="contentbox cursor-hover"> <img class="contentImage cursor-hover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAAABmJLR0QA/wD/AP+gvaeTAAADZklEQVR4nO3dQWtUVxjG8f+rKZquGhEFwYUpFb9ALUhdmI0i1GhcSDftQr+BXVQQdGEFK278CkK7cSMIIpW2NC50I6WIILhJ2xQsolJQIkYfF2NhOHNNRrx37hvv89vNyUnOyf3ryR0NM2BmZmZmZtYtsdQHJY0DB4DPgfU1rvsEuAFciIinNX7d7pC0W9LfatZdSdva/l5XHElfSFpsOM7/5iVtavt7zmrgiJO0DrgHTIxwH7PAVEQsjnDNFWGsYuwwg3F+An4Dnte07kHg077HO4GjwJmavv77S9LV4gj6sYE1PpI0V6zzVNLWutd670j6o7hwXza0zpSkF8VaNyRV/a3urFUVY+UFetbEwhHxM3C+GP4M+LaJ9Vaqtv+0HgemgS19YyckLQBz7WxpZB4DNyPiv6UmtRooIp5IOkzvJmT16+Ex4Gx7uxqpZ5IuAMci4kHVhKojbqQi4hfgZNv7aMka4AhwU9LmqgmtB3rtO+Bc25to0SRwUdJAj7Z/BgEQEQK+kXSF3vOwSZLsrSFjwFZgvG9sOzADXFzyMyXdKW59Z5rbZ3dJ2ijpdnGtfyjnZTniOici7jP4NGPgiboDtau8c/uwnOBAyTlQcg6U3DC3skclfQ+sa3ozHfMQuL/cpGEC7Xj3vViFCeDj5Sb5iEvOgZIb5ohboPffAtcB/85APcbo/SrbKWDtW31mxT/1nGpihwaSThfX+k45Z5gj7vcG9mY9t5abMEyglzVsxKote219k5CcAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJedAyTlQcg6UnAMl50DJOVByDpScAyXnQMk5UHIOlJwDJVcVqHx1+TWj2EhHla86P/DK/lWB/ikeT9e2HSvtLx7PlxOq3rvhGrC77/EhSeuBX4Hn9e2t0z4AdgFTxfi1cmKUA5ImgHv4DZ1G7QHwSUQ87h8cOOIi4hHwNX6nk1FaBL4q48Ab7uIi4jKwF/ir4Y0Z/AnsiYgrVR8cOOL6SRoH9gE7gQ31763T/gVmgUsRsdD2ZszMzMzMzLJ4BR1/81tLFuuIAAAAAElFTkSuQmCC" /> <h2 class="cursor-hover"><strong class="cursor-hover">' + nameOfRepo + '</strong></h2><p class="cursor-hover">' + description + '</p><h6 class="cursor-hover">' + language + '</h6></div></a>';
+        let project = createProject(repoData[i].html_url, repoData[i].name, description, language);
+        projectsContainer.appendChild(project);
     }
-
-    document.querySelector(".horizontalscroller").innerHTML = htmlToAppend;
 }
