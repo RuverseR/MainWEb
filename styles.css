@@ -87,13 +87,20 @@
 }
 
 /* Photography work  */
-.image-gallery-header {
-    margin-top: 15vh;
+.image-gallery.header {
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.image-gallery.header span {
+    text-align: center;
+    line-height: 130%;
+    letter-spacing: .05em;
 }
 
 .image-gallery {
     padding: 0px 10px;
-    margin-top: 7vh;
+    margin-top: 10vh;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -124,7 +131,7 @@
     transition: ease-in-out 0.5s, transform ease-in 1s;
 }
 
-.image-gallery::after {
+.container .image-gallery::after {
     content: "";
     flex-grow: 999;
 }
@@ -193,5 +200,29 @@
     .socials-container {
         padding-top: 2vh;
         padding-bottom: 7vh;
+    }
+
+    .project-container {
+        height: 450px;
+    }
+
+    .horizontalscroller {
+        padding-left: 100px;
+        padding-bottom: 0;
+    }
+
+    .contentbox {
+        margin-left: -50px;
+        padding: 30px;
+        width: 200px;
+        height: 300px;
+    }
+
+    .image-gallery.header {
+        margin-top: 1.5rem;
+    }
+
+    .image-gallery.header span {
+        font-size: 2.2rem;
     }
 }
