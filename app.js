@@ -273,8 +273,8 @@ async function fetchGithubRepos() {
     projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/papersss", "Papersss", "Finding GCSE past papers has never been easier!", "Javascript", "silver");
     projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/spanish-spelling-bee", "Spanish Spelling Bee", "Simple spanish spelling game.", "Python", "silver");
 
-    for(let i = 0; i < repoData.length; i++) {
-        if (repoData[i].name in specialProjects) { continue }
+    for (let i = 0; i < repoData.length; i++) {
+        if (specialProjects.includes(repoData[i].name)) { continue }
 
         let description = "Looks like I was forgotten...";
         let language = "ReadME";
