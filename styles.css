@@ -90,6 +90,7 @@
 .image-gallery.header {
     justify-content: center;
     text-transform: uppercase;
+    padding-bottom: 7vh;
 }
 
 .image-gallery.header span {
@@ -113,16 +114,9 @@
     position: relative;
 }
 
-.image-gallery li img:hover {
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-}
-
 .image-gallery li img {
     position: relative;
     z-index: 1;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
     object-fit: cover;
     width: 100%;
     height: 100%;
