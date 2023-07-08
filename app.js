@@ -237,6 +237,7 @@ function createProject(url, repoName, description, language) {
     projectContainer.classList.add('contentImage');
     fileIcon.classList.add('cursor-hover');
     fileIcon.src = 'assets/svg/file.png';
+    fileIcon.alt = 'File icon';
 
     const projectHeader = document.createElement('h2');
     projectHeader.classList.add('cursor-hover');
