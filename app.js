@@ -216,52 +216,41 @@ async function startPage() {
     |
     ------------------------------------------------------------*/
 
-function createSpecialProject(url, repoName, description, language, colour) {
+function createProject(url, repoName, description, language, colour) {
     if (colour.toLowerCase() == 'gold') {
-        return `<a href="${url}" target="_blank"> <div class="contentbox cursor-hover" style="background-image: url('assets/images/gold-background.jpg'); background-size: cover;"> <img class="contentImage cursor-hover" src="assets/svg/file.png" /> <h2 class="cursor-hover"><strong class="cursor-hover">${repoName}</strong></h2><p class="cursor-hover">${description}</p><h6 class="cursor-hover">${language}</h6></div></a>`
+        return  `<a href="${url}" target="_blank"> 
+            <div class="contentbox cursor-hover" style="background-image: url('assets/images/gold-background.jpg'); background-size: cover;"> 
+                <img class="contentImage cursor-hover" src="assets/svg/file.png" alt="File icon" /> 
+                <h2 class="cursor-hover">
+                    <strong class="cursor-hover">${repoName}</strong>
+                </h2>
+                <p class="cursor-hover">${description}</p>
+                <h6 class="cursor-hover">${language}</h6>
+            </div>
+        </a>`
+    } else if (colour.toLowerCase() == 'silver') {
+        return `<a href="${url}" target="_blank"> 
+            <div class="contentbox cursor-hover" style="background-image: url('assets/images/gold-background.jpg'); background-size: cover; filter: grayscale(1);"> 
+                <img class="contentImage cursor-hover" src="assets/svg/file.png" alt="File icon" /> 
+                <h2 class="cursor-hover">
+                    <strong class="cursor-hover">${repoName}</strong>
+                </h2>
+                <p class="cursor-hover">${description}</p>
+                <h6 class="cursor-hover">${language}</h6>
+            </div>
+        </a>`
     } else {
-        return `<a href="${url}" target="_blank"> <div class="contentbox cursor-hover" style="background-image: url('assets/images/gold-background.jpg'); background-size: cover; filter: grayscale(1);"> <img class="contentImage cursor-hover" src="assets/svg/file.png" /> <h2 class="cursor-hover"><strong class="cursor-hover">${repoName}</strong></h2><p class="cursor-hover">${description}</p><h6 class="cursor-hover">${language}</h6></div></a>`
+        return `<a href="${url}" target="_blank"> 
+            <div class="contentbox cursor-hover"> 
+                <img class="contentImage cursor-hover" src="assets/svg/file.png" alt="File icon" /> 
+                <h2 class="cursor-hover">
+                    <strong class="cursor-hover">${repoName}</strong>
+                </h2>
+                <p class="cursor-hover">${description}</p>
+                <h6 class="cursor-hover">${language}</h6>
+            </div>
+        </a>`
     }
-}
-
-function createProject(url, repoName, description, language) {
-    const anchorElement = document.createElement('a');
-    anchorElement.href = url;
-    anchorElement.target = '_blank';
-
-    const projectContainer = document.createElement('div');
-    projectContainer.classList.add('contentbox');
-    projectContainer.classList.add('cursor-hover');
-
-    const fileIcon = document.createElement('img');
-    projectContainer.classList.add('contentImage');
-    fileIcon.classList.add('cursor-hover');
-    fileIcon.src = 'assets/svg/file.png';
-    fileIcon.alt = 'File icon';
-
-    const projectHeader = document.createElement('h2');
-    projectHeader.classList.add('cursor-hover');
-
-    const projectName = document.createElement('strong');
-    projectName.classList.add('cursor-hover');
-    projectName.textContent = repoName;
-
-    const descriptionContainer = document.createElement('p');
-    descriptionContainer.classList.add('cursor-hover');
-    descriptionContainer.textContent = description;
-
-    const languageContainer = document.createElement('h6');
-    languageContainer.classList.add('cursor-hover');
-    languageContainer.textContent = language;
-
-    projectHeader.appendChild(projectName);
-    projectContainer.appendChild(fileIcon);
-    projectContainer.appendChild(projectHeader);
-    projectContainer.appendChild(descriptionContainer);
-    projectContainer.appendChild(languageContainer);
-    anchorElement.appendChild(projectContainer);
-
-    return anchorElement
 }
 
 async function fetchGithubRepos() {   
@@ -270,9 +259,9 @@ async function fetchGithubRepos() {
     let projectsContainer = document.querySelector(".horizontalscroller");
     let specialProjects = ['magic-notes', 'papersss','spanish-spelling-bee'];
 
-    projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/magic-notes", "Magic Notes", "Magic Notes - an extension to make learning on Sparx Maths more fun!", "Javascript", "gold");
-    projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/papersss", "Papersss", "Finding GCSE past papers has never been easier!", "Javascript", "silver");
-    projectsContainer.innerHTML += createSpecialProject("https://github.com/alexlostorto/spanish-spelling-bee", "Spanish Spelling Bee", "Simple spanish spelling game.", "Python", "silver");
+    projectsContainer.innerHTML += createProject("https://github.com/alexlostorto/magic-notes", "Magic Notes", "Magic Notes - an extension to make learning on Sparx Maths more fun!", "Javascript", "gold");
+    projectsContainer.innerHTML += createProject("https://github.com/alexlostorto/papersss", "Papersss", "Finding GCSE past papers has never been easier!", "Javascript", "silver");
+    projectsContainer.innerHTML += createProject("https://github.com/alexlostorto/spanish-spelling-bee", "Spanish Spelling Bee", "Simple spanish spelling game.", "Python", "silver");
 
     for (let i = 0; i < repoData.length; i++) {
         if (specialProjects.includes(repoData[i].name)) { continue }
@@ -288,7 +277,7 @@ async function fetchGithubRepos() {
             language = repoData[i].language;
         }
 
-        let project = createProject(repoData[i].html_url, repoData[i].name, description, language);
-        projectsContainer.appendChild(project);
+        let project = createProject(repoData[i].html_url, repoData[i].name, description, language, 'N/a');
+        projectsContainer.innerHTML += project;
     }
 }
