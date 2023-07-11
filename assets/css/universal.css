@@ -1,4 +1,7 @@
 /* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
 @font-face {
     font-family: 'Mark Pro';
     src: url('../fonts/Mark_Pro.woff') format('woff');
