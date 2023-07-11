@@ -76,7 +76,7 @@
     color: white;
 }
 
-.contentbox h6 {
+.contentbox span {
     position: absolute;
     bottom: 2vh;
     color: rgb(222, 220, 220);

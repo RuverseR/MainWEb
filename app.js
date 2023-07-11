@@ -215,7 +215,7 @@ function createProject(url, repoName, description, language, colour) {
                     <strong class="cursor-hover">${repoName}</strong>
                 </h2>
                 <p class="cursor-hover">${description}</p>
-                <h6 class="cursor-hover">${language}</h6>
+                <span class="cursor-hover">${language}</span>
             </div>
         </a>`
     } else if (colour.toLowerCase() == 'silver') {
@@ -226,7 +226,7 @@ function createProject(url, repoName, description, language, colour) {
                     <strong class="cursor-hover">${repoName}</strong>
                 </h2>
                 <p class="cursor-hover">${description}</p>
-                <h6 class="cursor-hover">${language}</h6>
+                <span class="cursor-hover">${language}</span>
             </div>
         </a>`
     } else {
@@ -237,7 +237,7 @@ function createProject(url, repoName, description, language, colour) {
                     <strong class="cursor-hover">${repoName}</strong>
                 </h2>
                 <p class="cursor-hover">${description}</p>
-                <h6 class="cursor-hover">${language}</h6>
+                <span class="cursor-hover">${language}</span>
             </div>
         </a>`
     }

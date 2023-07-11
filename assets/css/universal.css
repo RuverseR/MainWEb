@@ -5,6 +5,7 @@
 @font-face {
     font-family: 'Mark Pro';
     src: url('../fonts/Mark_Pro.woff') format('woff');
+    font-display: swap;
 }
 
 
