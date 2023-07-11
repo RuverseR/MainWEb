@@ -50,7 +50,7 @@ const userReferrer = document.referrer;
     |
     ------------------------------------------------------------*/
 
-let numStars = (screen.availWidth > screen.availHeight) ? 500 : 200;
+let numStars = (screen.availWidth > screen.availHeight) ? 500 : 150;
 let stars = [];
 let acceleration = 0.01;
 let animationActive = true
@@ -114,8 +114,6 @@ function setup() {
 function draw() {
     background(0, 50);
     
-    //   const acc = map(mouseX, 0, width, 0.005, 0.2);
-    
     stars = stars.filter(star => {
         star.draw();
         star.update(acceleration);
@@ -123,7 +121,7 @@ function draw() {
     });
     
     if (animationActive) {
-        while(stars.length < numStars) {
+        while (stars.length < numStars) {
             stars.push(new Star(random(width), random(height)));
         }
     }
@@ -134,22 +132,14 @@ function onScreen(x, y) {
 }
 
 async function speedUp() {
-    for(let i = 0; i < 30; i ++) {
-        acceleration += 0.02;
-        await sleep(30);
-    }
-    setTimeout(slowDown, 900);
-}
-
-async function slowDown() {
-    for(let i = 0; i < 20; i ++) {
-        acceleration -= 0.01;
+    for (let i = 0; i < 60; i ++) {
+        acceleration += 0.015;
         await sleep(30);
     }
 
     // After loading animation is finished
     animationActive = false;
-    await sleep(1500);
+    await sleep(900);
     startPage();
 }
 

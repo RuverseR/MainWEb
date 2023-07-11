@@ -240,7 +240,7 @@ textarea {
     display: none;
     height: auto;
     background-color: rgba(0, 0, 0, 1);
-    transition: ease-in-out 1s;
+    transition: ease-in-out 0.5s;
 }
 
 .body-container.active {
